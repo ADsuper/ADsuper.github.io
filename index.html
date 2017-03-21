@@ -423,28 +423,15 @@
 
       
         
-          
-            <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>由于在搞博客的原因，顺带着多了解了点  Git 命令，欢迎大家指正！</strong>      </p>
+          <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>由于在搞博客的原因，顺带着多了解了点  Git 命令，欢迎大家指正！</strong>      </p>
 <hr>
-<h3 id="一、Git工具"><a href="#一、Git工具" class="headerlink" title="一、Git工具"></a>一、Git工具</h3><p>下载地址：<a href="https://git-scm.com/download/" target="_blank" rel="external">https://git-scm.com/download/</a><br>安装也很简单，基本就是一直下一步，选默认的就好！   </p>
-<h3 id="二、常用命令介绍"><a href="#二、常用命令介绍" class="headerlink" title="二、常用命令介绍"></a>二、常用命令介绍</h3><h5 id="1-本地文件夹与-github-远程仓库建立连接"><a href="#1-本地文件夹与-github-远程仓库建立连接" class="headerlink" title="1. 本地文件夹与 github 远程仓库建立连接"></a>1. 本地文件夹与 github 远程仓库建立连接</h5><p>在需要建立连接的文件夹，右键 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &lt;server&gt;</div></pre></td></tr></table></figure>
-<p>其中，server是 github 远程仓库地址，origin只是仓库的一个别名，这里可以随意变！</p>
-<h5 id="2-将本地的文件，同步到-github-远程仓库上"><a href="#2-将本地的文件，同步到-github-远程仓库上" class="headerlink" title="2. 将本地的文件，同步到 github 远程仓库上"></a>2. 将本地的文件，同步到 github 远程仓库上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .  #添加所有目录，后边有个点</div><div class="line">git commit -m &quot;message&quot; #添加提交说明信息</div><div class="line">git push -u origin master   #云端同步</div></pre></td></tr></table></figure>
-<h5 id="3-把-github-上的文件取回本地"><a href="#3-把-github-上的文件取回本地" class="headerlink" title="3. 把 github 上的文件取回本地"></a>3. 把 github 上的文件取回本地</h5><p>在本地先建立一个文件夹，右键 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin &lt;server&gt; # server是远程仓库地址</div><div class="line">git fetch –all</div><div class="line">git merge origin/master  #这个origin与步骤 1 的那个一致</div></pre></td></tr></table></figure>
-<h5 id="4-如果两个PC端操作一个远程仓库地址"><a href="#4-如果两个PC端操作一个远程仓库地址" class="headerlink" title="4. 如果两个PC端操作一个远程仓库地址"></a>4. 如果两个PC端操作一个远程仓库地址</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">每次先  git pull 进行同步更新，然后执行步骤 2</div></pre></td></tr></table></figure>
-<h5 id="5-修改-github-远程仓库地址"><a href="#5-修改-github-远程仓库地址" class="headerlink" title="5.修改 github 远程仓库地址"></a>5.修改 github 远程仓库地址</h5><ul>
-<li>第一种方式：在需要修改远程地址的文件夹下  右键 Git Bash 输入：   </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git remote rm origin	#先删除</div><div class="line">git remote add origin &lt;server&gt; #重新添加地址</div></pre></td></tr></table></figure>
-<ul>
-<li><p>第二种方式：找到.git文件夹下的config文件  </p>
-<p>  找到 [remote “origin”]，下边的url就是远程仓库地址，修改成自己需要的就好！</p>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/21/Git命令总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
