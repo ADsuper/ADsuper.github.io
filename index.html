@@ -354,28 +354,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -423,15 +401,51 @@
 
       
         
-          <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>本文不涉及第三方的类库和工具，只是原生的操作流程</strong></p>
+          
+            <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>本文不涉及第三方的类库和工具，只是原生的操作流程</strong></p>
 <hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/23/android6.0运行时权限使用流程/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>Android6.0 之前，用户安装 app ,会根据声明的权限生成一个权限列表，只有用户同意才能完成安装，而用户一般也不会注意这些权限，有可能会造成一些私密权限的泄漏，从而威胁到我们手机本身的信息安全！</p>
+<p>Android6.0之后，运行时权限解决了这一问题，用户可以直接安装 app ，一些高危权限会在应用运行的过程中动态申请，我们可以选择同意或者拒绝，也可以在设置界面对每个 app 的权限进行查看和修改。</p>
+<h3 id="二、权限简介"><a href="#二、权限简介" class="headerlink" title="二、权限简介"></a>二、权限简介</h3><p><a href="https://developer.android.com/guide/topics/security/permissions.html?hl=zh-cn#normal-dangerous" target="_blank" rel="external">官网</a>上有句话，系统权限分为几个保护级别，需要了解的最重要的两个是 <strong>正常权限</strong> 和 <strong>危险权限</strong> ，而运行时权限就是针对危险权限而言的。</p>
+<ul>
+<li><strong>危险权限官网定义：</strong></li>
+</ul>
+<p>危险权限涵盖应用需要涉及用户隐私信息的数据或资源，或者可能对用户存储的数据或其他应用的操作产生影响的区域。例如，能够读取用户的联系人属于危险权限。如果应用声明其需要危险权限，则用户必须明确向应用授予该权限。</p>
+<ul>
+<li><strong>危险权限种类：</strong></li>
+</ul>
+<p><img src="http://i2.buimg.com/567571/b97b7b6b54b2769b.jpg" alt="image"></p>
+<p><strong>注意：左侧为权限组，右侧为权限组的具体权限，同一组内的任何一个权限被授权了，其他权限也自动被授权，系统只告诉用户应用需要的权限组，而不告知具体权限！</strong></p>
+<ul>
+<li><strong>使用流程</strong></li>
+</ul>
+<ol>
+<li><p>需要将 app 的 targetSdkVersion 设置到 23 及其以上，这样才有可能触发运行时权限。</p>
+</li>
+<li><p>在AndroidManifest文件中添加所需要的权限。</p>
+</li>
+<li><p>先检查系统版本，如果系统在 6.0 以上，采取运行时权限，版本名称和版本号参考官网：<a href="https://developer.android.com/reference/android/os/Build.VERSION_CODES.html" target="_blank" rel="external">https://developer.android.com/reference/android/os/Build.VERSION_CODES.html</a></p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Build.VERSION.SDK_INT &gt;= 23</div></pre></td></tr></table></figure>
+<ol>
+<li>几个重要的 API </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    检查某个权限是否被授予 ，以相机权限为例</div><div class="line"></div><div class="line">if ( ContextCompat.checkSelfPermission ( this,Manifest.permission.CAMERA)</div><div class="line">        != PackageManager.PERMISSION_GRANTED ) &#123;</div><div class="line">    </div><div class="line">    //申请相机权限操作</div><div class="line">&#125;else&#123;</div><div class="line"></div><div class="line">    //相机权限已申请操作</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">该方法只有在用户在上一次已经拒绝过你的这个权限申请。也就是说</div><div class="line">，用户已经拒绝一次了，你又弹个授权框，你需要给用户一个解释，为什么要授权，</div><div class="line">则使用该方法，</div><div class="line">只有第一次被拒绝，当第二次申请时， if 条件为 true，其他都为 false</div><div class="line"></div><div class="line">if (ActivityCompat.shouldShowRequestPermissionRationale(this,</div><div class="line">        Manifest.permission.CAMERA)) &#123;</div><div class="line">   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">申请相机权限操作</div><div class="line"></div><div class="line">第一个参数是Context；</div><div class="line">第二个参数是需要申请的权限的字符串数组；</div><div class="line">第三个参数为requestCode， 主要用于回调时候监测</div><div class="line"></div><div class="line">其中第二个参数支持一次性申请多个权限的，系统会通过对话框逐一询问用户是否授权</div><div class="line"></div><div class="line">ActivityCompat.requestPermissions(this, new String[]&#123;Manifest.permission.CAMERA&#125;, </div><div class="line">CAMERA_REQUEST_CODE);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">此方法是权限申请的回调方法，在此方法中处理权限申请成功或失败后的操作。</div><div class="line"></div><div class="line">@Override</div><div class="line">public void onRequestPermissionsResult(int requestCode,</div><div class="line">        String permissions[], int[] grantResults) &#123;</div><div class="line">    switch (requestCode) &#123;</div><div class="line">        case CAMERA_REQUEST_CODE: &#123;</div><div class="line">            </div><div class="line">            if (grantResults.length &gt; 0</div><div class="line">                &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">                //权限申请成功操作</div><div class="line"></div><div class="line">            &#125; else &#123;</div><div class="line">               //权限申请失败</div><div class="line">               //用户勾选了禁止后不再询问，提示用户手动打开权限</div><div class="line">            &#125;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>完整的操作流程</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">//判断系统版本是否大于23</div><div class="line">  private boolean isRequestPermission() &#123;</div><div class="line"></div><div class="line">      return Build.VERSION.SDK_INT &gt;= 23;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  //自定义请求权限</div><div class="line">  private void requestPermission() &#123;</div><div class="line"></div><div class="line">      if (!isRequestPermission()) &#123;</div><div class="line">          return;</div><div class="line">      &#125;</div><div class="line">      //检查是否已经拥有该权限</div><div class="line">      if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)</div><div class="line">              != PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">          //判断是否是第二次申请，（第一次被用户拒绝），如果是的话，做一些说明，一般是弹框说明</div><div class="line">          if (ActivityCompat.shouldShowRequestPermissionRationale(this,</div><div class="line">                  Manifest.permission.CAMERA)) &#123;</div><div class="line">              //弹出一个dialog，说明第二次请求原因</div><div class="line">              new AlertDialog.Builder(this)</div><div class="line">                      .setMessage(&quot;申请照相机权限&quot;)</div><div class="line">                      .setPositiveButton(&quot;确定&quot;, new DialogInterface.OnClickListener() &#123;</div><div class="line">                          @Override</div><div class="line">                          public void onClick(DialogInterface dialog, int which) &#123;</div><div class="line">                              ActivityCompat.requestPermissions(MainActivity.this,</div><div class="line">                                      new String[]&#123;Manifest.permission.CAMERA&#125;,</div><div class="line">                                      CAMERA_REQUEST_CODE</div><div class="line">                              );</div><div class="line">                          &#125;</div><div class="line">                      &#125;).show();</div><div class="line">          &#125; else &#123;//不是的话就执行申请操作</div><div class="line"></div><div class="line">              ActivityCompat.requestPermissions(MainActivity.this,</div><div class="line">                      new String[]&#123;&#125;,</div><div class="line">                      CAMERA_REQUEST_CODE</div><div class="line">              );</div><div class="line"></div><div class="line">          &#125;</div><div class="line">      &#125; else &#123;</div><div class="line"></div><div class="line">          //相机权限已申请操作</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /**</div><div class="line">   * 权限申请回调</div><div class="line">   *</div><div class="line">   * @param requestCode  请求码</div><div class="line">   * @param permissions  请求的权限列表</div><div class="line">   * @param grantResults  请求的结果列表</div><div class="line">   */</div><div class="line">  @Override</div><div class="line">  public void onRequestPermissionsResult(int requestCode,</div><div class="line">                                         @NonNull String[] permissions,</div><div class="line">                                         @NonNull int[] grantResults) &#123;</div><div class="line">      super.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line"></div><div class="line">      switch (requestCode) &#123;</div><div class="line">          case CAMERA_REQUEST_CODE: &#123;</div><div class="line"></div><div class="line">              if (grantResults.length &gt; 0</div><div class="line">                      &amp;&amp; grantResults[0] == PackageManager.PERMISSION_GRANTED) &#123;</div><div class="line"></div><div class="line">                  //权限申请成功操作</div><div class="line"></div><div class="line">              &#125; else &#123;</div><div class="line">                  //权限申请失败</div><div class="line">                  //用户勾选了禁止后不再询问，提示用户手动打开权限</div><div class="line"></div><div class="line">                  if (!ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.CAMERA))&#123;</div><div class="line"></div><div class="line">                      Toast.makeText(MainActivity.this,&quot;请在设置列表打开相机权限&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">                  &#125;</div><div class="line">              &#125;</div><div class="line">              return;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>有几位大神总结的很不错，附上链接</li>
+</ol>
+<p><a href="http://blog.csdn.net/lmj623565791/article/details/50709663" target="_blank" rel="external">Hongyang大神</a></p>
+<p><a href="http://www.10tiao.com/html/227/201610/2650237473/1.html" target="_blank" rel="external">郭霖大神</a></p>
+
+          
         
       
     </div>
@@ -1027,7 +1041,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1038,7 +1052,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
