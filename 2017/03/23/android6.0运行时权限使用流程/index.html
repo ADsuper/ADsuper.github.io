@@ -87,26 +87,17 @@
 
 
 
-<meta name="description" content="前言：本文不涉及第三方的类库和工具，只是原生的操作流程
-
-一、简介Android6.0 之前，用户安装 app ,会根据声明的权限生成一个权限列表，只有用户同意才能完成安装，而用户一般也不会注意这些权限，有可能会造成一些私密权限的泄漏，从而威胁到我们手机本身的信息安全！
-Android6.0之后，运行时权限解决了这一问题，用户可以直接安装 app ，一些高危权限会在应用运行的过程中动态申请，我们可">
+<meta name="description" content="前言：本文不涉及第三方的类库和工具，只是原生的操作流程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android6.0运行时权限使用流程">
 <meta property="og:url" content="http://yoursite.com/2017/03/23/android6.0运行时权限使用流程/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言：本文不涉及第三方的类库和工具，只是原生的操作流程
-
-一、简介Android6.0 之前，用户安装 app ,会根据声明的权限生成一个权限列表，只有用户同意才能完成安装，而用户一般也不会注意这些权限，有可能会造成一些私密权限的泄漏，从而威胁到我们手机本身的信息安全！
-Android6.0之后，运行时权限解决了这一问题，用户可以直接安装 app ，一些高危权限会在应用运行的过程中动态申请，我们可">
+<meta property="og:description" content="前言：本文不涉及第三方的类库和工具，只是原生的操作流程">
 <meta property="og:image" content="http://i2.buimg.com/567571/b97b7b6b54b2769b.jpg">
-<meta property="og:updated_time" content="2017-03-23T07:03:48.510Z">
+<meta property="og:updated_time" content="2017-03-23T07:07:55.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android6.0运行时权限使用流程">
-<meta name="twitter:description" content="前言：本文不涉及第三方的类库和工具，只是原生的操作流程
-
-一、简介Android6.0 之前，用户安装 app ,会根据声明的权限生成一个权限列表，只有用户同意才能完成安装，而用户一般也不会注意这些权限，有可能会造成一些私密权限的泄漏，从而威胁到我们手机本身的信息安全！
-Android6.0之后，运行时权限解决了这一问题，用户可以直接安装 app ，一些高危权限会在应用运行的过程中动态申请，我们可">
+<meta name="twitter:description" content="前言：本文不涉及第三方的类库和工具，只是原生的操作流程">
 <meta name="twitter:image" content="http://i2.buimg.com/567571/b97b7b6b54b2769b.jpg">
 
 
@@ -414,6 +405,7 @@ Android6.0之后，运行时权限解决了这一问题，用户可以直接安�
       
         <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>本文不涉及第三方的类库和工具，只是原生的操作流程</strong></p>
 <hr>
+<a id="more"></a>
 <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>Android6.0 之前，用户安装 app ,会根据声明的权限生成一个权限列表，只有用户同意才能完成安装，而用户一般也不会注意这些权限，有可能会造成一些私密权限的泄漏，从而威胁到我们手机本身的信息安全！</p>
 <p>Android6.0之后，运行时权限解决了这一问题，用户可以直接安装 app ，一些高危权限会在应用运行的过程中动态申请，我们可以选择同意或者拒绝，也可以在设置界面对每个 app 的权限进行查看和修改。</p>
 <h3 id="二、权限简介"><a href="#二、权限简介" class="headerlink" title="二、权限简介"></a>二、权限简介</h3><p><a href="https://developer.android.com/guide/topics/security/permissions.html?hl=zh-cn#normal-dangerous" target="_blank" rel="external">官网</a>上有句话，系统权限分为几个保护级别，需要了解的最重要的两个是 <strong>正常权限</strong> 和 <strong>危险权限</strong> ，而运行时权限就是针对危险权限而言的。</p>
