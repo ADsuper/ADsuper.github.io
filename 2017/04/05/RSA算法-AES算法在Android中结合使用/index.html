@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Retrofit," />
+  <meta name="keywords" content="RSA + AES," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="前言本文只是 Retrofit Android 端的常规使用">
+<meta name="description" content="前言加密算法在网络应用中越来越广，为了保证网络请求数据的安全，Android 网络请求中也越来越多的加入加密算法，本文主要是记录 RSA 和 AES 算法在 Android 中的应用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 中 Retrofit2.X 的使用(1)">
-<meta property="og:url" content="http://yoursite.com/2017/03/27/Android 中 Retrofit2.X 的使用(1)/index.html">
+<meta property="og:title" content="RSA 算法 + AES 算法在 Android 中结合使用">
+<meta property="og:url" content="http://yoursite.com/2017/04/05/RSA算法-AES算法在Android中结合使用/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言本文只是 Retrofit Android 端的常规使用">
-<meta property="og:updated_time" content="2017-03-29T02:42:28.856Z">
+<meta property="og:description" content="前言加密算法在网络应用中越来越广，为了保证网络请求数据的安全，Android 网络请求中也越来越多的加入加密算法，本文主要是记录 RSA 和 AES 算法在 Android 中的应用">
+<meta property="og:updated_time" content="2017-04-05T07:03:03.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 中 Retrofit2.X 的使用(1)">
-<meta name="twitter:description" content="前言本文只是 Retrofit Android 端的常规使用">
+<meta name="twitter:title" content="RSA 算法 + AES 算法在 Android 中结合使用">
+<meta name="twitter:description" content="前言加密算法在网络应用中越来越广，为了保证网络请求数据的安全，Android 网络请求中也越来越多的加入加密算法，本文主要是记录 RSA 和 AES 算法在 Android 中的应用">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/27/Android 中 Retrofit2.X 的使用(1)/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/RSA算法-AES算法在Android中结合使用/"/>
 
 
 
 
 
-  <title> Android 中 Retrofit2.X 的使用(1) | 珞璃之神 </title>
+  <title> RSA 算法 + AES 算法在 Android 中结合使用 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +303,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/Android 中 Retrofit2.X 的使用(1)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/RSA算法-AES算法在Android中结合使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -324,7 +324,7 @@
             
             
               
-                Android 中 Retrofit2.X 的使用(1)
+                RSA 算法 + AES 算法在 Android 中结合使用
               
             
           </h1>
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T11:36:32+08:00">
-                2017-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T14:14:27+08:00">
+                2017-04-05
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/加密算法/" itemprop="url" rel="index">
+                    <span itemprop="name">加密算法</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/Android 中 Retrofit2.X 的使用(1)/" itemprop="commentCount"></span>
+                <a href="/2017/04/05/RSA算法-AES算法在Android中结合使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/05/RSA算法-AES算法在Android中结合使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/" class="leancloud_visitors" data-flag-title="Android 中 Retrofit2.X 的使用(1)">
+             <span id="/2017/04/05/RSA算法-AES算法在Android中结合使用/" class="leancloud_visitors" data-flag-title="RSA 算法 + AES 算法在 Android 中结合使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,96 +423,62 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>本文只是 Retrofit Android 端的常规使用</strong></p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>加密算法在网络应用中越来越广，为了保证网络请求数据的安全，Android 网络请求中也越来越多的加入加密算法，本文主要是记录 RSA 和 AES 算法在 Android 中的应用</strong></p>
 <hr>
 <a id="more"></a>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、Retrofit-简介"><a href="#一、Retrofit-简介" class="headerlink" title="一、Retrofit 简介"></a>一、Retrofit 简介</h4><p>Retrofit 是 Square 公司开源的一个网络请求框架，适用于 Android 和 java ，采用注解的方式，简化网络请求，提高网络请求速度，底层为 Square 公司的 okhttp ！</p>
-<h4 id="二、主要的请求方式和注解简介"><a href="#二、主要的请求方式和注解简介" class="headerlink" title="二、主要的请求方式和注解简介"></a>二、主要的请求方式和注解简介</h4><h5 id="1-主要的请求方式"><a href="#1-主要的请求方式" class="headerlink" title="1. 主要的请求方式"></a>1. 主要的请求方式</h5><table>
-<thead>
-<tr>
-<th>格式</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@GET</td>
-<td>表示这是一个GET请求</td>
-</tr>
-<tr>
-<td>@POST</td>
-<td>表示这个一个POST请求</td>
-</tr>
-<tr>
-<td>@PUT</td>
-<td>表示这是一个PUT请求</td>
-</tr>
-<tr>
-<td>@DELETE</td>
-<td>表示这是一个DELETE请求</td>
-</tr>
-<tr>
-<td>@HEAD</td>
-<td>表示这是一个HEAD请求</td>
-</tr>
-<tr>
-<td>@OPTIONS</td>
-<td>表示这是一个OPTION请求</td>
-</tr>
-<tr>
-<td>@PATCH</td>
-<td>表示这是一个PAT请求</td>
-</tr>
-</tbody>
-</table>
-<h5 id="2-主要的注解"><a href="#2-主要的注解" class="headerlink" title="2. 主要的注解"></a>2. 主要的注解</h5><table>
-<thead>
-<tr>
-<th>格式</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>@Headers</td>
-<td>添加请求头</td>
-</tr>
-<tr>
-<td>@Path</td>
-<td>替换路径</td>
-</tr>
-<tr>
-<td>@Query</td>
-<td>替代参数值，通常是结合get请求的</td>
-</tr>
-<tr>
-<td>@FormUrlEncoded</td>
-<td>用表单数据提交</td>
-</tr>
-<tr>
-<td>@Field</td>
-<td>替换参数值，是结合post请求的</td>
-</tr>
-</tbody>
-</table>
-<h4 id="三、简单使用例子"><a href="#三、简单使用例子" class="headerlink" title="三、简单使用例子"></a>三、简单使用例子</h4><h5 id="1-添加依赖和权限"><a href="#1-添加依赖和权限" class="headerlink" title="1. 添加依赖和权限"></a>1. 添加依赖和权限</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//这两个依赖的版本要一致</div><div class="line">compile &apos;com.squareup.retrofit2:retrofit:2.2.0&apos;</div><div class="line">compile &apos;com.squareup.retrofit2:converter-gson:2.2.0&apos;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//添加网络请求权限</div><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;&gt;&lt;/uses-permission&gt;</div></pre></td></tr></table></figure>
-<h5 id="2-创建网络请求接口"><a href="#2-创建网络请求接口" class="headerlink" title="2. 创建网络请求接口"></a>2. 创建网络请求接口</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">import retrofit2.Call;</div><div class="line">import retrofit2.http.GET;</div><div class="line">import retrofit2.http.Path;</div><div class="line">import retrofit2.http.Query;</div><div class="line">//接口名称，随意命名</div><div class="line">public interface RetrofitText &#123;</div><div class="line"></div><div class="line">    //@GET 表示是get请求 ， 而 @GET 后边括号里的是相对</div><div class="line">    @GET(&quot;sapientialMall/getLadderInfo.action&quot;)</div><div class="line">    Call&lt;RetrofitTextBean&gt; getRequest(@Query(&quot;market_id&quot;) int markret_id ,</div><div class="line">                                      @Query(&quot;floor_start&quot;) int floor_start ,</div><div class="line">                                      @Query(&quot;floor_end&quot;) int floor_end );</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p><strong>说明：</strong></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、-概念"><a href="#一、-概念" class="headerlink" title="一、 概念"></a>一、 概念</h4><h5 id="1-RSA-算法"><a href="#1-RSA-算法" class="headerlink" title="1. RSA 算法"></a>1. RSA 算法</h5><ul>
+<li><p>RSA 是 1977 年由罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman）一起提出的。当时他们三人都在麻省理工学院工作。RSA就是他们三人姓氏开头字母拼在一起组成的。</p>
+</li>
+<li><p>到目前为止，世界上还没有任何可靠的攻击RSA算法的方式。只要其钥匙的长度足够长，用 RSA 加密的信息实际上是不能被解破的。</p>
+</li>
+<li><p>RSA 算法属于非对称加密算法，非对称加密算法需要两个密钥：公开密钥（publickey）和私有密钥（privatekey），公钥加密，私钥解密；私钥加密，公钥解密。</p>
+</li>
+<li><p>随机生成一对公钥和私钥，客户端拿公钥，服务端拿私钥。</p>
+</li>
+</ul>
+<h5 id="2-AES-算法"><a href="#2-AES-算法" class="headerlink" title="2. AES 算法"></a>2. AES 算法</h5><ul>
+<li><p>该算法为比利时密码学家 Joan Daemen 和 Vincent Rijmen 所设计，结合两位作者的名字，以 Rijndael 为名投稿高级加密标准的甄选流程。</p>
+</li>
+<li><p>高级加密标准（英语：Advanced Encryption Standard，缩写：AES），在密码学中又称 Rijndael 加密法，<br>是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的 DES。</p>
+</li>
+<li><p>每次用的时候随机生成一个秘钥，用完之后销毁</p>
+</li>
+</ul>
+<h4 id="二、-使用流程"><a href="#二、-使用流程" class="headerlink" title="二、 使用流程"></a>二、 使用流程</h4><h5 id="1-客户端和服务端用的-base64-加密类要一致，这个加密类是一个-jar-包，java-中有自带的-Base64-算法类，但是安卓中却没有，如果不统一-jar-包，解析要出错"><a href="#1-客户端和服务端用的-base64-加密类要一致，这个加密类是一个-jar-包，java-中有自带的-Base64-算法类，但是安卓中却没有，如果不统一-jar-包，解析要出错" class="headerlink" title="1. 客户端和服务端用的 base64 加密类要一致，这个加密类是一个 jar 包，java 中有自带的 Base64 算法类，但是安卓中却没有，如果不统一 jar 包，解析要出错"></a>1. 客户端和服务端用的 base64 加密类要一致，这个加密类是一个 jar 包，java 中有自带的 Base64 算法类，但是安卓中却没有，如果不统一 jar 包，解析要出错</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">javabase64-1.3.1.jar</div></pre></td></tr></table></figure>
+<h5 id="2-客户端使用示例代码"><a href="#2-客户端使用示例代码" class="headerlink" title="2. 客户端使用示例代码"></a>2. 客户端使用示例代码</h5><p><strong>操作步骤：</strong></p>
 <ol>
-<li>这是一个接口，接口名称随意命名</li>
-<li>@GET 表示是 get 请求 ， 而 @GET 后边括号里的是相对地址，例如：www.baidu.com/aaaa/bbbb/ccccc ，其中 aaaa/bbbb/ccccc 就是相对地址。</li>
-<li>Call 是固定写法，后边&lt;&gt;中的 RetrofitTextBean 是根据请求结果的 json 字符串生成的 javaBean</li>
-<li>getRequest 方法名一般采用 getXXX的形式</li>
-<li>@Query 是配合 GET 请求用的，后边的括号内为拼接在 url 后的请求参数 key ，而 int 类型的 markret_id 为 value       </li>
+<li><p>客户端随机产生 AES 的密钥</p>
+</li>
+<li><p>对身份证信息（重要信息）进行 AES 加密</p>
+</li>
+<li><p>通过使用 RSA 对 AES 密钥进行公钥加密</p>
+</li>
 </ol>
-<h5 id="3-开始异步请求-（-GET-请求）"><a href="#3-开始异步请求-（-GET-请求）" class="headerlink" title="3. 开始异步请求 （ GET 请求）"></a>3. 开始异步请求 （ GET 请求）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//1.创建 Retrofit 实例，并完成相关配置</div><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">//baseUrl 为 www.baidu.com/aaaa/bbbb/ccccc 中的 www.baidu.com/</div><div class="line">        .baseUrl(baseUr)</div><div class="line">        //表示调用 Gson 库来解析返回值，将结果直接解析为 javaBean 对象</div><div class="line">        .addConverterFactory(GsonConverterFactory.create())</div><div class="line">        .build();</div><div class="line">//2.创建接口对象，即 RetrofitText 接口的对象</div><div class="line">RetrofitText retrofitText = retrofit.create(RetrofitText.class);</div><div class="line">//3.获取请求服务方法</div><div class="line">Call&lt;RetrofitTextBean&gt; call = retrofitText.getRequest(1, 5, -3);</div><div class="line"></div><div class="line">//4.开始异步请求</div><div class="line">call.enqueue(new Callback&lt;RetrofitTextBean&gt;() &#123;</div><div class="line">    @Override</div><div class="line">    public void onResponse(Call&lt;RetrofitTextBean&gt; call, Response&lt;RetrofitTextBean&gt; response) &#123;</div><div class="line">        //请求成功</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onFailure(Call&lt;RetrofitTextBean&gt; call, Throwable t) &#123;</div><div class="line">        //请求失败</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4 id="四、GET-请求扩展（以第三条的例子为基础）"><a href="#四、GET-请求扩展（以第三条的例子为基础）" class="headerlink" title="四、GET 请求扩展（以第三条的例子为基础）"></a>四、GET 请求扩展（以第三条的例子为基础）</h4><h5 id="1-另一种接口定义方式"><a href="#1-另一种接口定义方式" class="headerlink" title="1. 另一种接口定义方式"></a>1. 另一种接口定义方式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import retrofit2.Call;</div><div class="line">import retrofit2.http.GET;</div><div class="line">import retrofit2.http.Path;</div><div class="line">import retrofit2.http.Query;</div><div class="line">import retrofit2.http.Url;</div><div class="line"></div><div class="line"></div><div class="line">public interface RetrofitText &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @GET(&quot;&quot;)</div><div class="line">    Call&lt;RetrofitTextBean&gt; getRequest2(@Url String url ,</div><div class="line">                                       @Query(&quot;market_id&quot;) int markret_id ,</div><div class="line">                                       @Query(&quot;floor_start&quot;) int floor_start ,</div><div class="line">                                       @Query(&quot;floor_end&quot;) int floor_end );&#125;</div></pre></td></tr></table></figure>
-<p><strong>说明：</strong> 这种定义方式，是在获取请求方法的时候才传入相对地址，更加灵活一点，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Call&lt;RetrofitTextBean&gt; call = retrofitText.getRequest2(&quot;这里是相对地址&quot;, 1, 5, -3);</div></pre></td></tr></table></figure>
-<h4 id="2-还有一种接口定义方式"><a href="#2-还有一种接口定义方式" class="headerlink" title="2. 还有一种接口定义方式"></a>2. 还有一种接口定义方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@GET(&quot;sapientialMall/getLadderInfo.action&quot;)</div><div class="line">Call&lt;RetrofitTextBean&gt; getRequest4(@QueryMap Map&lt;String , Integer &gt; map);</div></pre></td></tr></table></figure>
-<p><strong>说明：</strong> 这种适合参数比较多，且参数的数据类型一致时，使用</p>
-<p><strong>未完待续~</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    //需要加密的重要信息</div><div class="line">    private String name = &quot;zhangsan&quot;;</div><div class="line">    private String idCard = &quot;4103271991***&quot;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">          /**</div><div class="line">         * 加密--------------</div><div class="line">         */</div><div class="line">        // AES 产生的随机秘钥</div><div class="line">        String key = AESUtils.generateKey();</div><div class="line">        //加密之后的重要信息</div><div class="line">        String encryptName = AESUtils.encryptData(key, name);</div><div class="line">        String encryptIdCard = AESUtils.encryptData(key, idCard);</div><div class="line"></div><div class="line">        //对 AES 秘钥进行 RSA 加密</div><div class="line">        String encryptByPublicKey = RSAUtils.encryptByPublicKey(key);</div><div class="line"></div><div class="line">        Log.i(&quot;RSAAndAES&quot;,&quot;AES秘钥为::::&quot;+key);</div><div class="line">        Log.i(&quot;RSAAndAES&quot;,&quot;encryptName为::::&quot;+encryptName);</div><div class="line">        Log.i(&quot;RSAAndAES&quot;,&quot;encryptIdCard为::::&quot;+encryptIdCard);</div><div class="line">        Log.i(&quot;RSAAndAES&quot;,&quot;encryptByPublicKey为::::&quot;+encryptByPublicKey);</div><div class="line">    </div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h6 id="其中，RSA-的秘钥和公钥是提前生成好的，例如："><a href="#其中，RSA-的秘钥和公钥是提前生成好的，例如：" class="headerlink" title="其中，RSA 的秘钥和公钥是提前生成好的，例如："></a>其中，RSA 的秘钥和公钥是提前生成好的，例如：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">公钥：</div><div class="line"> MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2Hy8d1jGGVlxNa3FEfeY5x9i5RxgICZvV/GO</div><div class="line"> ekpyK/FxU+K44ft3EiUKGE12BS74lcO4j/1iIgbXV6CuonULSIzBwC52o7v2gFSW/5k+Mms</div><div class="line"> 82q0OKu82Oosj2qYD+mlbfeCHxgPrdUwSeYxGWh1u/uM6r1hEkv9pKov+jWqyNuwIDAQAB</div><div class="line"></div><div class="line">私钥：</div><div class="line"> MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBALYfLx3WMYZWXE1rcUR95jnH2LlH</div><div class="line"> GAgJm9X8Y56SnIr8XFT4rjh+3cSJQoYTXYFLviVw7iP/WIiBtdXoK6idQtIjMHALnaju/aAVJb/</div><div class="line"> mT4yazzarQ4q7zY6iyPapgP6aVt94IfGA+t1TBJ5jEZaHW7+4zqvWESS/2kqi/6NarI27AgMBAA</div><div class="line"> ECgYBlbA5gLlWcO2Hh15DXlMluqiW+YKI4b6lyTMDpoTo+iHWe+HKFkdlMxyfd5NDw3U6CKVblg</div><div class="line"> yE5vAqYmlgd6Z442cKtkiuFaBe6A6P2VHr8YLCVmB6QgRenASO4fCWqi5quEq/IvPhRpshRyuuJ</div><div class="line"> cDnziMKx03RnEfZQRSbaK9K3cQJBANzxF1GoOdLsUmSaExhJKnirWXPsDbpu6IBmqUZdXQYDDmv</div><div class="line"> hs0DJw/JQnuv0gm/gv6Qjy/v3fNHUFcPsQh0undMCQQDTBS6QjYU/2LKQ/RFoTTxLKrcPg3o66B</div><div class="line"> 794jXR+kqLXJDO/UD88EMHHfOWo/QWVZvgdzQCGBErXk+rb41a8hd5AkEAxblUnxUnumUXT0S7d</div><div class="line"> e50fc0Knr1Pg9qhY9d8AaaoCytNCqrPmll2bDJOJueIm8rMdn46nOFc6QMd/1o9yJPhVQJAVWGS</div><div class="line"> XrC0SooObjXHFlGx5KQK378N9Mm4yHb/2c8Q3GR+vxGfevhn1nha+AesmmDXKjJxG6vLPqXxTGd</div><div class="line"> dZX/w2QJBAM5jrVojC5mXQnA1eKzzRSCeAx97vzZX8wZpwqKVHmazd2kayUjzSARkm+P76+sB0G</div><div class="line"> 96kGQJCRm7jEdl5jh5o2s=</div><div class="line"></div><div class="line">私钥的长度要比公钥长的多</div></pre></td></tr></table></figure>
+<h6 id="Log-打印出来的结果大概是这样："><a href="#Log-打印出来的结果大概是这样：" class="headerlink" title="Log 打印出来的结果大概是这样："></a>Log 打印出来的结果大概是这样：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">AES秘钥为::::ecf82772a1ab4282</div><div class="line">encryptName为::::9ZaVuJNAKKwOpm7o+k0Tsg==</div><div class="line">encryptIdCard为::::DZ970wYy78lxpGfl0m3ziQ==</div><div class="line">encryptByPublicKey为::::iLAfMtFq23q+9AIp02KTO9KKq1kmeaN9E41evXJ7UZY7/c4FC2o1</div><div class="line">SadDZeB/EA6C9yurGI0X9HQhxtJC5JXwyEU2OVRqIx75a/ILaYyJ+AiJb06F/L/xfIS7nZBnb04d</div><div class="line">Y65Bvbg1imr6SESKPuQOX5mJdgpbJZ0Vp2lj0ZGylbw=</div></pre></td></tr></table></figure>
+<h5 id="3-服务端使用代码示例"><a href="#3-服务端使用代码示例" class="headerlink" title="3. 服务端使用代码示例"></a>3. 服务端使用代码示例</h5><p><strong>操作步骤：</strong></p>
+<ol>
+<li><p>对加密后的 AES 密钥进行 RSA 私钥解密，拿到密钥原文；</p>
+</li>
+<li><p>对加密后的重要信息进行 AES 解密，拿到原始内容</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> // 通过 RSA 私钥 还原 AES 秘钥</div><div class="line">String AESKEY = RSAUtils.decryptByPrivateKey(encryptByPublicKey);</div><div class="line">//通过 AES 秘钥 还原数据</div><div class="line"></div><div class="line">String name1 = AESUtils.decryptData(AESKEY, encryptName);</div><div class="line">String idCard1 = AESUtils.decryptData(AESKEY, encryptIdCard);</div></pre></td></tr></table></figure>
+<h4 id="三、-为什么要两种算法配合使用"><a href="#三、-为什么要两种算法配合使用" class="headerlink" title="三、 为什么要两种算法配合使用"></a>三、 为什么要两种算法配合使用</h4><ul>
+<li><p>上边的例子大概是：客户端加密向服务端请求数据，服务端解密的过程。</p>
+</li>
+<li><p>而这种过程完全用 RSA 加密也能做到，两种算法结合的原因就是：AES 加密算法的解密速度要比 RSA 快得多，大概100倍。</p>
+</li>
+<li><p>还有一个原因：两种算法，多个秘钥，更加有利于信息安全。</p>
+</li>
+</ul>
+<h4 id="四、-第三方链接"><a href="#四、-第三方链接" class="headerlink" title="四、 第三方链接"></a>四、 第三方链接</h4><ul>
+<li><p>参考博文：<a href="http://www.10tiao.com/html/227/201704/2650239103/1.html" target="_blank" rel="external">http://www.10tiao.com/html/227/201704/2650239103/1.html</a></p>
+</li>
+<li><p>工具方法下载的第三方链接（不是本人）：<a href="http://download.csdn.net/detail/chay_chan/9766486" target="_blank" rel="external">http://download.csdn.net/detail/chay_chan/9766486</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -542,7 +508,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Retrofit/" rel="tag"># Retrofit</a>
+            <a href="/tags/RSA-AES/" rel="tag"># RSA + AES</a>
           
         </div>
       
@@ -555,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/24/Android中的消息机制-Handler/" rel="next" title="Android中的消息机制--Handler">
-                <i class="fa fa-chevron-left"></i> Android中的消息机制--Handler
+              <a href="/2017/03/30/dagger2在Android中的使用/" rel="next" title="dagger2 在 Android 中的使用">
+                <i class="fa fa-chevron-left"></i> dagger2 在 Android 中的使用
               </a>
             
           </div>
@@ -564,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/27/AndroidStudio中使用butterknife/" rel="prev" title="AndroidStudio中使用butterknife">
-                AndroidStudio中使用butterknife <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -616,8 +578,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/27/Android 中 Retrofit2.X 的使用(1)/"
-           data-title="Android 中 Retrofit2.X 的使用(1)" data-url="http://yoursite.com/2017/03/27/Android 中 Retrofit2.X 的使用(1)/">
+      <div class="ds-thread" data-thread-key="2017/04/05/RSA算法-AES算法在Android中结合使用/"
+           data-title="RSA 算法 + AES 算法在 Android 中结合使用" data-url="http://yoursite.com/2017/04/05/RSA算法-AES算法在Android中结合使用/">
       </div>
     
   </div>
@@ -723,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Retrofit-简介"><span class="nav-number">2.1.</span> <span class="nav-text">一、Retrofit 简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、主要的请求方式和注解简介"><span class="nav-number">2.2.</span> <span class="nav-text">二、主要的请求方式和注解简介</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-主要的请求方式"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 主要的请求方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-主要的注解"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 主要的注解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、简单使用例子"><span class="nav-number">2.3.</span> <span class="nav-text">三、简单使用例子</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-添加依赖和权限"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 添加依赖和权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-创建网络请求接口"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 创建网络请求接口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-开始异步请求-（-GET-请求）"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 开始异步请求 （ GET 请求）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、GET-请求扩展（以第三条的例子为基础）"><span class="nav-number">2.4.</span> <span class="nav-text">四、GET 请求扩展（以第三条的例子为基础）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-另一种接口定义方式"><span class="nav-number">2.4.1.</span> <span class="nav-text">1. 另一种接口定义方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-还有一种接口定义方式"><span class="nav-number">2.5.</span> <span class="nav-text">2. 还有一种接口定义方式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、-概念"><span class="nav-number">2.1.</span> <span class="nav-text">一、 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-RSA-算法"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. RSA 算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-AES-算法"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. AES 算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、-使用流程"><span class="nav-number">2.2.</span> <span class="nav-text">二、 使用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-客户端和服务端用的-base64-加密类要一致，这个加密类是一个-jar-包，java-中有自带的-Base64-算法类，但是安卓中却没有，如果不统一-jar-包，解析要出错"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 客户端和服务端用的 base64 加密类要一致，这个加密类是一个 jar 包，java 中有自带的 Base64 算法类，但是安卓中却没有，如果不统一 jar 包，解析要出错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-客户端使用示例代码"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 客户端使用示例代码</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#其中，RSA-的秘钥和公钥是提前生成好的，例如："><span class="nav-number">2.2.2.1.</span> <span class="nav-text">其中，RSA 的秘钥和公钥是提前生成好的，例如：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Log-打印出来的结果大概是这样："><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Log 打印出来的结果大概是这样：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-服务端使用代码示例"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 服务端使用代码示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、-为什么要两种算法配合使用"><span class="nav-number">2.3.</span> <span class="nav-text">三、 为什么要两种算法配合使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、-第三方链接"><span class="nav-number">2.4.</span> <span class="nav-text">四、 第三方链接</span></a></li></ol></li></ol></div>
             
 
           </div>
