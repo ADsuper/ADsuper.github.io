@@ -423,33 +423,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><ul>
-<li><p><strong>Lottie</strong> 是一个由 Airbnb 开源的第三方动画库，它能够同时支持 iOS，Android 与 ReactNative 的开发；</p>
-</li>
-<li><p>Lottie 通过 <strong>AE ( After Effects )</strong> 中的 Bodymovin 插件将 AE 中制作好的动画导出成一个 json 文件，这个 json 文件就是我们需要的动画。</p>
-</li>
-<li><p>在 github 上有几种动画效果和源码介绍：<a href="https://github.com/airbnb/lottie-android" target="_blank" rel="external">https://github.com/airbnb/lottie-android</a></p>
-</li>
-<li><p>CSDN 上也有一篇博文讲的不错：<a href="http://blog.csdn.net/trojx2/article/details/54896899" target="_blank" rel="external">http://blog.csdn.net/trojx2/article/details/54896899</a></p>
-</li>
-</ul>
-<h3 id="二、-AE-是什么"><a href="#二、-AE-是什么" class="headerlink" title="二、 AE 是什么"></a>二、 AE 是什么</h3><ul>
-<li><p><strong>反正本人刚看到这个词的时候一脸懵逼，还专门去搜索了 - -！</strong></p>
-</li>
-<li><p>Adobe After Effects ，没错，就是这个软件，由 Adobe 公司提供更新的，目前最新版本为 CC(13.5)。</p>
-</li>
-<li><p>由上边的这个软件来制作动画，然后导出为 json 格式的文件。</p>
-<h3 id="三、用法"><a href="#三、用法" class="headerlink" title="三、用法"></a>三、用法</h3></li>
-</ul>
-<p><strong>本人目前并不会使用 AE ，而且， AE 还是收费软件，所以就在 github 上找了 json 文件，以写 demo 的形式来练习使用</strong></p>
-<h6 id="1、-在概述中的-github-中找到-sample-文件中的-app-src-main-assets-目录下的-json-文件，随便选择一个，导入到自己项目的-assets-文件夹下"><a href="#1、-在概述中的-github-中找到-sample-文件中的-app-src-main-assets-目录下的-json-文件，随便选择一个，导入到自己项目的-assets-文件夹下" class="headerlink" title="1、 在概述中的 github 中找到 sample 文件中的 app/src/main/assets 目录下的 json 文件，随便选择一个，导入到自己项目的 assets 文件夹下"></a>1、 在概述中的 github 中找到 sample 文件中的 app/src/main/assets 目录下的 json 文件，随便选择一个，导入到自己项目的 assets 文件夹下</h6><h6 id="2-在-app-的-build-gradle-中-添加如下依赖："><a href="#2-在-app-的-build-gradle-中-添加如下依赖：" class="headerlink" title="2.在 app 的 build.gradle 中 添加如下依赖："></a>2.在 app 的 build.gradle 中 添加如下依赖：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;  </div><div class="line">  compile &apos;com.airbnb.android:lottie:2.0.0-beta4&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h6 id="3-在布局文件中添加使用"><a href="#3-在布局文件中添加使用" class="headerlink" title="3. 在布局文件中添加使用"></a>3. 在布局文件中添加使用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;com.airbnb.lottie.LottieAnimationView</div><div class="line">    android:id=&quot;@+id/lottie&quot;</div><div class="line">    android:layout_width=&quot;wrap_content&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    app:lottie_fileName=&quot;hello_AE.json&quot;</div><div class="line">    app:lottie_loop=&quot;true&quot;</div><div class="line">    app:lottie_autoPlay=&quot;true&quot;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
-<p><strong>也可以在代码中使用，但是不知道为嘛代码方式老是找不到 assets 目录中的 json 文件</strong></p>
-<p><strong>未完待续</strong></p>
-
-          
+          <h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/11/Lottie在Android中的用法初探/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -829,175 +810,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/Android 中 Retrofit2.X 的使用(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="珞神">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/me1.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="珞璃之神">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/" itemprop="url">
-                  Android 中 Retrofit2.X 的使用(1)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T11:36:32+08:00">
-                2017-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/Android 中 Retrofit2.X 的使用(1)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/" class="leancloud_visitors" data-flag-title="Android 中 Retrofit2.X 的使用(1)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>本文只是 Retrofit Android 端的常规使用</strong></p>
-<hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/AndroidStudio中使用butterknife/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1122,6 +934,175 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/27/AndroidStudio中使用butterknife/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/27/Android 中 Retrofit2.X 的使用(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="珞神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="珞璃之神">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/" itemprop="url">
+                  Android 中 Retrofit2.X 的使用(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T11:36:32+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/Android 中 Retrofit2.X 的使用(1)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/" class="leancloud_visitors" data-flag-title="Android 中 Retrofit2.X 的使用(1)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>本文只是 Retrofit Android 端的常规使用</strong></p>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
