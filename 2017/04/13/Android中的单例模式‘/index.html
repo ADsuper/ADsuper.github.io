@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="permissions," />
+  <meta name="keywords" content="单例模式," />
 
 
 
@@ -87,24 +87,16 @@
 
 
 
-<meta name="description" content="前言：介绍运行时权限的第三方库 PermissionsDispatcher 配合 AndroidStudio 的使用
-PermissionsDispatcher 库地址： PermissionsDispatcher
-本文来源： https://github.com/alidili/PermissionDemo">
+<meta name="description" content="前言：简单来说，设计模式就是前人留下的一些经验的总结，把这些总结分类为不同的设计模式，通过使用这些模式，使我们的代码看起来更加简洁，复用性更高，可维护性更高，是 Android 进阶之路必不可少的一环！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android6.0运行时权限插件版">
-<meta property="og:url" content="http://yoursite.com/2017/03/23/android6-0运行时权限插件版/index.html">
+<meta property="og:title" content="Android 中的单例模式总结">
+<meta property="og:url" content="http://yoursite.com/2017/04/13/Android中的单例模式‘/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言：介绍运行时权限的第三方库 PermissionsDispatcher 配合 AndroidStudio 的使用
-PermissionsDispatcher 库地址： PermissionsDispatcher
-本文来源： https://github.com/alidili/PermissionDemo">
-<meta property="og:image" content="http://i4.buimg.com/567571/12bad9be95eb0e24.png">
-<meta property="og:updated_time" content="2017-03-27T05:31:48.554Z">
+<meta property="og:description" content="前言：简单来说，设计模式就是前人留下的一些经验的总结，把这些总结分类为不同的设计模式，通过使用这些模式，使我们的代码看起来更加简洁，复用性更高，可维护性更高，是 Android 进阶之路必不可少的一环！">
+<meta property="og:updated_time" content="2017-04-13T02:22:58.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android6.0运行时权限插件版">
-<meta name="twitter:description" content="前言：介绍运行时权限的第三方库 PermissionsDispatcher 配合 AndroidStudio 的使用
-PermissionsDispatcher 库地址： PermissionsDispatcher
-本文来源： https://github.com/alidili/PermissionDemo">
-<meta name="twitter:image" content="http://i4.buimg.com/567571/12bad9be95eb0e24.png">
+<meta name="twitter:title" content="Android 中的单例模式总结">
+<meta name="twitter:description" content="前言：简单来说，设计模式就是前人留下的一些经验的总结，把这些总结分类为不同的设计模式，通过使用这些模式，使我们的代码看起来更加简洁，复用性更高，可维护性更高，是 Android 进阶之路必不可少的一环！">
 
 
 
@@ -132,13 +124,13 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/23/android6-0运行时权限插件版/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/13/Android中的单例模式‘/"/>
 
 
 
 
 
-  <title> android6.0运行时权限插件版 | 珞璃之神 </title>
+  <title> Android 中的单例模式总结 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +303,7 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/23/android6-0运行时权限插件版/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/13/Android中的单例模式‘/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -332,7 +324,7 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
             
             
               
-                android6.0运行时权限插件版
+                Android 中的单例模式总结
               
             
           </h1>
@@ -347,8 +339,8 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T16:14:58+08:00">
-                2017-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T09:14:52+08:00">
+                2017-04-13
               </time>
             
 
@@ -370,8 +362,8 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AndroidStudio/" itemprop="url" rel="index">
-                    <span itemprop="name">AndroidStudio</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -388,8 +380,8 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/23/android6-0运行时权限插件版/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/android6-0运行时权限插件版/" itemprop="commentCount"></span>
+                <a href="/2017/04/13/Android中的单例模式‘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/13/Android中的单例模式‘/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,7 +389,7 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
 
           
           
-             <span id="/2017/03/23/android6-0运行时权限插件版/" class="leancloud_visitors" data-flag-title="android6.0运行时权限插件版">
+             <span id="/2017/04/13/Android中的单例模式‘/" class="leancloud_visitors" data-flag-title="Android 中的单例模式总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,23 +423,22 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
       
 
       
-        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>介绍运行时权限的第三方库 PermissionsDispatcher 配合 AndroidStudio 的使用</strong></p>
-<p><strong>PermissionsDispatcher 库地址：</strong> <a href="https://github.com/hotchemi/PermissionsDispatcher" target="_blank" rel="external">PermissionsDispatcher</a></p>
-<p><strong>本文来源：</strong> <a href="https://github.com/alidili/PermissionDemo" target="_blank" rel="external">https://github.com/alidili/PermissionDemo</a></p>
-<hr>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p><strong>简单来说，设计模式就是前人留下的一些经验的总结，把这些总结分类为不同的设计模式，通过使用这些模式，使我们的代码看起来更加简洁，复用性更高，可维护性更高，是 Android 进阶之路必不可少的一环！</strong></p>
 <a id="more"></a>
-<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><p><strong>PermissionsDispatcher 通过注解的方式，动态生成类处理运行时权限。配合插件使用，可自动生成代码。</strong></p>
-<p><strong>使用：</strong></p>
-<h5 id="1-在-AndroidStudio中搜索插件-PermissionsDispatcher-，并下载安装"><a href="#1-在-AndroidStudio中搜索插件-PermissionsDispatcher-，并下载安装" class="headerlink" title="1. 在 AndroidStudio中搜索插件 PermissionsDispatcher ，并下载安装"></a>1. 在 AndroidStudio中搜索插件 PermissionsDispatcher ，并下载安装</h5><h5 id="2-将下面这段代码添加到-project-的-build-gradle-文件中："><a href="#2-将下面这段代码添加到-project-的-build-gradle-文件中：" class="headerlink" title="2. 将下面这段代码添加到 project 的 build.gradle 文件中："></a>2. 将下面这段代码添加到 project 的 build.gradle 文件中：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">buildscript &#123;</div><div class="line">  dependencies &#123;</div><div class="line">    classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="3-将下面的代码添加到app-module的build-gradle文件中，目前最新版本为-2-3-2-不过参考的文章用的-2-1-3，我也就没改"><a href="#3-将下面的代码添加到app-module的build-gradle文件中，目前最新版本为-2-3-2-不过参考的文章用的-2-1-3，我也就没改" class="headerlink" title="3. 将下面的代码添加到app module的build.gradle文件中，目前最新版本为 2.3.2 ,不过参考的文章用的 2.1.3，我也就没改"></a>3. 将下面的代码添加到app module的build.gradle文件中，目前最新版本为 2.3.2 ,不过参考的文章用的 2.1.3，我也就没改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">apply plugin: &apos;android-apt&apos;</div><div class="line"></div><div class="line">dependencies &#123;</div><div class="line">    compile &apos;com.github.hotchemi:permissionsdispatcher:2.1.3&apos;</div><div class="line">    apt &apos;com.github.hotchemi:permissionsdispatcher-processor:2.1.3&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="4-准备工作已经完成了，下面来进行代码的生成，在-Android-Studio-中选择-Code-—-Generate-—-Generate-Runtime-Permissions，也可以快捷键-Alt-Insert-，选择-Generate-Runtime-Permissions-，如下图所示："><a href="#4-准备工作已经完成了，下面来进行代码的生成，在-Android-Studio-中选择-Code-—-Generate-—-Generate-Runtime-Permissions，也可以快捷键-Alt-Insert-，选择-Generate-Runtime-Permissions-，如下图所示：" class="headerlink" title="4. 准备工作已经完成了，下面来进行代码的生成，在 Android Studio 中选择 Code — Generate — Generate Runtime Permissions，也可以快捷键 Alt + Insert ，选择 Generate Runtime Permissions ，如下图所示："></a>4. 准备工作已经完成了，下面来进行代码的生成，在 Android Studio 中选择 Code — Generate — Generate Runtime Permissions，也可以快捷键 Alt + Insert ，选择 Generate Runtime Permissions ，如下图所示：</h5><p><img src="http://i4.buimg.com/567571/12bad9be95eb0e24.png" alt="image"></p>
-<p><strong>其中：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@NeedsPermission 当申请的权限被用户允许后，调用此方法。</div><div class="line"></div><div class="line">@OnShowRationale 当第一次申请权限时，用户选择拒绝，再次申请时调用此方法，</div><div class="line">                    在此方法中提示用户为什么需要这个权限。</div><div class="line">@OnPermissionDenied 当申请的权限被用户拒绝后，调用此方法</div><div class="line">x`</div><div class="line">@OnNeverAskAgain 当用户点击不再询问后，调用此方法。</div></pre></td></tr></table></figure>
-<h5 id="5-代码大致如下："><a href="#5-代码大致如下：" class="headerlink" title="5. 代码大致如下："></a>5. 代码大致如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line">package com.yang.permissiondemo;</div><div class="line"></div><div class="line">import android.Manifest;</div><div class="line">import android.annotation.TargetApi;</div><div class="line">import android.content.DialogInterface;</div><div class="line">import android.graphics.Color;</div><div class="line">import android.os.Build;</div><div class="line">import android.os.Bundle;</div><div class="line">import android.support.v7.app.AlertDialog;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.widget.TextView;</div><div class="line">import android.widget.Toast;</div><div class="line"></div><div class="line">import butterknife.Bind;</div><div class="line">import butterknife.ButterKnife;</div><div class="line">import butterknife.OnClick;</div><div class="line">import permissions.dispatcher.NeedsPermission;</div><div class="line">import permissions.dispatcher.OnNeverAskAgain;</div><div class="line">import permissions.dispatcher.OnPermissionDenied;</div><div class="line">import permissions.dispatcher.OnShowRationale;</div><div class="line">import permissions.dispatcher.PermissionRequest;</div><div class="line">import permissions.dispatcher.RuntimePermissions;</div><div class="line"></div><div class="line">@RuntimePermissions</div><div class="line">public class PermissionsDispatcherActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Bind(R.id.tv_permission_status)</div><div class="line">    TextView tvPermissionStatus;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_permission);</div><div class="line">        ButterKnife.bind(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @OnClick(R.id.btn_request_permission)</div><div class="line">    public void onClick() &#123;</div><div class="line">        requestPermission();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @TargetApi(Build.VERSION_CODES.M)</div><div class="line">    private void requestPermission() &#123;</div><div class="line">        //申请权限</div><div class="line">        PermissionsDispatcherActivityPermissionsDispatcher.openCameraWithCheck(this);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @NeedsPermission(Manifest.permission.CAMERA)</div><div class="line">    void openCamera() &#123;</div><div class="line">        tvPermissionStatus.setTextColor(Color.GREEN);</div><div class="line">        tvPermissionStatus.setText(&quot;相机权限已申请&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @OnShowRationale(Manifest.permission.CAMERA)</div><div class="line">    void showRationale(final PermissionRequest request) &#123;</div><div class="line">        new AlertDialog.Builder(this)</div><div class="line">                .setMessage(&quot;申请相机权限&quot;)</div><div class="line">                .setPositiveButton(&quot;确定&quot;, new DialogInterface.OnClickListener() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void onClick(DialogInterface dialog, int which) &#123;</div><div class="line">                        //再次执行请求</div><div class="line">                        request.proceed();</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @OnPermissionDenied(Manifest.permission.CAMERA)</div><div class="line">    void permissionDenied() &#123;</div><div class="line">        Toast.makeText(this, &quot;权限被拒绝&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @OnNeverAskAgain(Manifest.permission.CAMERA)</div><div class="line">    void neverAskAgain() &#123;</div><div class="line">        Toast.makeText(this, &quot;不再询问&quot;, Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) &#123;</div><div class="line">        super.onRequestPermissionsResult(requestCode, permissions, grantResults);</div><div class="line">        PermissionsDispatcherActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>注： PermissionsDispatcherActivityPermissionsDispatcher 这个类本来是没有的需要先编译一次才会出现，点击 Build - Make Project。</strong></li>
-</ul>
-<h5 id="6-兼容性，为了保持兼容性建议使用v4包的兼容方法："><a href="#6-兼容性，为了保持兼容性建议使用v4包的兼容方法：" class="headerlink" title="6. 兼容性，为了保持兼容性建议使用v4包的兼容方法："></a>6. 兼容性，为了保持兼容性建议使用v4包的兼容方法：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ContextCompat.checkSelfPermission() </div><div class="line">ActivityCompat.requestPermissions()</div><div class="line">ActivityCompat.OnRequestPermissionsResultCallback()</div><div class="line">ActivityCompat.shouldShowRequestPermissionRationale()</div></pre></td></tr></table></figure>
+<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><p><strong>单例模式的写法，大概分为以下五种：</strong></p>
+<h4 id="1-饿汉式"><a href="#1-饿汉式" class="headerlink" title="1. 饿汉式"></a>1. 饿汉式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class SingletonText &#123;</div><div class="line"></div><div class="line">    public static SingletonText singletonText = new SingletonText();</div><div class="line"></div><div class="line">    //私有化构造方法</div><div class="line">    private SingletonText()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static SingletonText getInstance()&#123;</div><div class="line"></div><div class="line">        return singletonText;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种方式，简单粗暴，并且是线程安全的，主要适用于在初始化时，就要用到单例的情况，并且单例对象初始化速度很快，占内存比较小，不影响程序的启动速度，但是在实际项目中的单例模式不会这么简单，所以，一般用的不多！</p>
+<h4 id="2-懒汉式"><a href="#2-懒汉式" class="headerlink" title="2. 懒汉式"></a>2. 懒汉式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class SingletonText &#123;</div><div class="line"></div><div class="line">    public static SingletonText singletonText;</div><div class="line"></div><div class="line">    //私有化构造方法</div><div class="line">    private SingletonText()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static SingletonText getInstance()&#123;</div><div class="line"></div><div class="line">        if (singletonText == null) &#123;</div><div class="line"></div><div class="line">            singletonText = new SingletonText();</div><div class="line">        &#125;</div><div class="line">        return singletonText;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>懒汉式，是在需要的时候才会做初始化单例对象的操作，适用于，初始化时，耗费时间较长，资源较多，不宜在程序启动时初始化，而且在多线程的环境下，并不是线程安全的。</p>
+<h4 id="3-线程安全下的懒汉式-同步锁"><a href="#3-线程安全下的懒汉式-同步锁" class="headerlink" title="3. 线程安全下的懒汉式-同步锁"></a>3. 线程安全下的懒汉式-同步锁</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class SingletonText &#123;</div><div class="line"></div><div class="line">    public static SingletonText singletonText;</div><div class="line"></div><div class="line">    //私有化构造方法</div><div class="line">    private SingletonText()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //添加  synchronized 关键字</div><div class="line">    public static synchronized SingletonText getInstance()&#123;</div><div class="line"></div><div class="line">        if (singletonText == null) &#123;</div><div class="line"></div><div class="line">            singletonText = new SingletonText();</div><div class="line">        &#125;</div><div class="line">        return singletonText;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class SingletonText &#123;</div><div class="line"></div><div class="line">    public static SingletonText singletonText;</div><div class="line"></div><div class="line">    //私有化构造方法</div><div class="line">    private SingletonText()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //添加   synchronized (SingletonText.class)&#123;&#125;</div><div class="line">    public static SingletonText getInstance()&#123;</div><div class="line"></div><div class="line">        synchronized (SingletonText.class)&#123;</div><div class="line"></div><div class="line">        if (singletonText == null) &#123;</div><div class="line"></div><div class="line">            singletonText = new SingletonText();</div><div class="line">        &#125;</div><div class="line">        return singletonText;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-双重检验锁"><a href="#4-双重检验锁" class="headerlink" title="4. 双重检验锁"></a>4. 双重检验锁</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class SingletonText &#123;</div><div class="line"></div><div class="line">    public static SingletonText singletonText;</div><div class="line"></div><div class="line">    //私有化构造方法</div><div class="line">    private SingletonText() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static SingletonText getInstance() &#123;</div><div class="line"></div><div class="line">        if (singletonText == null) &#123;</div><div class="line"></div><div class="line">            synchronized (SingletonText.class) &#123;</div><div class="line"></div><div class="line">                if (singletonText == null) &#123;</div><div class="line"></div><div class="line">                    singletonText = new SingletonText();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return singletonText;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 synchronized (SingletonText.class) {} 之前加上 if (singletonText == null) 判断，减少获取锁的次数，从而提高性能，而这种也用的较多</p>
+<h4 id="5-静态内部类"><a href="#5-静态内部类" class="headerlink" title="5. 静态内部类"></a>5. 静态内部类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line"></div><div class="line">    public static class SingletonText &#123;</div><div class="line"></div><div class="line">        public static SingletonText singletonText = new SingletonText();</div><div class="line"></div><div class="line">        //私有化构造方法</div><div class="line">        private SingletonText() &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        public static SingletonText getInstance() &#123;</div><div class="line"></div><div class="line">            return SingletonText.singletonText;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只要程序中不使用这个内部类，就不会加载，从而实现了饿汉式的延迟加载，并且也是线程安全的。</p>
+<h4 id="6-枚举"><a href="#6-枚举" class="headerlink" title="6. 枚举"></a>6. 枚举</h4><p>实际上 Google 并不推荐使用枚举，因为与 class 相比，相同的静态常量，枚举占用的内存较多，个人认为，一旦涉及到内存，就算再方便也不能用，毕竟 Android 内存不多啊！</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>一共介绍了以上 6 种单例模式的书写方式，各有各的用途，看需求选择吧！</p>
 
       
     </div>
@@ -477,7 +468,7 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
       
         <div class="post-tags">
           
-            <a href="/tags/permissions/" rel="tag"># permissions</a>
+            <a href="/tags/单例模式/" rel="tag"># 单例模式</a>
           
         </div>
       
@@ -490,8 +481,8 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/23/android6.0运行时权限使用流程/" rel="next" title="android6.0运行时权限使用流程">
-                <i class="fa fa-chevron-left"></i> android6.0运行时权限使用流程
+              <a href="/2017/04/11/Lottie在Android中的用法初探/" rel="next" title="Lottie 在 Android中的用法初探">
+                <i class="fa fa-chevron-left"></i> Lottie 在 Android中的用法初探
               </a>
             
           </div>
@@ -499,10 +490,6 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/24/Android中的消息机制-Handler/" rel="prev" title="Android中的消息机制--Handler">
-                Android中的消息机制--Handler <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,8 +538,8 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/23/android6-0运行时权限插件版/"
-           data-title="android6.0运行时权限插件版" data-url="http://yoursite.com/2017/03/23/android6-0运行时权限插件版/">
+      <div class="ds-thread" data-thread-key="2017/04/13/Android中的单例模式‘/"
+           data-title="Android 中的单例模式总结" data-url="http://yoursite.com/2017/04/13/Android中的单例模式‘/">
       </div>
     
   </div>
@@ -658,7 +645,7 @@ PermissionsDispatcher 库地址： PermissionsDispatcher
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文："><span class="nav-number">2.</span> <span class="nav-text">正文：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-在-AndroidStudio中搜索插件-PermissionsDispatcher-，并下载安装"><span class="nav-number">2.0.1.</span> <span class="nav-text">1. 在 AndroidStudio中搜索插件 PermissionsDispatcher ，并下载安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-将下面这段代码添加到-project-的-build-gradle-文件中："><span class="nav-number">2.0.2.</span> <span class="nav-text">2. 将下面这段代码添加到 project 的 build.gradle 文件中：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-将下面的代码添加到app-module的build-gradle文件中，目前最新版本为-2-3-2-不过参考的文章用的-2-1-3，我也就没改"><span class="nav-number">2.0.3.</span> <span class="nav-text">3. 将下面的代码添加到app module的build.gradle文件中，目前最新版本为 2.3.2 ,不过参考的文章用的 2.1.3，我也就没改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-准备工作已经完成了，下面来进行代码的生成，在-Android-Studio-中选择-Code-—-Generate-—-Generate-Runtime-Permissions，也可以快捷键-Alt-Insert-，选择-Generate-Runtime-Permissions-，如下图所示："><span class="nav-number">2.0.4.</span> <span class="nav-text">4. 准备工作已经完成了，下面来进行代码的生成，在 Android Studio 中选择 Code — Generate — Generate Runtime Permissions，也可以快捷键 Alt + Insert ，选择 Generate Runtime Permissions ，如下图所示：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-代码大致如下："><span class="nav-number">2.0.5.</span> <span class="nav-text">5. 代码大致如下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-兼容性，为了保持兼容性建议使用v4包的兼容方法："><span class="nav-number">2.0.6.</span> <span class="nav-text">6. 兼容性，为了保持兼容性建议使用v4包的兼容方法：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文："><span class="nav-number">2.</span> <span class="nav-text">正文：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-饿汉式"><span class="nav-number">2.1.</span> <span class="nav-text">1. 饿汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-懒汉式"><span class="nav-number">2.2.</span> <span class="nav-text">2. 懒汉式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-线程安全下的懒汉式-同步锁"><span class="nav-number">2.3.</span> <span class="nav-text">3. 线程安全下的懒汉式-同步锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-双重检验锁"><span class="nav-number">2.4.</span> <span class="nav-text">4. 双重检验锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-静态内部类"><span class="nav-number">2.5.</span> <span class="nav-text">5. 静态内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-枚举"><span class="nav-number">2.6.</span> <span class="nav-text">6. 枚举</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number">3.</span> <span class="nav-text">总结：</span></a></li></ol></div>
             
 
           </div>
