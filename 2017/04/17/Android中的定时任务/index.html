@@ -103,7 +103,7 @@
 本篇文章，一部分来自于 《第一行代码第2版》
 
 本文着重说明下 Android 中的 Alarm 机制">
-<meta property="og:updated_time" content="2017-04-17T08:05:45.284Z">
+<meta property="og:updated_time" content="2017-04-17T08:07:56.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 中的定时任务">
 <meta name="twitter:description" content="前言
@@ -445,9 +445,9 @@
 </li>
 <li><p>本文着重说明下 Android 中的 Alarm 机制 </p>
 <a id="more"></a>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3></li>
+</li>
 </ul>
-<h4 id="一、Android-中实现定时任务的几种方式"><a href="#一、Android-中实现定时任务的几种方式" class="headerlink" title="一、Android 中实现定时任务的几种方式"></a>一、Android 中实现定时任务的几种方式</h4><h5 id="1-java-中的-Timer-类"><a href="#1-java-中的-Timer-类" class="headerlink" title="1. java 中的 Timer 类"></a>1. java 中的 Timer 类</h5><p><strong>分享一个 Timer 详解链接：</strong> <a href="http://blog.csdn.net/zuolongsnail/article/details/8168689" target="_blank" rel="external">http://blog.csdn.net/zuolongsnail/article/details/8168689</a></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、Android-中实现定时任务的几种方式"><a href="#一、Android-中实现定时任务的几种方式" class="headerlink" title="一、Android 中实现定时任务的几种方式"></a>一、Android 中实现定时任务的几种方式</h4><h5 id="1-java-中的-Timer-类"><a href="#1-java-中的-Timer-类" class="headerlink" title="1. java 中的 Timer 类"></a>1. java 中的 Timer 类</h5><p><strong>分享一个 Timer 详解链接：</strong> <a href="http://blog.csdn.net/zuolongsnail/article/details/8168689" target="_blank" rel="external">http://blog.csdn.net/zuolongsnail/article/details/8168689</a></p>
 <ul>
 <li>Timer 类适合短期在后台运行的定时任务，而不适合长期的，因为现在的手机都有自己的休眠策略，Android 手机会在长时间不操作的情况下会自动让 CPU 进入到休眠状态，这就有可能导致 Timer 中的定时任务无法正常运行。</li>
 </ul>
