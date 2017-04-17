@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Handler," />
+  <meta name="keywords" content="定时任务," />
 
 
 
@@ -87,16 +87,31 @@
 
 
 
-<meta name="description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
+<meta name="description" content="前言
+项目中有用到定时任务，就捎带着总结一下
+
+本篇文章，一部分来自于 《第一行代码第2版》
+
+本文着重说明下 Android 中的 Alarm 机制">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android中的消息机制--Handler">
-<meta property="og:url" content="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/index.html">
+<meta property="og:title" content="Android 中的定时任务">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/Android中的定时任务/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
-<meta property="og:updated_time" content="2017-03-24T08:47:50.974Z">
+<meta property="og:description" content="前言
+项目中有用到定时任务，就捎带着总结一下
+
+本篇文章，一部分来自于 《第一行代码第2版》
+
+本文着重说明下 Android 中的 Alarm 机制">
+<meta property="og:updated_time" content="2017-04-17T08:05:45.284Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android中的消息机制--Handler">
-<meta name="twitter:description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
+<meta name="twitter:title" content="Android 中的定时任务">
+<meta name="twitter:description" content="前言
+项目中有用到定时任务，就捎带着总结一下
+
+本篇文章，一部分来自于 《第一行代码第2版》
+
+本文着重说明下 Android 中的 Alarm 机制">
 
 
 
@@ -124,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/Android中的定时任务/"/>
 
 
 
 
 
-  <title> Android中的消息机制--Handler | 珞璃之神 </title>
+  <title> Android 中的定时任务 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +318,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android中的定时任务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -324,7 +339,7 @@
             
             
               
-                Android中的消息机制--Handler
+                Android 中的定时任务
               
             
           </h1>
@@ -339,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-24T14:34:43+08:00">
-                2017-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T14:21:24+08:00">
+                2017-04-17
               </time>
             
 
@@ -380,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/24/Android中的消息机制-Handler/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/24/Android中的消息机制-Handler/" itemprop="commentCount"></span>
+                <a href="/2017/04/17/Android中的定时任务/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/17/Android中的定时任务/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +404,7 @@
 
           
           
-             <span id="/2017/03/24/Android中的消息机制-Handler/" class="leancloud_visitors" data-flag-title="Android中的消息机制--Handler">
+             <span id="/2017/04/17/Android中的定时任务/" class="leancloud_visitors" data-flag-title="Android 中的定时任务">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,44 +438,79 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！</strong></p>
-<hr>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><p>项目中有用到定时任务，就捎带着总结一下</p>
+</li>
+<li><p>本篇文章，一部分来自于 《第一行代码第2版》</p>
+</li>
+<li><p>本文着重说明下 Android 中的 Alarm 机制 </p>
 <a id="more"></a>
-<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p> <strong>Android 的消息机制主要是指 Handler 的运行机制， Handler 的运行需要底层的 MessageQueue 和 Looper 支撑，这三者实际上是一个整体 ( 配套使用 ) ，只不过我们在开发过程中比较多的接触到 Handler 而已。</strong>  </p>
-<p> <strong>说到 Handler ，很多人都知道是为了更新 UI ，这不错，但这只是 Handler 的一个应用场景而已。</strong></p>
-<p><strong>Handler 出现的原因，我想是因为不能在主线程中做耗时操作，一旦耗时操作超过 5s 就会出现 ANR 异常，下面代码是 Handler 的最常用用法:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private Handler myHandler = new Handler()&#123;</div><div class="line">        @Override</div><div class="line">        public void handleMessage(Message msg) &#123;</div><div class="line">            super.handleMessage(msg);</div><div class="line"></div><div class="line">            //主线程中处理发送过来的message</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        //子线程中发送Handler消息</div><div class="line">        new Thread()&#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                Message msg = new Message();</div><div class="line">                msg.what = 1;</div><div class="line">                myHandler.sendMessage(msg);</div><div class="line">            &#125;</div><div class="line">        &#125;.start();</div><div class="line">      </div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<p>线程中默认是没有 Looper的，如果想要使用 Handler 就必须为线程创建 Looper ，否则会报错，Looper 是运行在 Handler 所在的线程中的。</p>
-<p>主线程比较特殊，它在创建的时候就会初始化 Looper，会调用 Looper.prepaerMainLooper() 来创建主线程的 looper 以及 MessageQueue ，也就是说，在主线程中默认可以使用 Handler 。</p>
-<p><strong>大致的原理：</strong></p>
-<p>Handler 通过 send 或 post 的 一系列方法发送 message 到 MessageQueue 。</p>
-<p>MessageQueue 翻译过来叫做消息队列，内部存储 Handler 发送过来的一系列消息，仅仅能存储消息，数据存储结构为单链表。</p>
-<p>Looper 会以无限循环的方式从 MessageQueue 中查找是否有新消息，如果有就处理消息，否则就一直等待着。</p>
-<h3 id="二、详细分析"><a href="#二、详细分析" class="headerlink" title="二、详细分析"></a>二、详细分析</h3><p><strong>主要介绍下 ThreadLocal 、 Handler 、 MessageQueue 、Looper</strong></p>
-<h4 id="1-ThreadLocal"><a href="#1-ThreadLocal" class="headerlink" title="1. ThreadLocal"></a>1. ThreadLocal</h4><p>ThreadLocal 是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只能在指定线程中才可以获取到存储的数据。</p>
-<p>介绍 ThreadLocal 是因为不同线程的 Handler 获取对应 Looper 采用的就是这个原理。</p>
-<p><strong>举个例子：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    //ThreadLocal 对象，存储的是 boolean 值</div><div class="line">    private ThreadLocal&lt;Boolean&gt; mBooleanThreadLocal = new ThreadLocal&lt;&gt;();</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        mBooleanThreadLocal.set(true);</div><div class="line">        Log.i(&quot;Thread---Main:&quot;,mBooleanThreadLocal.get()+&quot;&quot;);</div><div class="line"></div><div class="line">        new Thread(&quot;Thread---1&quot;)&#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                mBooleanThreadLocal.set(false);</div><div class="line">                Log.i(&quot;Thread---1:&quot;,mBooleanThreadLocal.get()+&quot;&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;.start();</div><div class="line">        </div><div class="line">        new Thread(&quot;Thread---2&quot;)&#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                Log.i(&quot;Thread---2:&quot;,mBooleanThreadLocal.get()+&quot;&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;.start();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>代码中，在主线程中设置 mBooleanThreadLocal 为 true ，在 Thread—1 中设置 mBooleanThreadLocal 为 false ，在 Thread—2 中没有设置， mBooleanThreadLocal 通过 set() 和 get() 方法进行数据的设置和取出操作。 </p>
-<p>打印出来的结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">12945-12945/? I/Thread---Main:: true</div><div class="line">12945-12959/? I/Thread---1:: false</div><div class="line">12945-12960/? I/Thread---2:: null</div></pre></td></tr></table></figure>
-<h4 id="2-MessageQueue"><a href="#2-MessageQueue" class="headerlink" title="2. MessageQueue"></a>2. MessageQueue</h4><p>翻译过来为消息队列，其主要包含两个操作：插入和读取，分别对应 MessageQueue 的两个方法 enqueueMessage() 和 next() ，另外，读取过的消息会删除掉！</p>
-<h4 id="3-Looper"><a href="#3-Looper" class="headerlink" title="3. Looper"></a>3. Looper</h4><p>Looper 会不停的从 MessageQueue 中查看是否有新消息，有就立刻处理，否则就一直阻塞，在 Looper 的构造方法中会创建一个 MessageQueue 对象，再次印证了那四个字—配套使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private Looper(boolean quitAllowed) &#123;</div><div class="line">       mQueue = new MessageQueue(quitAllowed);</div><div class="line">       mThread = Thread.currentThread();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>除了主线程之外，在其他线程中如何创建 Looper 对象，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">new Thread(&quot;Thread---1&quot;)&#123;</div><div class="line">           @Override</div><div class="line">           public void run() &#123;</div><div class="line"></div><div class="line">               //创建 Looper 对象</div><div class="line">               Looper.prepare();</div><div class="line"></div><div class="line">               Message msg = new Message();</div><div class="line">               msg.what = 1;</div><div class="line">               myHandler.sendMessage(msg);</div><div class="line">               //开启消息循环</div><div class="line">               Looper.loop();</div><div class="line">           &#125;</div><div class="line">       &#125;.start();</div></pre></td></tr></table></figure>
-<p><strong>获取主线程 Looper</strong>， 通过方法：Looper.getMainLooper();</p>
-<p><strong>Looper 退出</strong>，有两个方法，Looper 的 quit() 和 quitSafely() ，其内部还是让 MessageQueue 的 next 方法返回 null ， next 方法返回 null 是唯一的退出方式 ，建议不需要的时候终止 Looper。</p>
-<p>quit() 是直接退出 Looper 。</p>
-<p>quitSafely() 是把已有的消息处理完之后才安全退出。</p>
-<h4 id="4-Handler"><a href="#4-Handler" class="headerlink" title="4. Handler"></a>4. Handler</h4><p><strong>handler 的工作主要是发送和接收消息的过程</strong></p>
-<p>发送消息是通过一系列的 send 和 post 方法来发送的，而 post 的一系列方法最终还是通过 send 实现的，发送一条消息的过程如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public final boolean sendMessage(Message msg)</div><div class="line">    &#123;</div><div class="line">        return sendMessageDelayed(msg, 0);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">public final boolean sendMessageDelayed(Message msg, long delayMillis)</div><div class="line">    &#123;</div><div class="line">        if (delayMillis &lt; 0) &#123;</div><div class="line">            delayMillis = 0;</div><div class="line">        &#125;</div><div class="line">        return sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">public boolean sendMessageAtTime(Message msg, long uptimeMillis) &#123;</div><div class="line">        MessageQueue queue = mQueue;</div><div class="line">        if (queue == null) &#123;</div><div class="line">            RuntimeException e = new RuntimeException(</div><div class="line">                    this + &quot; sendMessageAtTime() called with no mQueue&quot;);</div><div class="line">            Log.w(&quot;Looper&quot;, e.getMessage(), e);</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        return enqueueMessage(queue, msg, uptimeMillis);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) &#123;</div><div class="line">        msg.target = this;</div><div class="line">        if (mAsynchronous) &#123;</div><div class="line">            msg.setAsynchronous(true);</div><div class="line">        &#125;</div><div class="line">        return queue.enqueueMessage(msg, uptimeMillis);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><strong>从上边可以发现，Handler 发送消息，实际上只是在消息队列中插入了一条消息。</strong></p>
-<p>MessageQueue 的 next 方法会将这条消息返回给 Looper ，最终这条消息由 Looper 交给 Handler 的 dispatchMessage 方法处理，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void dispatchMessage(Message msg) &#123;</div><div class="line">    if (msg.callback != null) &#123;</div><div class="line">        handleCallback(msg);</div><div class="line">    &#125; else &#123;</div><div class="line">        if (mCallback != null) &#123;</div><div class="line">            if (mCallback.handleMessage(msg)) &#123;</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        handleMessage(msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后，调用 Handler 的 handlerMessage 方法来处理消息。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3></li>
+</ul>
+<h4 id="一、Android-中实现定时任务的几种方式"><a href="#一、Android-中实现定时任务的几种方式" class="headerlink" title="一、Android 中实现定时任务的几种方式"></a>一、Android 中实现定时任务的几种方式</h4><h5 id="1-java-中的-Timer-类"><a href="#1-java-中的-Timer-类" class="headerlink" title="1. java 中的 Timer 类"></a>1. java 中的 Timer 类</h5><p><strong>分享一个 Timer 详解链接：</strong> <a href="http://blog.csdn.net/zuolongsnail/article/details/8168689" target="_blank" rel="external">http://blog.csdn.net/zuolongsnail/article/details/8168689</a></p>
+<ul>
+<li>Timer 类适合短期在后台运行的定时任务，而不适合长期的，因为现在的手机都有自己的休眠策略，Android 手机会在长时间不操作的情况下会自动让 CPU 进入到休眠状态，这就有可能导致 Timer 中的定时任务无法正常运行。</li>
+</ul>
+<h5 id="2-Handler"><a href="#2-Handler" class="headerlink" title="2. Handler"></a>2. Handler</h5><p><strong>分享一个链接：</strong> <a href="http://blog.csdn.net/dxpqxb/article/details/8659292" target="_blank" rel="external">http://blog.csdn.net/dxpqxb/article/details/8659292</a></p>
+<ul>
+<li>Handler post系列方法中有定时发送消息的操作，如：handler.postDelayed();</li>
+</ul>
+<h5 id="3-Android-中的-Alarm-机制"><a href="#3-Android-中的-Alarm-机制" class="headerlink" title="3. Android 中的 Alarm 机制"></a>3. Android 中的 Alarm 机制</h5><ul>
+<li><p>Alarm 机制具有唤醒 CPU 的功能，它能保证在多数情况下需要执行定时任务的时候 CPU 都能正常工作，下面会详细介绍</p>
+</li>
+<li><p>Alarm 需要在 API 19 及其以上才能使用。</p>
+</li>
+<li><p>经测试，Alarm 有毫秒级别的误差</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">04-17 15:12:41.208 5615-5632/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:12:51.218 5615-5677/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:01.223 5615-5757/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:11.228 5615-5926/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:21.233 5615-6098/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:31.238 5615-6266/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:41.243 5615-6436/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:51.248 5615-6610/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:01.258 5615-6780/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:11.258 5615-6951/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:21.263 5615-7122/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:31.268 5615-7291/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:41.273 5615-7466/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div></pre></td></tr></table></figure>
+<h4 id="二、-Alarm-机制"><a href="#二、-Alarm-机制" class="headerlink" title="二、 Alarm 机制"></a>二、 Alarm 机制</h4><h5 id="1-核心类：-AlarmManager"><a href="#1-核心类：-AlarmManager" class="headerlink" title="1. 核心类： AlarmManager"></a>1. 核心类： AlarmManager</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</div></pre></td></tr></table></figure>
+<h5 id="2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务"><a href="#2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务" class="headerlink" title="2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务"></a>2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">long time = SystemClock.elapsedRealtime() + 10 * 1000;</div><div class="line"></div><div class="line">Intent intent1 = new Intent(this , LongRunningService.class);</div><div class="line">PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent1, 0);</div><div class="line"></div><div class="line">alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP , time , pendingIntent);</div></pre></td></tr></table></figure>
+<h6 id="set-系列方法三个参数详解"><a href="#set-系列方法三个参数详解" class="headerlink" title="set 系列方法三个参数详解"></a>set 系列方法三个参数详解</h6><ol>
+<li>第一个参数有四个选项分别为：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//        AlarmManager.ELAPSED_REALTIME ,表示让定时任务的触发事件从系统开机开始算起，但是不会唤醒 CPU</div><div class="line">//        AlarmManager.ELAPSED_REALTIME_WAKEUP ,表示让定时任务的触发事件从系统开机开始算起，但是会唤醒 CPU</div><div class="line">//        AlarmManager.RTC ,表示让定时任务的触发事件从 1970 年 1 月 1 日 0 点开始算起，但不会唤醒 CPU</div><div class="line">//        AlarmManager.RTC_WAKEUP ,表示让定时任务的触发事件从 1970 年 1 月 1 日 0 点开始算起，但会唤醒 CPU</div></pre></td></tr></table></figure>
+<ol>
+<li>第二个参数表示定时任务的触发时间：</li>
+</ol>
+<ul>
+<li><p>如果第一个参数使用的是 ELAPSED_REALTIME 或者 ELAPSED_REALTIME_WAKEUP ，则这里就传入开机时间加上延迟执行的时间。</p>
+</li>
+<li><p>获取开机至今所经历的时间的毫秒数方法为：SystemClock.elapsedRealtime()；</p>
+</li>
+<li><p>如果第一个参数使用的是 RTC 或者 RTC_WAKEUP，则这里就传入从 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数加上延迟执行的时间。</p>
+</li>
+<li><p>获取从 1970 年 1 月 1 日 0 点至今所经历的时间的毫秒数的方法为：System.currentTimeMillis(); </p>
+</li>
+</ul>
+<ol>
+<li>第三个参数是一个 PendingIntent ，表示一个后台可以长时间运行的服务</li>
+</ol>
+<h6 id="set-和-setExact-的区别"><a href="#set-和-setExact-的区别" class="headerlink" title="set() 和 setExact() 的区别"></a>set() 和 setExact() 的区别</h6><ul>
+<li><p>从 Android 4.4 系统开始，Alarm 任务的触发事件将会变得不准确，有可能会延迟一段时间后任务才能执行，但这并不是 bug，而是系统在耗电方面进行的优化。系统会自动监测目前有多少个 Alarm 任务存在，然后触发时间相近的几个任务会放在一起执行，这就可以大幅度减少 CPU 被唤醒的次数，从而有效延长电池的使用时间。</p>
+</li>
+<li><p>如果要求 Alarm 任务的执行时间必须准确无误，Android 仍然提供了解决方案，使用 setExact() 方法来代替 set() 方法。</p>
+</li>
+</ul>
+<h5 id="3-完整的代码"><a href="#3-完整的代码" class="headerlink" title="3. 完整的代码"></a>3. 完整的代码</h5><ul>
+<li>Activity 中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.timed_task;</div><div class="line"></div><div class="line">import android.app.AlarmManager;</div><div class="line">import android.app.PendingIntent;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line">import android.os.SystemClock;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line"></div><div class="line">import java.util.Timer;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        //开启一个服务</div><div class="line">        Intent intent = new Intent(this,LongRunningService.class);</div><div class="line">        startService(intent);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Service 中的代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.timed_task;</div><div class="line"></div><div class="line">import android.app.AlarmManager;</div><div class="line">import android.app.PendingIntent;</div><div class="line">import android.app.Service;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line">import android.os.IBinder;</div><div class="line">import android.os.SystemClock;</div><div class="line">import android.support.annotation.IntDef;</div><div class="line">import android.support.annotation.Nullable;</div><div class="line">import android.util.Log;</div><div class="line"></div><div class="line">public class LongRunningService extends Service &#123;</div><div class="line"></div><div class="line">    private AlarmManager alarmManager;</div><div class="line"></div><div class="line">    @Nullable</div><div class="line">    @Override</div><div class="line">    public IBinder onBind(Intent intent) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</div><div class="line"></div><div class="line"></div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                //执行具体的定时逻辑操作</div><div class="line">                //逻辑操作也是需要耗时的，如果放在主线程中，可能会对定时任务的准确性造成轻微的影响</div><div class="line">                Log.i(&quot;Alarm&quot;,&quot;-+------------定时任务--------------&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line">        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</div><div class="line">        long time = SystemClock.elapsedRealtime() + 10 * 1000;</div><div class="line"></div><div class="line">        Intent intent1 = new Intent(this , LongRunningService.class);</div><div class="line">        PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent1, 0);</div><div class="line"></div><div class="line">        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP , time , pendingIntent);</div><div class="line"></div><div class="line">        return super.onStartCommand(intent, flags, startId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="4-另外需要注意的事项"><a href="#4-另外需要注意的事项" class="headerlink" title="4. 另外需要注意的事项"></a>4. 另外需要注意的事项</h5><ul>
+<li>取消定时任务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//pendingIntent 要跟设置的时候一致才能取消</div><div class="line">alarmManager.cancel(pendingIntent);</div></pre></td></tr></table></figure>
+<ul>
+<li>Alarm 也能定时发送广播</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 参数与 set() 类似</div><div class="line">alarmManager.setRepeating();</div></pre></td></tr></table></figure>
+<ul>
+<li>还有一系列其他的操作，有待发掘</li>
+</ul>
 
       
     </div>
@@ -490,7 +540,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Handler/" rel="tag"># Handler</a>
+            <a href="/tags/定时任务/" rel="tag"># 定时任务</a>
           
         </div>
       
@@ -503,8 +553,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/23/android6-0运行时权限插件版/" rel="next" title="android6.0运行时权限插件版">
-                <i class="fa fa-chevron-left"></i> android6.0运行时权限插件版
+              <a href="/2017/04/14/AndroidStudio项目混淆、打包、签名、发布一条龙/" rel="next" title="AndroidStudio 项目混淆、打包、签名、发布一条龙">
+                <i class="fa fa-chevron-left"></i> AndroidStudio 项目混淆、打包、签名、发布一条龙
               </a>
             
           </div>
@@ -512,10 +562,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/27/AndroidStudio中使用butterknife/" rel="prev" title="AndroidStudio中使用butterknife">
-                AndroidStudio中使用butterknife <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,8 +610,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/24/Android中的消息机制-Handler/"
-           data-title="Android中的消息机制--Handler" data-url="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/">
+      <div class="ds-thread" data-thread-key="2017/04/17/Android中的定时任务/"
+           data-title="Android 中的定时任务" data-url="http://yoursite.com/2017/04/17/Android中的定时任务/">
       </div>
     
   </div>
@@ -671,7 +717,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">2.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、详细分析"><span class="nav-number">3.</span> <span class="nav-text">二、详细分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ThreadLocal"><span class="nav-number">3.1.</span> <span class="nav-text">1. ThreadLocal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MessageQueue"><span class="nav-number">3.2.</span> <span class="nav-text">2. MessageQueue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Looper"><span class="nav-number">3.3.</span> <span class="nav-text">3. Looper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Handler"><span class="nav-number">3.4.</span> <span class="nav-text">4. Handler</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Android-中实现定时任务的几种方式"><span class="nav-number">2.1.</span> <span class="nav-text">一、Android 中实现定时任务的几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-java-中的-Timer-类"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. java 中的 Timer 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Handler"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Handler</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Android-中的-Alarm-机制"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Android 中的 Alarm 机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、-Alarm-机制"><span class="nav-number">2.2.</span> <span class="nav-text">二、 Alarm 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-核心类：-AlarmManager"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 核心类： AlarmManager</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#set-系列方法三个参数详解"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">set 系列方法三个参数详解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#set-和-setExact-的区别"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">set() 和 setExact() 的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-完整的代码"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 完整的代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-另外需要注意的事项"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 另外需要注意的事项</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
