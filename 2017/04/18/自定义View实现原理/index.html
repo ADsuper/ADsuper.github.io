@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="dagger2," />
+  <meta name="keywords" content="实现原理," />
 
 
 
@@ -87,16 +87,41 @@
 
 
 
-<meta name="description" content="前言dagger2 确实比较难上手，而我在写笔记之前也没完全整明白，只能记录些简单的应用">
+<meta name="description" content="前言
+参考一位大神的 自定义 View 系列文章，其中一篇的链接为：http://www.gcssloop.com/customview/CoordinateSystem
+
+文章的内容基本是链接的形式，因为大神写的很详细，本人是抱着学习的心态来总结的
+
+内容涉及的是自定义 View 的实现原理，包含贝塞尔曲线、Matrix(矩阵)等">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dagger2 在 Android 中的使用">
-<meta property="og:url" content="http://yoursite.com/2017/03/30/dagger2在Android中的使用/index.html">
+<meta property="og:title" content="Android 自定义 View 实现原理">
+<meta property="og:url" content="http://yoursite.com/2017/04/18/自定义View实现原理/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言dagger2 确实比较难上手，而我在写笔记之前也没完全整明白，只能记录些简单的应用">
-<meta property="og:updated_time" content="2017-03-30T07:11:32.799Z">
+<meta property="og:description" content="前言
+参考一位大神的 自定义 View 系列文章，其中一篇的链接为：http://www.gcssloop.com/customview/CoordinateSystem
+
+文章的内容基本是链接的形式，因为大神写的很详细，本人是抱着学习的心态来总结的
+
+内容涉及的是自定义 View 的实现原理，包含贝塞尔曲线、Matrix(矩阵)等">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/99138270-file_1492482435073_fb6.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/48561761-file_1492484211824_11b64.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/26385294-file_1492487141456_328e.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/27820324-file_1492495410461_bd91.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/17010022-file_1492495643261_eaa8.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/87868931-file_1492496013195_1569a.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/98591269-file_1492497028416_4fd2.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/49646890-file_1492498551633_705c.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/7487936-file_1492499126042_16bd6.png">
+<meta property="og:updated_time" content="2017-04-18T07:27:24.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="dagger2 在 Android 中的使用">
-<meta name="twitter:description" content="前言dagger2 确实比较难上手，而我在写笔记之前也没完全整明白，只能记录些简单的应用">
+<meta name="twitter:title" content="Android 自定义 View 实现原理">
+<meta name="twitter:description" content="前言
+参考一位大神的 自定义 View 系列文章，其中一篇的链接为：http://www.gcssloop.com/customview/CoordinateSystem
+
+文章的内容基本是链接的形式，因为大神写的很详细，本人是抱着学习的心态来总结的
+
+内容涉及的是自定义 View 的实现原理，包含贝塞尔曲线、Matrix(矩阵)等">
+<meta name="twitter:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/99138270-file_1492482435073_fb6.png">
 
 
 
@@ -124,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/30/dagger2在Android中的使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/18/自定义View实现原理/"/>
 
 
 
 
 
-  <title> dagger2 在 Android 中的使用 | 珞璃之神 </title>
+  <title> Android 自定义 View 实现原理 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +328,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/dagger2在Android中的使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/18/自定义View实现原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -324,7 +349,7 @@
             
             
               
-                dagger2 在 Android 中的使用
+                Android 自定义 View 实现原理
               
             
           </h1>
@@ -339,8 +364,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-30T11:24:17+08:00">
-                2017-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T15:25:36+08:00">
+                2017-04-18
               </time>
             
 
@@ -362,8 +387,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/自定义-View/" itemprop="url" rel="index">
+                    <span itemprop="name">自定义 View</span>
                   </a>
                 </span>
 
@@ -380,8 +405,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/30/dagger2在Android中的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/dagger2在Android中的使用/" itemprop="commentCount"></span>
+                <a href="/2017/04/18/自定义View实现原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/18/自定义View实现原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +414,7 @@
 
           
           
-             <span id="/2017/03/30/dagger2在Android中的使用/" class="leancloud_visitors" data-flag-title="dagger2 在 Android 中的使用">
+             <span id="/2017/04/18/自定义View实现原理/" class="leancloud_visitors" data-flag-title="Android 自定义 View 实现原理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,67 +448,119 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>dagger2 确实比较难上手，而我在写笔记之前也没完全整明白，只能记录些简单的应用</strong></p>
-<hr>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><p>参考一位大神的 自定义 View 系列文章，其中一篇的链接为：<br><a href="http://www.gcssloop.com/customview/CoordinateSystem" target="_blank" rel="external">http://www.gcssloop.com/customview/CoordinateSystem</a></p>
+</li>
+<li><p>文章的内容基本是链接的形式，因为大神写的很详细，本人是抱着学习的心态来总结的</p>
+</li>
+<li><p>内容涉及的是自定义 View 的实现原理，包含贝塞尔曲线、Matrix(矩阵)等</p>
+</li>
+</ul>
 <a id="more"></a>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、dagger2-是什么？"><a href="#一、dagger2-是什么？" class="headerlink" title="一、dagger2 是什么？"></a>一、dagger2 是什么？</h4><p>dagger2 是依赖注入(Dependency Injection 简称 DI )框架中的一种，在编译期间自动生成代码，负责依赖对象的创建，貌似是目前最好的 DI 框架了。</p>
-<h4 id="二、为什么要用这玩意"><a href="#二、为什么要用这玩意" class="headerlink" title="二、为什么要用这玩意"></a>二、为什么要用这玩意</h4><h5 id="1-增加开发效率，省去重复代码"><a href="#1-增加开发效率，省去重复代码" class="headerlink" title="1. 增加开发效率，省去重复代码"></a>1. 增加开发效率，省去重复代码</h5><p>它可以把 new 对象的重复性工作做了，也能省去写单例方法的时间，也不用考虑单例模式的线程是否安全，因为这些都是 dagger2 的工作。</p>
-<h5 id="2-进一步解耦"><a href="#2-进一步解耦" class="headerlink" title="2. 进一步解耦"></a>2. 进一步解耦</h5><ul>
-<li><p>先说“解耦”的概念：解耦是为了让类与类、模块与模块之间的相互影响的关系降到最低，并不是说完全没有关系。</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h4><h5 id="1-Android-中的坐标系"><a href="#1-Android-中的坐标系" class="headerlink" title="1. Android 中的坐标系"></a>1. Android 中的坐标系</h5><p>因为比较基础，而且有总结的很好的：<a href="http://www.gcssloop.com/customview/CoordinateSystem" target="_blank" rel="external">http://www.gcssloop.com/customview/CoordinateSystem</a></p>
+<p><strong>里边讲的内容大致分三点：</strong></p>
+<ul>
+<li><p>数学中的坐标系与手机屏幕中的坐标系的差别</p>
 </li>
-<li><p>如果我们是通过 new 来创建对象的，那么当被 new 的对象所在的类的构造方法发生改变时，那么该类涉及到的类都要去修改，而 使用 dagger2 就不存在这方面的问题了。</p>
+<li><p>View 的坐标系是相对于父控件而言的</p>
+</li>
+<li><p>MotionEvent 中 get 和 getRaw 的区别</p>
 </li>
 </ul>
-<h5 id="3-方便测试"><a href="#3-方便测试" class="headerlink" title="3.方便测试"></a>3.方便测试</h5><h4 id="三、如何使用"><a href="#三、如何使用" class="headerlink" title="三、如何使用"></a>三、如何使用</h4><h5 id="1-添加插件和依赖"><a href="#1-添加插件和依赖" class="headerlink" title="1. 添加插件和依赖"></a>1. 添加插件和依赖</h5><ul>
-<li>在工程目录下的 bulid.gradle 中添加 apt 插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line"></div><div class="line">    classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="2-角度和弧度"><a href="#2-角度和弧度" class="headerlink" title="2. 角度和弧度"></a>2. 角度和弧度</h5><p><strong>三方链接</strong>：<a href="http://www.gcssloop.com/customview/AngleAndRadian" target="_blank" rel="external">http://www.gcssloop.com/customview/AngleAndRadian</a></p>
+<ol>
+<li><p>角度和弧度一般会在制作一些复杂炫酷的效果时，会用到相关知识。</p>
+</li>
+<li><p>概念 ：</p>
+</li>
+</ol>
 <ul>
-<li>在 项目目录下的 bulid.gradle 中添加依赖</li>
+<li><p>角度： 两条射线从圆心向圆周射出，形成一个夹角和夹角正对的一段弧。当这段弧长正好等于圆周长的360分之一时，两条射线的夹角的大小为1度.</p>
+</li>
+<li><p>弧度 ：两条射线从圆心向圆周射出，形成一个夹角和夹角正对的一段弧。当这段弧长正好等于圆的半径时，两条射线的夹角大小为1弧度.</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//版本最好匹配</div><div class="line">apt &apos;com.google.dagger:dagger-compiler:2.2&apos;</div><div class="line">compile &apos;com.google.dagger:dagger:2.2&apos;</div><div class="line">provided &apos;org.glassfish:javax.annotation:10.0-b28&apos;</div></pre></td></tr></table></figure>
-<h5 id="2-简单使用"><a href="#2-简单使用" class="headerlink" title="2. 简单使用"></a>2. 简单使用</h5><p><strong>现在有这么一个场景：</strong></p>
+<h5 id="3-颜色"><a href="#3-颜色" class="headerlink" title="3. 颜色"></a>3. 颜色</h5><p><strong>三方链接</strong>：<a href="http://www.gcssloop.com/customview/Color" target="_blank" rel="external">http://www.gcssloop.com/customview/Color</a></p>
+<h4 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h4><h5 id="1-自定义-View-的分类和流程简介"><a href="#1-自定义-View-的分类和流程简介" class="headerlink" title="1. 自定义 View 的分类和流程简介"></a>1. 自定义 View 的分类和流程简介</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/CustomViewProcess" target="_blank" rel="external">http://www.gcssloop.com/customview/CustomViewProcess</a></p>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/99138270-file_1492482435073_fb6.png" alt="image"></p>
+<h5 id="2-Canvas-之绘制图形"><a href="#2-Canvas-之绘制图形" class="headerlink" title="2. Canvas 之绘制图形"></a>2. Canvas 之绘制图形</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/Canvas_BasicGraphics" target="_blank" rel="external">http://www.gcssloop.com/customview/Canvas_BasicGraphics</a></p>
 <ul>
-<li>一个类为：</li>
+<li><p>主要介绍了常用的绘制图形，点、矩形、圆、椭圆等</p>
+</li>
+<li><p>关于画笔 Paint 的一些简要介绍 </p>
+</li>
+<li><p>一个饼状图的案例 </p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//注意：构造方法没有参数</div><div class="line">public class Hello &#123;</div><div class="line"></div><div class="line">    public Hello()&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getSmg()&#123;</div><div class="line"></div><div class="line">        return  &quot;Hello,World!&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Canvas 的常用操作速查表：</strong><br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/48561761-file_1492484211824_11b64.png" alt="image"></p>
+<h5 id="3-Canvas-之画布操作"><a href="#3-Canvas-之画布操作" class="headerlink" title="3. Canvas 之画布操作"></a>3. Canvas 之画布操作</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/Canvas_Convert" target="_blank" rel="external">http://www.gcssloop.com/customview/Canvas_Convert</a></p>
+<h6 id="1-位移-translate"><a href="#1-位移-translate" class="headerlink" title="1. 位移 ( translate )"></a>1. 位移 ( translate )</h6><p>translate 是坐标系的移动，可以为图形绘制选择一个合适的坐标系。 请注意，位移是基于当前位置移动，而不是每次基于屏幕左上角的 ( 0 , 0 ) 点移动</p>
+<h6 id="2-缩放-scale"><a href="#2-缩放-scale" class="headerlink" title="2. 缩放 ( scale )"></a>2. 缩放 ( scale )</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public void scale (float sx, float sy)</div><div class="line"></div><div class="line">public final void scale (float sx, float sy, float px, float py)</div></pre></td></tr></table></figure>
+<p>这两个方法中前两个参数是相同的分别为x轴和y轴的缩放比例。而第二种方法比前一种多了两个参数，用来控制缩放中心位置的，第一种方法表示缩放的中心默认为坐标原点。</p>
 <ul>
-<li>另一个类为：</li>
+<li>缩放是可以叠加的</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    Hello hello;//我们要这个 hello 的对象</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h6 id="3-旋转-rotate"><a href="#3-旋转-rotate" class="headerlink" title="3. 旋转 ( rotate )"></a>3. 旋转 ( rotate )</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public void rotate (float degrees)</div><div class="line"></div><div class="line">public final void rotate (float degrees, float px, float py)</div></pre></td></tr></table></figure>
+<p>和缩放一样，第二种方法多出来的两个参数依旧是控制旋转中心点的，默认的旋转中心依旧是坐标原点。</p>
 <ul>
-<li>那么，在 MainActivity 中要 Hello 类的对象，我们该怎么做？（除了 new ）</li>
+<li>缩放也是可以叠加的</li>
 </ul>
-<p>第一步 ：我们要在 Hello 类中用 @Inject 标注构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Inject</div><div class="line">public Hello()&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第二步：在 MainActivity 中也添加 @Inject </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Inject</div><div class="line">Hello hello;</div><div class="line">//注意，不能用 private 修饰</div></pre></td></tr></table></figure>
-<p>第三步：需要一个 Component 作为连接 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//HelloComponent 可以是接口或者抽象类</div><div class="line">@Component()</div><div class="line">public interface HelloComponent &#123;</div><div class="line"></div><div class="line">    //方法是固定写法，参数是因为要注入到 MainActivity 中</div><div class="line">    void inject(MainActivity activity);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第四步：还需要在 MainActivity 中做一些初始化操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    Hello hello;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        //初始化操作，注意被注入的 Hello 的构造方法是没有参数的</div><div class="line">        HelloComponent component = DaggerHelloComponent.builder()</div><div class="line">                .build();</div><div class="line"></div><div class="line">        component.inject(this);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>第五步：这样就把 Hello 对象 注入到 MainActivity 中了，可以验证一下</p>
-<h5 id="3-如果被注入的类的构造方法有参数呢，那就要引入-Module"><a href="#3-如果被注入的类的构造方法有参数呢，那就要引入-Module" class="headerlink" title="3. 如果被注入的类的构造方法有参数呢，那就要引入 Module"></a>3. 如果被注入的类的构造方法有参数呢，那就要引入 Module</h5><p><strong>Module 其中一个作用是为 构造方法提供参数用的，</strong></p>
+<h6 id="4-错切-skew"><a href="#4-错切-skew" class="headerlink" title="4. 错切 ( skew )"></a>4. 错切 ( skew )</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void skew (float sx, float sy)</div></pre></td></tr></table></figure>
 <ul>
-<li>我现在把 Hello 类的构造方法加上参数</li>
+<li>float sx:将画布在 x 轴方向上倾斜相应的角度，sx 为倾斜角度的 tan 值，</li>
+<li>float sy:将画布在 y 轴方向上倾斜相应的角度，sy 为倾斜角度的 tan 值。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Hello &#123;</div><div class="line"></div><div class="line">    @Inject</div><div class="line">    public Hello(String msg)&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getSmg()&#123;</div><div class="line"></div><div class="line">        return  &quot;Hello,World!&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="5-快照-save-和回滚-restore"><a href="#5-快照-save-和回滚-restore" class="headerlink" title="5. 快照 ( save ) 和回滚 ( restore )"></a>5. 快照 ( save ) 和回滚 ( restore )</h6><p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/26385294-file_1492487141456_328e.png" alt="image"></p>
+<p>每调用一次save方法，都会在栈顶添加一条状态信息</p>
+<h5 id="4-Canvas-之图片文字"><a href="#4-Canvas-之图片文字" class="headerlink" title="4. Canvas 之图片文字"></a>4. Canvas 之图片文字</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/Canvas_PictureText" target="_blank" rel="external">http://www.gcssloop.com/customview/Canvas_PictureText</a></p>
+<h6 id="绘制图片有两种方法，drawPicture-矢量图-和-drawBitmap-位图"><a href="#绘制图片有两种方法，drawPicture-矢量图-和-drawBitmap-位图" class="headerlink" title="- 绘制图片有两种方法，drawPicture ( 矢量图 ) 和 drawBitmap ( 位图 )"></a>- 绘制图片有两种方法，drawPicture ( 矢量图 ) 和 drawBitmap ( 位图 )</h6><h6 id="1-drawPicture"><a href="#1-drawPicture" class="headerlink" title="1. drawPicture"></a>1. drawPicture</h6><ul>
+<li>使用 Picture 前请关闭硬件加速，以免引起不必要的问题！</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在 AndroidMenifest 文件中 application 节点下添上  android:hardwareAccelerated=”false” 以关闭整个应用的硬件加速。</div></pre></td></tr></table></figure>
 <ul>
-<li>跟没有参数的构造方法相比，还要多加一步 </li>
+<li><p>可以把 Picture 看作是一个录制 Canvas 操作的录像机。</p>
+</li>
+<li><p>Picture 相关的 API</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 创建一个 XXXModule 要用 @Module 标注</div><div class="line">@Module</div><div class="line">public class HelloModule &#123;</div><div class="line"></div><div class="line">//创建一个 providesXXX 方法，要用 @Provides 标注，返回值类型就是 Hello 构造方法的参数类型</div><div class="line">    @Provides</div><div class="line">    public String providesReturnMessage()&#123;</div><div class="line"></div><div class="line">        return  &quot;Hello,World!&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/27820324-file_1492495410461_bd91.png" alt="image"></p>
+<p><strong>beginRecording 和 endRecording 是成对使用的，一个开始录制，一个是结束录制，两者之间的操作将会存储在 Picture 中。</strong></p>
 <ul>
-<li>同时， HelloComponent 也要做修改</li>
+<li>将 Picture 中的内容绘制出来可以有以下几种方法：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// @Component 后边加的东西，modules = 是固定写法 ， HelloModule.class 表示需要注入的类</div><div class="line"></div><div class="line">@Component(  modules = HelloModule.class)</div><div class="line"></div><div class="line">public interface HelloComponent &#123;</div><div class="line"></div><div class="line">    void inject(MainActivity activity);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/17010022-file_1492495643261_eaa8.png" alt="image"></p>
+<h6 id="2-drawBitmap"><a href="#2-drawBitmap" class="headerlink" title="2. drawBitmap"></a>2. drawBitmap</h6><ul>
+<li>获取 Bitmap 的方式：</li>
+</ul>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/87868931-file_1492496013195_1569a.png" alt="image"></p>
+<h6 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h6><ul>
+<li>常用 API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 第一类</div><div class="line">public void drawText (String text, float x, float y, Paint paint)</div><div class="line">public void drawText (String text, int start, int end, float x, float y, Paint paint)</div><div class="line">public void drawText (CharSequence text, int start, int end, float x, float y, Paint paint)</div><div class="line">public void drawText (char[] text, int index, int count, float x, float y, Paint paint)</div><div class="line"></div><div class="line">// 第二类</div><div class="line">public void drawPosText (String text, float[] pos, Paint paint)</div><div class="line">public void drawPosText (char[] text, int index, int count, float[] pos, Paint paint)</div><div class="line"></div><div class="line">// 第三类</div><div class="line">public void drawTextOnPath (String text, Path path, float hOffset, float vOffset, Paint paint)</div><div class="line">public void drawTextOnPath (char[] text, int index, int count, Path path, float hOffset, float vOffset, Paint paint)</div></pre></td></tr></table></figure>
+<p>第一类只能指定文本基线位置(基线x默认在字符串左侧，基线y默认在字符串下方)。   </p>
+<p>第二类可以分别指定每个文字的位置。   </p>
+<p>第三类是指定一个路径，根据路径绘制文字。</p>
 <ul>
-<li>另外 MainActivity 也要修改    </li>
+<li>绘制文字也需要画笔 Paint</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Inject</div><div class="line">    Hello hello;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        HelloComponent component = DaggerHelloComponent.builder()</div><div class="line">        //跟之前的相比，多了  .helloModule(new HelloModule())   </div><div class="line">        //这样一来，就串在一起了</div><div class="line">                .helloModule(new HelloModule())</div><div class="line">                .build();</div><div class="line"></div><div class="line">        component.inject(this);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/98591269-file_1492497028416_4fd2.png" alt="image"></p>
 <ul>
-<li>运行之后，也是对的 </li>
+<li>链接中有 API 使用的详细介绍</li>
 </ul>
-<p><strong>当然 dagger2 还有很多其他的注解和用法，以上是最简单的 Demo ，本人也没有在项目中实践过，无法提供更多的用法！</strong></p>
+<h5 id="5-Canvas-之-Path-的基本操作"><a href="#5-Canvas-之-Path-的基本操作" class="headerlink" title="5. Canvas 之 Path 的基本操作"></a>5. Canvas 之 Path 的基本操作</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/Path_Basic" target="_blank" rel="external">http://www.gcssloop.com/customview/Path_Basic</a></p>
+<h6 id="Path-的作用："><a href="#Path-的作用：" class="headerlink" title="Path 的作用："></a><strong>Path 的作用：</strong></h6><ul>
+<li>使用 Path 不仅能够绘制简单图形，也可以绘制这些比较复杂的图形。另外，根据路径绘制文本和剪裁画布都会用到Path</li>
+</ul>
+<h5 id="6-Path-之贝塞尔曲线"><a href="#6-Path-之贝塞尔曲线" class="headerlink" title="6. Path 之贝塞尔曲线"></a>6. Path 之贝塞尔曲线</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/Path_Bezier" target="_blank" rel="external">http://www.gcssloop.com/customview/Path_Bezier</a></p>
+<h6 id="1-贝塞尔曲线的作用："><a href="#1-贝塞尔曲线的作用：" class="headerlink" title="1. 贝塞尔曲线的作用："></a>1. 贝塞尔曲线的作用：</h6><p>贝塞尔曲线的运用是十分广泛的，可以说贝塞尔曲线奠定了计算机绘图的基础 ( 因为它可以将任何复杂的图形用精确的数学语言进行描述 ) ，在你不经意间就已经使用过它了。</p>
+<h6 id="2-使用实例"><a href="#2-使用实例" class="headerlink" title="2. 使用实例"></a>2. 使用实例</h6><p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/49646890-file_1492498551633_705c.png" alt="image"></p>
+<h5 id="7-PathMeasure"><a href="#7-PathMeasure" class="headerlink" title="7. PathMeasure"></a>7. PathMeasure</h5><p><strong>三方链接：</strong> <a href="http://www.gcssloop.com/customview/Path_PathMeasure" target="_blank" rel="external">http://www.gcssloop.com/customview/Path_PathMeasure</a></p>
+<ul>
+<li>PathMeasure 是一个用来测量 Path 的类，主要有以下方法:<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/7487936-file_1492499126042_16bd6.png" alt="image"></li>
+</ul>
+<h5 id="8-矩阵-Matrix"><a href="#8-矩阵-Matrix" class="headerlink" title="8. 矩阵 Matrix"></a>8. 矩阵 Matrix</h5><p><strong>Matrix 原理：</strong> <a href="http://www.gcssloop.com/customview/Matrix_Basic" target="_blank" rel="external">http://www.gcssloop.com/customview/Matrix_Basic</a></p>
+<p><strong>Matrix 详解：</strong> <a href="http://www.gcssloop.com/customview/Matrix_Method" target="_blank" rel="external">http://www.gcssloop.com/customview/Matrix_Method</a></p>
+<p><strong>Matrix Camera ：</strong> <a href="http://www.gcssloop.com/customview/matrix-3d-camera" target="_blank" rel="external">http://www.gcssloop.com/customview/matrix-3d-camera</a></p>
 
       
     </div>
@@ -513,7 +590,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/dagger2/" rel="tag"># dagger2</a>
+            <a href="/tags/实现原理/" rel="tag"># 实现原理</a>
           
         </div>
       
@@ -526,8 +603,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/27/AndroidStudio中使用butterknife/" rel="next" title="AndroidStudio中使用butterknife">
-                <i class="fa fa-chevron-left"></i> AndroidStudio中使用butterknife
+              <a href="/2017/04/17/Android中的定时任务/" rel="next" title="Android 中的定时任务">
+                <i class="fa fa-chevron-left"></i> Android 中的定时任务
               </a>
             
           </div>
@@ -535,10 +612,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/RSA算法-AES算法在Android中结合使用/" rel="prev" title="RSA 算法 + AES 算法在 Android 中结合使用">
-                RSA 算法 + AES 算法在 Android 中结合使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,8 +660,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/30/dagger2在Android中的使用/"
-           data-title="dagger2 在 Android 中的使用" data-url="http://yoursite.com/2017/03/30/dagger2在Android中的使用/">
+      <div class="ds-thread" data-thread-key="2017/04/18/自定义View实现原理/"
+           data-title="Android 自定义 View 实现原理" data-url="http://yoursite.com/2017/04/18/自定义View实现原理/">
       </div>
     
   </div>
@@ -694,7 +767,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、dagger2-是什么？"><span class="nav-number">2.1.</span> <span class="nav-text">一、dagger2 是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、为什么要用这玩意"><span class="nav-number">2.2.</span> <span class="nav-text">二、为什么要用这玩意</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-增加开发效率，省去重复代码"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 增加开发效率，省去重复代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-进一步解耦"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 进一步解耦</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-方便测试"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.方便测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、如何使用"><span class="nav-number">2.3.</span> <span class="nav-text">三、如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-添加插件和依赖"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 添加插件和依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-简单使用"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 简单使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如果被注入的类的构造方法有参数呢，那就要引入-Module"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 如果被注入的类的构造方法有参数呢，那就要引入 Module</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础部分"><span class="nav-number">2.1.</span> <span class="nav-text">基础部分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Android-中的坐标系"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Android 中的坐标系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-角度和弧度"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 角度和弧度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-颜色"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. 颜色</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶部分"><span class="nav-number">2.2.</span> <span class="nav-text">进阶部分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-自定义-View-的分类和流程简介"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 自定义 View 的分类和流程简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Canvas-之绘制图形"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. Canvas 之绘制图形</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Canvas-之画布操作"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. Canvas 之画布操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-位移-translate"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">1. 位移 ( translate )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-缩放-scale"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">2. 缩放 ( scale )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-旋转-rotate"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">3. 旋转 ( rotate )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-错切-skew"><span class="nav-number">2.2.3.4.</span> <span class="nav-text">4. 错切 ( skew )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-快照-save-和回滚-restore"><span class="nav-number">2.2.3.5.</span> <span class="nav-text">5. 快照 ( save ) 和回滚 ( restore )</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-Canvas-之图片文字"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. Canvas 之图片文字</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#绘制图片有两种方法，drawPicture-矢量图-和-drawBitmap-位图"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">- 绘制图片有两种方法，drawPicture ( 矢量图 ) 和 drawBitmap ( 位图 )</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-drawPicture"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">1. drawPicture</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-drawBitmap"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">2. drawBitmap</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#绘制文字"><span class="nav-number">2.2.4.4.</span> <span class="nav-text">绘制文字</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-Canvas-之-Path-的基本操作"><span class="nav-number">2.2.5.</span> <span class="nav-text">5. Canvas 之 Path 的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Path-的作用："><span class="nav-number">2.2.5.1.</span> <span class="nav-text">Path 的作用：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-Path-之贝塞尔曲线"><span class="nav-number">2.2.6.</span> <span class="nav-text">6. Path 之贝塞尔曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-贝塞尔曲线的作用："><span class="nav-number">2.2.6.1.</span> <span class="nav-text">1. 贝塞尔曲线的作用：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-使用实例"><span class="nav-number">2.2.6.2.</span> <span class="nav-text">2. 使用实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-PathMeasure"><span class="nav-number">2.2.7.</span> <span class="nav-text">7. PathMeasure</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-矩阵-Matrix"><span class="nav-number">2.2.8.</span> <span class="nav-text">8. 矩阵 Matrix</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
