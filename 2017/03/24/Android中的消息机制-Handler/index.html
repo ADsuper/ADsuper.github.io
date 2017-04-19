@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/index.html">
 <meta property="og:site_name" content="珞璃之神">
 <meta property="og:description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
-<meta property="og:updated_time" content="2017-04-19T03:22:54.694Z">
+<meta property="og:updated_time" content="2017-04-19T03:25:54.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android中的消息机制--Handler">
 <meta name="twitter:description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
@@ -445,7 +445,7 @@
 <p>代码中，在主线程中设置 mBooleanThreadLocal 为 true ，在 Thread—1 中设置 mBooleanThreadLocal 为 false ，在 Thread—2 中没有设置， mBooleanThreadLocal 通过 set() 和 get() 方法进行数据的设置和取出操作。 </p>
 <p>打印出来的结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">12945-12945/? I/Thread---Main:: true</div><div class="line">12945-12959/? I/Thread---1:: false</div><div class="line">12945-12960/? I/Thread---2:: null</div></pre></td></tr></table></figure>
-<p>从上边的日志可以看出，在不同线程中访问同一个 ThreadLocal 对象，获得的值却是不一样的，原因就是：ThreadLocal 内部会从各自的线程中取出一个数组，然后再从数组中根据当前 ThreadLocal 的索引去查找对应的 value 值，而不同线程中的数组是不同的，所以取出的值也不一样。</p>
+<p>从上边的日志可以看出，在不同线程中访问同一个 ThreadLocal 对象，<br>获得的值却是不一样的，原因就是：ThreadLocal 内部会从各自的线程中取出一个数组，<br>然后再从数组中根据当前 ThreadLocal 的索引去查找对应的 value 值，而不同线程中的数组是不同的，<br>所以取出的值也不一样。</p>
 <h4 id="2-MessageQueue"><a href="#2-MessageQueue" class="headerlink" title="2. MessageQueue"></a>2. MessageQueue</h4><p>翻译过来为消息队列，其主要包含两个操作：插入和读取，分别对应 MessageQueue 的两个方法 enqueueMessage() 和 next() ，另外，读取过的消息会删除掉！</p>
 <h4 id="3-Looper"><a href="#3-Looper" class="headerlink" title="3. Looper"></a>3. Looper</h4><p>Looper 会不停的从 MessageQueue 中查看是否有新消息，有就立刻处理，否则就一直阻塞，在 Looper 的构造方法中会创建一个 MessageQueue 对象，再次印证了那四个字—配套使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private Looper(boolean quitAllowed) &#123;</div><div class="line">       mQueue = new MessageQueue(quitAllowed);</div><div class="line">       mThread = Thread.currentThread();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
@@ -514,8 +514,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/27/Android 中 Retrofit2.X 的使用(1)/" rel="prev" title="Android 中 Retrofit2.X 的使用(1)">
-                Android 中 Retrofit2.X 的使用(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/27/AndroidStudio中使用butterknife/" rel="prev" title="AndroidStudio中使用butterknife">
+                AndroidStudio中使用butterknife <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
