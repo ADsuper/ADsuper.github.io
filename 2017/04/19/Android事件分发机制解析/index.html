@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="定时任务," />
+  <meta name="keywords" content="事件分发," />
 
 
 
@@ -88,30 +88,34 @@
 
 
 <meta name="description" content="前言
-项目中有用到定时任务，就捎带着总结一下
+事件分发机制是 Android 中的重点和难点，也是解决滑动冲突的理论基础。
 
-本篇文章，一部分来自于 《第一行代码第2版》
+本文参考书： 《Android 开发艺术探索》
 
-本文着重说明下 Android 中的 Alarm 机制">
+参考的大神：http://www.gcssloop.com/customview/dispatch-touchevent-theory">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 中的定时任务">
-<meta property="og:url" content="http://yoursite.com/2017/04/17/Android中的定时任务/index.html">
+<meta property="og:title" content="Android 事件分发机制解析">
+<meta property="og:url" content="http://yoursite.com/2017/04/19/Android事件分发机制解析/index.html">
 <meta property="og:site_name" content="珞璃之神">
 <meta property="og:description" content="前言
-项目中有用到定时任务，就捎带着总结一下
+事件分发机制是 Android 中的重点和难点，也是解决滑动冲突的理论基础。
 
-本篇文章，一部分来自于 《第一行代码第2版》
+本文参考书： 《Android 开发艺术探索》
 
-本文着重说明下 Android 中的 Alarm 机制">
-<meta property="og:updated_time" content="2017-04-17T08:23:09.102Z">
+参考的大神：http://www.gcssloop.com/customview/dispatch-touchevent-theory">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/35996861-file_1492506395895_145d7.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/1229478-file_1492506924456_128d9.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/17453991-file_1492507469977_3b6.png">
+<meta property="og:updated_time" content="2017-04-19T03:07:15.658Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 中的定时任务">
+<meta name="twitter:title" content="Android 事件分发机制解析">
 <meta name="twitter:description" content="前言
-项目中有用到定时任务，就捎带着总结一下
+事件分发机制是 Android 中的重点和难点，也是解决滑动冲突的理论基础。
 
-本篇文章，一部分来自于 《第一行代码第2版》
+本文参考书： 《Android 开发艺术探索》
 
-本文着重说明下 Android 中的 Alarm 机制">
+参考的大神：http://www.gcssloop.com/customview/dispatch-touchevent-theory">
+<meta name="twitter:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-18/35996861-file_1492506395895_145d7.png">
 
 
 
@@ -139,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/17/Android中的定时任务/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/19/Android事件分发机制解析/"/>
 
 
 
 
 
-  <title> Android 中的定时任务 | 珞璃之神 </title>
+  <title> Android 事件分发机制解析 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -318,7 +322,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android中的定时任务/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/19/Android事件分发机制解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -339,7 +343,7 @@
             
             
               
-                Android 中的定时任务
+                Android 事件分发机制解析
               
             
           </h1>
@@ -354,8 +358,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T14:21:24+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T11:05:54+08:00">
+                2017-04-19
               </time>
             
 
@@ -377,8 +381,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/View/" itemprop="url" rel="index">
+                    <span itemprop="name">View</span>
                   </a>
                 </span>
 
@@ -395,8 +399,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/17/Android中的定时任务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/17/Android中的定时任务/" itemprop="commentCount"></span>
+                <a href="/2017/04/19/Android事件分发机制解析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/19/Android事件分发机制解析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +408,7 @@
 
           
           
-             <span id="/2017/04/17/Android中的定时任务/" class="leancloud_visitors" data-flag-title="Android 中的定时任务">
+             <span id="/2017/04/19/Android事件分发机制解析/" class="leancloud_visitors" data-flag-title="Android 事件分发机制解析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -439,77 +443,41 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li><p>项目中有用到定时任务，就捎带着总结一下</p>
+<li><p>事件分发机制是 Android 中的重点和难点，也是解决滑动冲突的理论基础。</p>
 </li>
-<li><p>本篇文章，一部分来自于 《第一行代码第2版》</p>
+<li><p>本文参考书： 《Android 开发艺术探索》</p>
 </li>
-<li><p>本文着重说明下 Android 中的 Alarm 机制 </p>
+<li><p>参考的大神：<a href="http://www.gcssloop.com/customview/dispatch-touchevent-theory" target="_blank" rel="external">http://www.gcssloop.com/customview/dispatch-touchevent-theory</a> </p>
+</li>
+</ul>
 <a id="more"></a>
-</li>
-</ul>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、Android-中实现定时任务的几种方式"><a href="#一、Android-中实现定时任务的几种方式" class="headerlink" title="一、Android 中实现定时任务的几种方式"></a>一、Android 中实现定时任务的几种方式</h4><h5 id="1-java-中的-Timer-类"><a href="#1-java-中的-Timer-类" class="headerlink" title="1. java 中的 Timer 类"></a>1. java 中的 Timer 类</h5><p><strong>分享一个 Timer 详解链接：</strong> <a href="http://blog.csdn.net/zuolongsnail/article/details/8168689" target="_blank" rel="external">http://blog.csdn.net/zuolongsnail/article/details/8168689</a></p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="1-事件分发机制实际上是-MotionEvent-点击事件-的传递规则。"><a href="#1-事件分发机制实际上是-MotionEvent-点击事件-的传递规则。" class="headerlink" title="1. 事件分发机制实际上是 MotionEvent ( 点击事件 ) 的传递规则。"></a>1. 事件分发机制实际上是 MotionEvent ( 点击事件 ) 的传递规则。</h4><h4 id="2-事件分发机制涉及的三个方法"><a href="#2-事件分发机制涉及的三个方法" class="headerlink" title="2. 事件分发机制涉及的三个方法"></a>2. 事件分发机制涉及的三个方法</h4><p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/35996861-file_1492506395895_145d7.png" alt="image"></p>
+<h4 id="3-View-事件的传递流程"><a href="#3-View-事件的传递流程" class="headerlink" title="3. View 事件的传递流程"></a>3. View 事件的传递流程</h4><p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/1229478-file_1492506924456_128d9.png" alt="image"></p>
 <ul>
-<li>Timer 类适合短期在后台运行的定时任务，而不适合长期的，因为现在的手机都有自己的休眠策略，Android 手机会在长时间不操作的情况下会自动让 CPU 进入到休眠状态，这就有可能导致 Timer 中的定时任务无法正常运行。</li>
+<li><p>View 没有 onInterceptTouchEvent 方法，一旦有点击事件传递给它，那么它的 onTouchEvent 方法就会被调用</p>
+</li>
+<li><p>View 的 onTouchEvent 方法默认都会消耗事件(返回 true)，除非是不可点击的( clickable 和 longClickable 同时为 false)，View 的 longClickable 属性默认都为 false ，而 clickable 属性分情况，比如 Button 默认为 true ，TextView 默认为 false</p>
+</li>
+<li><p>View 的 enable 属性不影响 onTouchEvent 方法的返回值，哪怕是 disable 状态，只要 clickable 或者 longClickable 有一个为 true ，那么它的 onTouchEvent 就返回 true。</p>
+</li>
 </ul>
-<h5 id="2-Handler"><a href="#2-Handler" class="headerlink" title="2. Handler"></a>2. Handler</h5><p><strong>分享一个链接：</strong> <a href="http://blog.csdn.net/dxpqxb/article/details/8659292" target="_blank" rel="external">http://blog.csdn.net/dxpqxb/article/details/8659292</a></p>
+<h4 id="4-ViewGroup-事件的传递流程"><a href="#4-ViewGroup-事件的传递流程" class="headerlink" title="4. ViewGroup 事件的传递流程"></a>4. ViewGroup 事件的传递流程</h4><p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-18/17453991-file_1492507469977_3b6.png" alt="image"></p>
+<h4 id="5-一些注意事项"><a href="#5-一些注意事项" class="headerlink" title="5. 一些注意事项"></a>5. 一些注意事项</h4><h6 id="1-所谓的点击事件，是指从-down-事件开始，中间可能含有数量不定的-move-事件，最终以-up-事件结束的一系列事件，称为：同一个事件序列"><a href="#1-所谓的点击事件，是指从-down-事件开始，中间可能含有数量不定的-move-事件，最终以-up-事件结束的一系列事件，称为：同一个事件序列" class="headerlink" title="1. 所谓的点击事件，是指从 down 事件开始，中间可能含有数量不定的 move 事件，最终以 up 事件结束的一系列事件，称为：同一个事件序列"></a>1. 所谓的点击事件，是指从 down 事件开始，中间可能含有数量不定的 move 事件，最终以 up 事件结束的一系列事件，称为：同一个事件序列</h6><h6 id="2-某个-View-一旦决定拦截事件，那么这一个事件序列都有它来处理。"><a href="#2-某个-View-一旦决定拦截事件，那么这一个事件序列都有它来处理。" class="headerlink" title="2. 某个 View 一旦决定拦截事件，那么这一个事件序列都有它来处理。"></a>2. 某个 View 一旦决定拦截事件，那么这一个事件序列都有它来处理。</h6><h6 id="3-某个-View-一旦开始处理事件，如果它不消耗-ACTION-DOWN-事件-onTouchEvent-，那么同一事件序列中的其他事件都不会再交给它来处理，并且事件将重新交给它的父元素去处理，即父元素的-onTouchEvent-会被调用。"><a href="#3-某个-View-一旦开始处理事件，如果它不消耗-ACTION-DOWN-事件-onTouchEvent-，那么同一事件序列中的其他事件都不会再交给它来处理，并且事件将重新交给它的父元素去处理，即父元素的-onTouchEvent-会被调用。" class="headerlink" title="3. 某个 View 一旦开始处理事件，如果它不消耗 ACTION_DOWN 事件( onTouchEvent )，那么同一事件序列中的其他事件都不会再交给它来处理，并且事件将重新交给它的父元素去处理，即父元素的 onTouchEvent 会被调用。"></a>3. 某个 View 一旦开始处理事件，如果它不消耗 ACTION_DOWN 事件( onTouchEvent )，那么同一事件序列中的其他事件都不会再交给它来处理，并且事件将重新交给它的父元素去处理，即父元素的 onTouchEvent 会被调用。</h6><h6 id="4-事件的传递过程都是由外向内的。"><a href="#4-事件的传递过程都是由外向内的。" class="headerlink" title="4. 事件的传递过程都是由外向内的。"></a>4. 事件的传递过程都是由外向内的。</h6><h6 id="5-onClick-发生的前提是当前-View-是可点击的，并且收到了-down-和-up-事件。"><a href="#5-onClick-发生的前提是当前-View-是可点击的，并且收到了-down-和-up-事件。" class="headerlink" title="5. onClick 发生的前提是当前 View 是可点击的，并且收到了 down 和 up 事件。"></a>5. onClick 发生的前提是当前 View 是可点击的，并且收到了 down 和 up 事件。</h6><h4 id="6-actvity-对点击事件的分发过程"><a href="#6-actvity-对点击事件的分发过程" class="headerlink" title="6. actvity 对点击事件的分发过程"></a>6. actvity 对点击事件的分发过程</h4><h6 id="1-当一个点击操作发生时，事件最先传递给-Activity-，由-Activity-的-dispatchTouchEvent-来进行事件的分发，具体工作是由-Activity-内部的-Window-来完成的，Window-会将事件传递给-DecorView-，然后将事件传递给-Activity-的顶级-View-，也就是设置的-setContentView-；"><a href="#1-当一个点击操作发生时，事件最先传递给-Activity-，由-Activity-的-dispatchTouchEvent-来进行事件的分发，具体工作是由-Activity-内部的-Window-来完成的，Window-会将事件传递给-DecorView-，然后将事件传递给-Activity-的顶级-View-，也就是设置的-setContentView-；" class="headerlink" title="1. 当一个点击操作发生时，事件最先传递给 Activity ，由 Activity 的 dispatchTouchEvent 来进行事件的分发，具体工作是由 Activity 内部的 Window 来完成的，Window 会将事件传递给 DecorView ，然后将事件传递给 Activity 的顶级 View ，也就是设置的 setContentView() ；"></a>1. 当一个点击操作发生时，事件最先传递给 Activity ，由 Activity 的 dispatchTouchEvent 来进行事件的分发，具体工作是由 Activity 内部的 Window 来完成的，Window 会将事件传递给 DecorView ，然后将事件传递给 Activity 的顶级 View ，也就是设置的 setContentView() ；</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// Activity 的 源码 dispatchTouchEvent 方法</div><div class="line">    public boolean dispatchTouchEvent(MotionEvent ev) &#123;</div><div class="line">        if (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;</div><div class="line">            onUserInteraction();</div><div class="line">        &#125;</div><div class="line">        if (getWindow().superDispatchTouchEvent(ev)) &#123;</div><div class="line">            return true;</div><div class="line">        &#125;</div><div class="line">        return onTouchEvent(ev);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h6 id="2-Window-是个抽象类，其-superDispatchTouchEvent-方法也是抽象方法，"><a href="#2-Window-是个抽象类，其-superDispatchTouchEvent-方法也是抽象方法，" class="headerlink" title="2.Window 是个抽象类，其 superDispatchTouchEvent 方法也是抽象方法，"></a>2.Window 是个抽象类，其 superDispatchTouchEvent 方法也是抽象方法，</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// Window 类源码</div><div class="line">public abstract class Window &#123;</div><div class="line">    /** Flag for the &quot;options panel&quot; feature.  This is enabled by default. */</div><div class="line">    public static final int FEATURE_OPTIONS_PANEL = 0;</div><div class="line">    /** Flag for the &quot;no title&quot; feature, turning off the title at the top</div><div class="line">     *  of the screen. */</div><div class="line">    public static final int FEATURE_NO_TITLE = 1;</div></pre></td></tr></table></figure>
+<p>在 Activity 源码中有这样一行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mWindow = new PhoneWindow(this, window)</div></pre></td></tr></table></figure>
+<p>从而可以知道 Window 类的实现类为 PhoneWindow ，而实际上 PhoneWindow 是其唯一的一个实现类     </p>
+<p>Android SDK 隐藏了 PhoneWindow 类源码，本人只好从网上找了源码，看 superDispatchTouchEvent 方法  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class PhoneWindow extends Window implements MenuBuilder.Callback &#123;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public boolean superDispatchTouchEvent(MotionEvent event) &#123;  </div><div class="line">        return mDecor.superDispatchTouchEvent(event);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>从这里可以看出 PhoneWindow 将事件传递给了 mDecor，也就是 DecorView ，其类如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private final class DecorView extends FrameLayout &#123;</div></pre></td></tr></table></figure>
+<p>实际上 DecorView 是一个 FrameLayout ，而我们通过 setContentView 设置的 View 就是其一个子类。</p>
+<p>然后，DecorView 就会将事件传递给 Activity 设置的 View，也就是顶级 View</p>
+<p>接下来就是 View 对点击事件的分发过程了。</p>
+<h4 id="7-View-对点击事件的分发过程"><a href="#7-View-对点击事件的分发过程" class="headerlink" title="7. View 对点击事件的分发过程"></a>7. View 对点击事件的分发过程</h4><p><strong>之前的 第 2 条、第 3 条和第 4 条 都讲过了，下边再叙述几点：</strong></p>
+<p>点击事件到达顶级 View 以后 (一般是一个 ViewGroup )    </p>
 <ul>
-<li>Handler post系列方法中有定时发送消息的操作，如：handler.postDelayed();</li>
-</ul>
-<h5 id="3-Android-中的-Alarm-机制"><a href="#3-Android-中的-Alarm-机制" class="headerlink" title="3. Android 中的 Alarm 机制"></a>3. Android 中的 Alarm 机制</h5><ul>
-<li><p>Alarm 机制具有唤醒 CPU 的功能，它能保证在多数情况下需要执行定时任务的时候 CPU 都能正常工作，下面会详细介绍</p>
-</li>
-<li><p>Alarm 需要在 API 19 及其以上才能使用。</p>
-</li>
-<li><p>经测试，Alarm 有毫秒级别的误差</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">04-17 15:12:41.208 5615-5632/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:12:51.218 5615-5677/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:01.223 5615-5757/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:11.228 5615-5926/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:21.233 5615-6098/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:31.238 5615-6266/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:41.243 5615-6436/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:51.248 5615-6610/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:01.258 5615-6780/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:11.258 5615-6951/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:21.263 5615-7122/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:31.268 5615-7291/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:41.273 5615-7466/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div></pre></td></tr></table></figure>
-<h4 id="二、-Alarm-机制"><a href="#二、-Alarm-机制" class="headerlink" title="二、 Alarm 机制"></a>二、 Alarm 机制</h4><h5 id="1-核心类：-AlarmManager"><a href="#1-核心类：-AlarmManager" class="headerlink" title="1. 核心类： AlarmManager"></a>1. 核心类： AlarmManager</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</div></pre></td></tr></table></figure>
-<h5 id="2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务"><a href="#2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务" class="headerlink" title="2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务"></a>2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">long time = SystemClock.elapsedRealtime() + 10 * 1000;</div><div class="line"></div><div class="line">Intent intent1 = new Intent(this , LongRunningService.class);</div><div class="line">PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent1, 0);</div><div class="line"></div><div class="line">alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP , time , pendingIntent);</div></pre></td></tr></table></figure>
-<h6 id="set-系列方法三个参数详解"><a href="#set-系列方法三个参数详解" class="headerlink" title="set 系列方法三个参数详解"></a>set 系列方法三个参数详解</h6><ol>
-<li>第一个参数有四个选项分别为：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//        AlarmManager.ELAPSED_REALTIME ,表示让定时任务的触发事件从系统开机开始算起，但是不会唤醒 CPU</div><div class="line">//        AlarmManager.ELAPSED_REALTIME_WAKEUP ,表示让定时任务的触发事件从系统开机开始算起，但是会唤醒 CPU</div><div class="line">//        AlarmManager.RTC ,表示让定时任务的触发事件从 1970 年 1 月 1 日 0 点开始算起，但不会唤醒 CPU</div><div class="line">//        AlarmManager.RTC_WAKEUP ,表示让定时任务的触发事件从 1970 年 1 月 1 日 0 点开始算起，但会唤醒 CPU</div></pre></td></tr></table></figure>
-<ol>
-<li>第二个参数表示定时任务的触发时间：</li>
-</ol>
-<ul>
-<li><p>如果第一个参数使用的是 ELAPSED_REALTIME 或者 ELAPSED_REALTIME_WAKEUP ，则这里就传入开机时间加上延迟执行的时间。</p>
-</li>
-<li><p>获取开机至今所经历的时间的毫秒数方法为：SystemClock.elapsedRealtime()；</p>
-</li>
-<li><p>如果第一个参数使用的是 RTC 或者 RTC_WAKEUP，则这里就传入从 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数加上延迟执行的时间。</p>
-</li>
-<li><p>获取从 1970 年 1 月 1 日 0 点至今所经历的时间的毫秒数的方法为：System.currentTimeMillis(); </p>
-</li>
-</ul>
-<ol>
-<li>第三个参数是一个 PendingIntent ，表示一个后台可以长时间运行的服务</li>
-</ol>
-<h6 id="set-和-setExact-的区别"><a href="#set-和-setExact-的区别" class="headerlink" title="set() 和 setExact() 的区别"></a>set() 和 setExact() 的区别</h6><ul>
-<li><p>从 Android 4.4 系统开始，Alarm 任务的触发事件将会变得不准确，有可能会延迟一段时间后任务才能执行，但这并不是 bug，而是系统在耗电方面进行的优化。系统会自动监测目前有多少个 Alarm 任务存在，然后触发时间相近的几个任务会放在一起执行，这就可以大幅度减少 CPU 被唤醒的次数，从而有效延长电池的使用时间。</p>
-</li>
-<li><p>如果要求 Alarm 任务的执行时间必须准确无误，Android 仍然提供了解决方案，使用 setExact() 方法来代替 set() 方法。</p>
-</li>
-</ul>
-<h5 id="3-完整的代码"><a href="#3-完整的代码" class="headerlink" title="3. 完整的代码"></a>3. 完整的代码</h5><ul>
-<li>Activity 中</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.timed_task;</div><div class="line"></div><div class="line">import android.app.AlarmManager;</div><div class="line">import android.app.PendingIntent;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line">import android.os.SystemClock;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line"></div><div class="line">import java.util.Timer;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        //开启一个服务</div><div class="line">        Intent intent = new Intent(this,LongRunningService.class);</div><div class="line">        startService(intent);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Service 中的代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.timed_task;</div><div class="line"></div><div class="line">import android.app.AlarmManager;</div><div class="line">import android.app.PendingIntent;</div><div class="line">import android.app.Service;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line">import android.os.IBinder;</div><div class="line">import android.os.SystemClock;</div><div class="line">import android.support.annotation.IntDef;</div><div class="line">import android.support.annotation.Nullable;</div><div class="line">import android.util.Log;</div><div class="line"></div><div class="line">public class LongRunningService extends Service &#123;</div><div class="line"></div><div class="line">    private AlarmManager alarmManager;</div><div class="line"></div><div class="line">    @Nullable</div><div class="line">    @Override</div><div class="line">    public IBinder onBind(Intent intent) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</div><div class="line"></div><div class="line"></div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                //执行具体的定时逻辑操作</div><div class="line">                //逻辑操作也是需要耗时的，如果放在主线程中，可能会对定时任务的准确性造成轻微的影响</div><div class="line">                Log.i(&quot;Alarm&quot;,&quot;-+------------定时任务--------------&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line">        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</div><div class="line">        long time = SystemClock.elapsedRealtime() + 10 * 1000;</div><div class="line"></div><div class="line">        Intent intent1 = new Intent(this , LongRunningService.class);</div><div class="line">        PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent1, 0);</div><div class="line"></div><div class="line">        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP , time , pendingIntent);</div><div class="line"></div><div class="line">        return super.onStartCommand(intent, flags, startId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="4-另外需要注意的事项"><a href="#4-另外需要注意的事项" class="headerlink" title="4. 另外需要注意的事项"></a>4. 另外需要注意的事项</h5><ul>
-<li>取消定时任务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//pendingIntent 要跟设置的时候一致才能取消</div><div class="line">alarmManager.cancel(pendingIntent);</div></pre></td></tr></table></figure>
-<ul>
-<li>Alarm 也能定时发送广播</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 参数与 set() 类似</div><div class="line">alarmManager.setRepeating();</div></pre></td></tr></table></figure>
-<ul>
-<li>还有一系列其他的操作，有待发掘</li>
+<li>如果顶级 ViewGroup 拦截事件的情况下，设置了 OnTouchListener ，则 onTouch 会被调用，反之会调用 onTouchEvent ，也就是说，如果都提供的话，onTouch 会屏蔽掉 onTouchEvent 。OnTouchListener 的优先级高于 onTouchEvent</li>
 </ul>
 
       
@@ -540,7 +508,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/定时任务/" rel="tag"># 定时任务</a>
+            <a href="/tags/事件分发/" rel="tag"># 事件分发</a>
           
         </div>
       
@@ -553,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/14/AndroidStudio项目混淆、打包、签名、发布一条龙/" rel="next" title="AndroidStudio 项目混淆、打包、签名、发布一条龙">
-                <i class="fa fa-chevron-left"></i> AndroidStudio 项目混淆、打包、签名、发布一条龙
+              <a href="/2017/04/18/自定义View实现原理/" rel="next" title="Android 自定义 View 实现原理">
+                <i class="fa fa-chevron-left"></i> Android 自定义 View 实现原理
               </a>
             
           </div>
@@ -562,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/18/自定义View实现原理/" rel="prev" title="Android 自定义 View 实现原理">
-                Android 自定义 View 实现原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,8 +578,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/04/17/Android中的定时任务/"
-           data-title="Android 中的定时任务" data-url="http://yoursite.com/2017/04/17/Android中的定时任务/">
+      <div class="ds-thread" data-thread-key="2017/04/19/Android事件分发机制解析/"
+           data-title="Android 事件分发机制解析" data-url="http://yoursite.com/2017/04/19/Android事件分发机制解析/">
       </div>
     
   </div>
@@ -721,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Android-中实现定时任务的几种方式"><span class="nav-number">2.1.</span> <span class="nav-text">一、Android 中实现定时任务的几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-java-中的-Timer-类"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. java 中的 Timer 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Handler"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Handler</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Android-中的-Alarm-机制"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Android 中的 Alarm 机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、-Alarm-机制"><span class="nav-number">2.2.</span> <span class="nav-text">二、 Alarm 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-核心类：-AlarmManager"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 核心类： AlarmManager</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#set-系列方法三个参数详解"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">set 系列方法三个参数详解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#set-和-setExact-的区别"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">set() 和 setExact() 的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-完整的代码"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 完整的代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-另外需要注意的事项"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 另外需要注意的事项</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-事件分发机制实际上是-MotionEvent-点击事件-的传递规则。"><span class="nav-number">2.1.</span> <span class="nav-text">1. 事件分发机制实际上是 MotionEvent ( 点击事件 ) 的传递规则。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-事件分发机制涉及的三个方法"><span class="nav-number">2.2.</span> <span class="nav-text">2. 事件分发机制涉及的三个方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-View-事件的传递流程"><span class="nav-number">2.3.</span> <span class="nav-text">3. View 事件的传递流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-ViewGroup-事件的传递流程"><span class="nav-number">2.4.</span> <span class="nav-text">4. ViewGroup 事件的传递流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-一些注意事项"><span class="nav-number">2.5.</span> <span class="nav-text">5. 一些注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-所谓的点击事件，是指从-down-事件开始，中间可能含有数量不定的-move-事件，最终以-up-事件结束的一系列事件，称为：同一个事件序列"><span class="nav-number">2.5.0.1.</span> <span class="nav-text">1. 所谓的点击事件，是指从 down 事件开始，中间可能含有数量不定的 move 事件，最终以 up 事件结束的一系列事件，称为：同一个事件序列</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-某个-View-一旦决定拦截事件，那么这一个事件序列都有它来处理。"><span class="nav-number">2.5.0.2.</span> <span class="nav-text">2. 某个 View 一旦决定拦截事件，那么这一个事件序列都有它来处理。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-某个-View-一旦开始处理事件，如果它不消耗-ACTION-DOWN-事件-onTouchEvent-，那么同一事件序列中的其他事件都不会再交给它来处理，并且事件将重新交给它的父元素去处理，即父元素的-onTouchEvent-会被调用。"><span class="nav-number">2.5.0.3.</span> <span class="nav-text">3. 某个 View 一旦开始处理事件，如果它不消耗 ACTION_DOWN 事件( onTouchEvent )，那么同一事件序列中的其他事件都不会再交给它来处理，并且事件将重新交给它的父元素去处理，即父元素的 onTouchEvent 会被调用。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-事件的传递过程都是由外向内的。"><span class="nav-number">2.5.0.4.</span> <span class="nav-text">4. 事件的传递过程都是由外向内的。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-onClick-发生的前提是当前-View-是可点击的，并且收到了-down-和-up-事件。"><span class="nav-number">2.5.0.5.</span> <span class="nav-text">5. onClick 发生的前提是当前 View 是可点击的，并且收到了 down 和 up 事件。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-actvity-对点击事件的分发过程"><span class="nav-number">2.6.</span> <span class="nav-text">6. actvity 对点击事件的分发过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-当一个点击操作发生时，事件最先传递给-Activity-，由-Activity-的-dispatchTouchEvent-来进行事件的分发，具体工作是由-Activity-内部的-Window-来完成的，Window-会将事件传递给-DecorView-，然后将事件传递给-Activity-的顶级-View-，也就是设置的-setContentView-；"><span class="nav-number">2.6.0.1.</span> <span class="nav-text">1. 当一个点击操作发生时，事件最先传递给 Activity ，由 Activity 的 dispatchTouchEvent 来进行事件的分发，具体工作是由 Activity 内部的 Window 来完成的，Window 会将事件传递给 DecorView ，然后将事件传递给 Activity 的顶级 View ，也就是设置的 setContentView() ；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Window-是个抽象类，其-superDispatchTouchEvent-方法也是抽象方法，"><span class="nav-number">2.6.0.2.</span> <span class="nav-text">2.Window 是个抽象类，其 superDispatchTouchEvent 方法也是抽象方法，</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-View-对点击事件的分发过程"><span class="nav-number">2.7.</span> <span class="nav-text">7. View 对点击事件的分发过程</span></a></li></ol></li></ol></div>
             
 
           </div>
