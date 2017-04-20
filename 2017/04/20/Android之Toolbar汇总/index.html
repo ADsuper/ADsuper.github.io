@@ -1,0 +1,1186 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Toolbar," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言本篇文章，尽可能地总结 Toolbar 的知识点和用法，肯定没有概括完，会不断地查漏补缺。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 之 Toolbar 汇总">
+<meta property="og:url" content="http://yoursite.com/2017/04/20/Android之Toolbar汇总/index.html">
+<meta property="og:site_name" content="珞璃之神">
+<meta property="og:description" content="前言本篇文章，尽可能地总结 Toolbar 的知识点和用法，肯定没有概括完，会不断地查漏补缺。">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/32815664-file_1492670872562_4721.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/20002337-file_1492671692211_2338.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/57197585-file_1492672330426_5256.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/23173401-file_1492672581037_8500.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/22233257-file_1492673237562_15a60.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/31975897-file_1492673712038_11b3f.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/11936790-file_1492677990729_721c.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/23274216-file_1492679249926_1201.jpg">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/11936790-file_1492677990729_721c.png">
+<meta property="og:updated_time" content="2017-04-20T09:16:50.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 之 Toolbar 汇总">
+<meta name="twitter:description" content="前言本篇文章，尽可能地总结 Toolbar 的知识点和用法，肯定没有概括完，会不断地查漏补缺。">
+<meta name="twitter:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/32815664-file_1492670872562_4721.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/20/Android之Toolbar汇总/"/>
+
+
+
+
+
+  <title> Android 之 Toolbar 汇总 | 珞璃之神 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38e24263d6aea09127573aefd6aa53d0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">珞璃之神</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/20/Android之Toolbar汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="珞神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="珞璃之神">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android 之 Toolbar 汇总
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T17:12:31+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Meterial-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Meterial Design</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/20/Android之Toolbar汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/20/Android之Toolbar汇总/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/04/20/Android之Toolbar汇总/" class="leancloud_visitors" data-flag-title="Android 之 Toolbar 汇总">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本篇文章，尽可能地总结 Toolbar 的知识点和用法，肯定没有概括完，会不断地查漏补缺。</p>
+<a id="more"></a>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><ul>
+<li><p>Toolbar 是 Android 5.0 之后被谷歌放出来的，是为了替代之前的 ActionBar ，</p>
+</li>
+<li><p>Toolbar 不仅继承了 ActionBar 的所有功能，而且灵活性很高，可以配合其他控件来实现一些 Meterial Design 效果。</p>
+</li>
+</ul>
+<h3 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h3><h5 id="1-新建一个项目，看-styles-xml"><a href="#1-新建一个项目，看-styles-xml" class="headerlink" title="1. 新建一个项目，看 styles.xml"></a>1. 新建一个项目，看 styles.xml</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.DarkActionBar&quot;&gt;</div><div class="line">    &lt;!-- Customize your theme here. --&gt;</div><div class="line">    &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>系统默认使用主题 ： <strong>Theme.AppCompat.Light.DarkActionBar</strong></p>
+</li>
+<li><p>我们之前所有的项目中 自带的 ActionBar 就是因为指定了这个主题才出现的。</p>
+</li>
+</ul>
+<h5 id="2-修改主题"><a href="#2-修改主题" class="headerlink" title="2. 修改主题"></a>2. 修改主题</h5><h6 id="1-首先要指定一个不带-ActionBar-的主题："><a href="#1-首先要指定一个不带-ActionBar-的主题：" class="headerlink" title="1.首先要指定一个不带 ActionBar 的主题："></a>1.首先要指定一个不带 ActionBar 的主题：</h6><ul>
+<li><p>Theme.AppCompat.Light.NoActionBar 背景为浅色的主题 </p>
+</li>
+<li><p>Theme.AppCompat.NoActionBar 背景为深色的主题</p>
+</li>
+<li><p>本人喜欢浅色主题，如下所示：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;style name=&quot;AppTheme2&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">    &lt;!-- Customize your theme here. --&gt;</div><div class="line">    &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">    &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h6 id="2-主题中各个属性的含义："><a href="#2-主题中各个属性的含义：" class="headerlink" title="2. 主题中各个属性的含义："></a>2. 主题中各个属性的含义：</h6><ul>
+<li>colorPrimary 标题栏的颜色</li>
+<li>colorPrimaryDark 状态栏的颜色</li>
+<li>colorAccent 指定一个按钮的颜色，某些控件的选中状态也会选择这个颜色</li>
+</ul>
+<h5 id="3-代码中简单使用"><a href="#3-代码中简单使用" class="headerlink" title="3. 代码中简单使用"></a>3. 代码中简单使用</h5><h6 id="1-在主-Activity-的布局文件中修改如下："><a href="#1-在主-Activity-的布局文件中修改如下：" class="headerlink" title="1. 在主 Activity 的布局文件中修改如下："></a>1. 在主 Activity 的布局文件中修改如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">   &gt;</div><div class="line"></div><div class="line">   &lt;android.support.v7.widget.Toolbar</div><div class="line">       android:id=&quot;@+id/toolbar&quot;</div><div class="line">       android:layout_width=&quot;match_parent&quot;</div><div class="line">       android:layout_height=&quot;wrap_content&quot;</div><div class="line">       android:background=&quot;@color/colorPrimaryDark&quot;</div><div class="line">       android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</div><div class="line">       app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;</div><div class="line">       &gt;</div><div class="line">   &lt;/android.support.v7.widget.Toolbar&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/FrameLayout&gt;</div></pre></td></tr></table></figure>
+<h6 id="2-Acticity-中的代码如下："><a href="#2-Acticity-中的代码如下：" class="headerlink" title="2. Acticity 中的代码如下："></a>2. Acticity 中的代码如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.meterialtext;</div><div class="line"></div><div class="line">import android.os.Bundle;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.support.v7.widget.Toolbar;</div><div class="line"></div><div class="line">import butterknife.BindView;</div><div class="line">import butterknife.ButterKnife;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    Toolbar toolbar;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main2);</div><div class="line">        toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line">        setSupportActionBar(toolbar);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这里必须使用 findViewById ，我试过 ButterKnife ，效果显示不出来</li>
+</ul>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/32815664-file_1492670872562_4721.png" alt="image"></p>
+<h6 id="3-实现效果与-ActionBar-一样，但是这是-toolbar"><a href="#3-实现效果与-ActionBar-一样，但是这是-toolbar" class="headerlink" title="3. 实现效果与 ActionBar 一样，但是这是 toolbar"></a>3. 实现效果与 ActionBar 一样，但是这是 toolbar</h6><h5 id="4-添加标题、子标题、右侧-menu-、左侧导航栏图标、logo"><a href="#4-添加标题、子标题、右侧-menu-、左侧导航栏图标、logo" class="headerlink" title="4. 添加标题、子标题、右侧 menu 、左侧导航栏图标、logo"></a>4. 添加标题、子标题、右侧 menu 、左侧导航栏图标、logo</h5><h6 id="1-添加标题、子标题、、左侧导航栏图标、logo"><a href="#1-添加标题、子标题、、左侧导航栏图标、logo" class="headerlink" title="1. 添加标题、子标题、、左侧导航栏图标、logo"></a>1. 添加标题、子标题、、左侧导航栏图标、logo</h6><ul>
+<li>在 Activity 中进行设置，如下所示：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    Toolbar toolbar;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main2);</div><div class="line"></div><div class="line">        toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line">        toolbar.setTitle(&quot;title&quot;);//设置标题</div><div class="line">        toolbar.setSubtitle(&quot;suntitle&quot;);//设置子标题</div><div class="line"></div><div class="line">        toolbar.setLogo(R.mipmap.ic_launcher);//设置logo</div><div class="line">        setSupportActionBar(toolbar);</div><div class="line">        //设置导航栏图标要在 setSupportActionBar 之后</div><div class="line">        toolbar.setNavigationIcon(R.drawable.back6);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/20002337-file_1492671692211_2338.png" alt="image"></p>
+<h6 id="2-设置右侧-menu-菜单"><a href="#2-设置右侧-menu-菜单" class="headerlink" title="2. 设置右侧 menu 菜单"></a>2. 设置右侧 menu 菜单</h6><ul>
+<li>第一步：右键点击 res 文件夹，创建 Menu resource file ，命名为 toolbar.xml，内容如下所示：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;</div><div class="line">    &lt;item</div><div class="line">        android:id=&quot;@+id/set1&quot;</div><div class="line">        android:icon=&quot;@drawable/setting&quot;</div><div class="line">        android:title=&quot;11111&quot;</div><div class="line">        app:showAsAction=&quot;always&quot;&gt;&lt;/item&gt;</div><div class="line">    &lt;item</div><div class="line">        android:id=&quot;@+id/set2&quot;</div><div class="line">        android:icon=&quot;@drawable/setting&quot;</div><div class="line">        android:title=&quot;22222&quot;</div><div class="line">        app:showAsAction=&quot;ifRoom&quot;&gt;&lt;/item&gt;</div><div class="line">    &lt;item</div><div class="line">        android:id=&quot;@+id/set3&quot;</div><div class="line">        android:icon=&quot;@drawable/setting&quot;</div><div class="line">        android:title=&quot;33333&quot;</div><div class="line">        app:showAsAction=&quot;never&quot;&gt;&lt;/item&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/menu&gt;</div></pre></td></tr></table></figure>
+<p>其中，always 表示总是显示在标题栏，ifRoom 表示控件足够的话显示在标题栏 ，never 表示不显示在标题栏</p>
+<ul>
+<li>第二步：重写 Activity 中的 onCreateOptionsMenu 方法，填充布局：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public boolean onCreateOptionsMenu(Menu menu) &#123;</div><div class="line"></div><div class="line">    getMenuInflater().inflate(R.menu.toolbar,menu);</div><div class="line">    return  true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>第三步：重写 Activity 中的 onOptionsItemSelected 方法，响应 menu 菜单的点击事件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public boolean onOptionsItemSelected(MenuItem item) &#123;</div><div class="line"></div><div class="line">    switch (item.getItemId()) &#123;</div><div class="line">        case R.id.set1:</div><div class="line">            Toast.makeText(getApplicationContext(),&quot;set1&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">            break;</div><div class="line">        case R.id.set2:</div><div class="line">            Toast.makeText(getApplicationContext(),&quot;set2&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">            break;</div><div class="line">        case R.id.set3:</div><div class="line">            Toast.makeText(getApplicationContext(),&quot;set3&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">            break;</div><div class="line">        case android.R.id.home:</div><div class="line">            Toast.makeText(getApplicationContext(),&quot;左侧导航栏图标&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中：android.R.id.home 是左侧导航栏图标的 id </p>
+<ul>
+<li>第四步：运行结果如下：</li>
+</ul>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/57197585-file_1492672330426_5256.png" alt="image"></p>
+<p>由于第三个图标设置的是 never 所以没有显示出来 ，点击最右侧的如表之后，显示如下：</p>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/23173401-file_1492672581037_8500.png" alt="image"></p>
+<p>其中，显示 33333 是因为 item 中的这条属性：android:title=”33333”</p>
+<h3 id="三、扩展"><a href="#三、扩展" class="headerlink" title="三、扩展"></a>三、扩展</h3><h5 id="1-最后侧的按钮点击之后显示出来的-item-，将其放在-toolbar-下方"><a href="#1-最后侧的按钮点击之后显示出来的-item-，将其放在-toolbar-下方" class="headerlink" title="1. 最后侧的按钮点击之后显示出来的 item ，将其放在 toolbar 下方"></a>1. 最后侧的按钮点击之后显示出来的 item ，将其放在 toolbar 下方</h5><p>在 styles.xml 中添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!--无标题栏***浅色背景主题--&gt;</div><div class="line"> &lt;style name=&quot;AppTheme2&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">     &lt;!-- Customize your theme here. --&gt;</div><div class="line">     &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorPrimary&lt;/item&gt;</div><div class="line">     &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorPrimaryDark&lt;/item&gt;</div><div class="line">     &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div><div class="line">     &lt;!--修改 popup menu 的位置，使其位于 Toolbar 的下方--&gt;</div><div class="line">     &lt;item name=&quot;actionOverflowMenuStyle&quot;&gt;@style/MenuStyle&lt;/item&gt;</div><div class="line"></div><div class="line"> &lt;/style&gt;</div><div class="line"> </div><div class="line"> &lt;style name=&quot;MenuStyle&quot; parent=&quot;Widget.AppCompat.Light.PopupMenu.Overflow&quot;&gt;</div><div class="line">     &lt;item name=&quot;overlapAnchor&quot;&gt;false&lt;/item&gt;  &lt;!--把该属性改为fals--&gt;</div><div class="line"> &lt;/style&gt;</div></pre></td></tr></table></figure>
+<p>其中，AppTheme2 是我们自己用的主题，添加的代码看注释即可</p>
+<p>运行效果如下所示：</p>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/22233257-file_1492673237562_15a60.png" alt="image"></p>
+<h5 id="2-标题居中样式："><a href="#2-标题居中样式：" class="headerlink" title="2. 标题居中样式："></a>2. 标题居中样式：</h5><ul>
+<li>由于 Toolbar 继承于 ViewGroup ，所以可以在其内部放入一个 TextView</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line"></div><div class="line">    &lt;android.support.v7.widget.Toolbar</div><div class="line">        android:id=&quot;@+id/toolbar&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:background=&quot;@color/colorPrimaryDark&quot;</div><div class="line">        android:minHeight=&quot;?attr/actionBarSize&quot;</div><div class="line">        android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</div><div class="line">        app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;&gt;</div><div class="line">        &lt;!--自定义控件--&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/toolbar_title&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_centerInParent=&quot;true&quot;</div><div class="line">            android:layout_gravity=&quot;center&quot;</div><div class="line">            android:gravity=&quot;center&quot;</div><div class="line">            android:textStyle=&quot;bold&quot;</div><div class="line">            android:text=&quot;自定义标题&quot;</div><div class="line">            android:textSize=&quot;30dp&quot; /&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;/android.support.v7.widget.Toolbar&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>在 Activity 中设置  toolbar.setTitle(“”);</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    Toolbar toolbar;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main2);</div><div class="line"></div><div class="line">        toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line"></div><div class="line">        toolbar.setTitle(&quot;&quot;);</div><div class="line"></div><div class="line">        setSupportActionBar(toolbar);</div><div class="line">        toolbar.setNavigationIcon(R.drawable.back6);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>效果如下：</li>
+</ul>
+<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/31975897-file_1492673712038_11b3f.png" alt="image"></p>
+<h5 id="3-左侧显示-menu-菜单"><a href="#3-左侧显示-menu-菜单" class="headerlink" title="3. 左侧显示 menu 菜单"></a>3. 左侧显示 menu 菜单</h5><p>左侧显示 menu 主要是使用 android.support.v7.widget.ActionMenuView</p>
+<ul>
+<li>第一步：布局文件设置如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout</div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;!--android:paddingTop=&quot;25dp&quot; 是状态栏的高度，--&gt;</div><div class="line">    &lt;android.support.v7.widget.Toolbar</div><div class="line">        android:id=&quot;@+id/toolbar&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:background=&quot;@color/colorPrimaryDark&quot;</div><div class="line">        android:minHeight=&quot;?attr/actionBarSize&quot;</div><div class="line">        android:paddingTop=&quot;25dp&quot;</div><div class="line">        android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</div><div class="line">        app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;&gt;</div><div class="line">        &lt;!--加入 ActionMenuView--&gt;</div><div class="line">        &lt;android.support.v7.widget.ActionMenuView</div><div class="line">            android:id=&quot;@+id/action_menu_view&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;match_parent&quot; /&gt;</div><div class="line">        &lt;!--自定义控件--&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/toolbar_title&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_centerInParent=&quot;true&quot;</div><div class="line">            android:layout_gravity=&quot;center&quot;</div><div class="line">            android:gravity=&quot;center&quot;</div><div class="line">            android:textStyle=&quot;bold&quot;</div><div class="line">            android:text=&quot;自定义标题&quot;</div><div class="line">            android:textSize=&quot;20dp&quot; /&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;/android.support.v7.widget.Toolbar&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>第二步：在 menu 菜单中 创建一个文件用于填充左侧 menu ，命名为：toolbar_left_menu.xml</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;</div><div class="line"></div><div class="line">    &lt;item</div><div class="line">        android:id=&quot;@+id/left_text_btn&quot;</div><div class="line">        android:title=&quot;&quot;</div><div class="line">        app:actionLayout=&quot;@layout/menu_left_text&quot;</div><div class="line">        app:showAsAction=&quot;always&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/menu&gt;</div></pre></td></tr></table></figure>
+<p>其中，app:actionLayout 属性表示新建一个 style 布局，填充这个 item ，主要作用是设置这个 item 的个性， @layout/menu_left_text 如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout </div><div class="line">    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot; </div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line"></div><div class="line">    &lt;TextView</div><div class="line">        android:id=&quot;@+id/textview&quot;</div><div class="line">        android:text=&quot;关闭&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:textSize=&quot;20dp&quot;</div><div class="line">        android:textColor=&quot;@color/colorAccent&quot;</div><div class="line"></div><div class="line">        /&gt;</div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>第三步，Activity 中的操作：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    Toolbar toolbar;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main2);</div><div class="line"></div><div class="line">        toolbar = (Toolbar) findViewById(R.id.toolbar);</div><div class="line">        </div><div class="line">        ActionMenuView actionMenuView = (ActionMenuView) toolbar.findViewById(R.id.action_menu_view);</div><div class="line">        //填充 menu 布局</div><div class="line">        getMenuInflater().inflate(R.menu.toolbar_left_menu, actionMenuView.getMenu());</div><div class="line">        //设置 item 的点击事件(没有填充布局的 item )</div><div class="line">        actionMenuView.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public boolean onMenuItemClick(MenuItem item) &#123;</div><div class="line">//                Toast.makeText(getApplicationContext(),&quot;关闭&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">                return true;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        // 找到 id 找到对应的 item</div><div class="line">        MenuItem menuItem = actionMenuView.getMenu().findItem(R.id.left_text_btn);</div><div class="line">        //设置 对应 item 填充布局的点击事件</div><div class="line">        menuItem.getActionView().setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                Toast.makeText(getApplicationContext(),&quot;关闭&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        toolbar.setTitle(&quot;&quot;);</div><div class="line"></div><div class="line">        setSupportActionBar(toolbar);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>运行效果如下所示：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/11936790-file_1492677990729_721c.png" alt="image"></li>
+</ul>
+<p>点击关闭按钮会响应对应的 toast</p>
+<h5 id="4-Toolbar-之状态栏适配方案"><a href="#4-Toolbar-之状态栏适配方案" class="headerlink" title="4. Toolbar 之状态栏适配方案"></a>4. Toolbar 之状态栏适配方案</h5><p><strong>详情参考：</strong><a href="http://stormzhang.com/android/2015/08/16/boohee-toolbar/" target="_blank" rel="external">帅比张</a></p>
+<ul>
+<li>Android 5.0 之前的版本，状态栏是黑色的，之后的状态栏是半透明的</li>
+</ul>
+<h6 id="1-在使用的主题文件下添加如下代码：-要求-API-大于等于-19"><a href="#1-在使用的主题文件下添加如下代码：-要求-API-大于等于-19" class="headerlink" title="1. 在使用的主题文件下添加如下代码：(要求 API 大于等于 19)"></a>1. 在使用的主题文件下添加如下代码：(要求 API 大于等于 19)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!--设置状态栏为透明的--&gt;</div><div class="line">&lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</div></pre></td></tr></table></figure>
+<p>或者在 activity 中添加如下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//设置透明状态栏</div><div class="line">if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();</div><div class="line">localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>但是在代码里声明更有效！</p>
+<h6 id="2-在-Toolbar-中添加这么一条属性"><a href="#2-在-Toolbar-中添加这么一条属性" class="headerlink" title="2. 在 Toolbar 中添加这么一条属性"></a>2. 在 Toolbar 中添加这么一条属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//因为状态栏的高度是 25dp</div><div class="line">android:paddingTop=&quot;25dp&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>在 API 19 上显示为：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/23274216-file_1492679249926_1201.jpg" alt="image"></p>
+</li>
+<li><p>在 API 21 上显示为：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/11936790-file_1492677990729_721c.png" alt="image"></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Toolbar/" rel="tag"># Toolbar</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/19/Android事件分发机制解析/" rel="next" title="Android 事件分发机制解析">
+                <i class="fa fa-chevron-left"></i> Android 事件分发机制解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/20/Android之Toolbar汇总/"
+           data-title="Android 之 Toolbar 汇总" data-url="http://yoursite.com/2017/04/20/Android之Toolbar汇总/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/me1.png"
+               alt="珞神" />
+          <p class="site-author-name" itemprop="name">珞神</p>
+           
+              <p class="site-description motion-element" itemprop="description">记录自己メ帮助别人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">2.1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用"><span class="nav-number">2.2.</span> <span class="nav-text">二、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-新建一个项目，看-styles-xml"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">1. 新建一个项目，看 styles.xml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-修改主题"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">2. 修改主题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-首先要指定一个不带-ActionBar-的主题："><span class="nav-number">2.2.0.2.1.</span> <span class="nav-text">1.首先要指定一个不带 ActionBar 的主题：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-主题中各个属性的含义："><span class="nav-number">2.2.0.2.2.</span> <span class="nav-text">2. 主题中各个属性的含义：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-代码中简单使用"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">3. 代码中简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-在主-Activity-的布局文件中修改如下："><span class="nav-number">2.2.0.3.1.</span> <span class="nav-text">1. 在主 Activity 的布局文件中修改如下：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Acticity-中的代码如下："><span class="nav-number">2.2.0.3.2.</span> <span class="nav-text">2. Acticity 中的代码如下：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-实现效果与-ActionBar-一样，但是这是-toolbar"><span class="nav-number">2.2.0.3.3.</span> <span class="nav-text">3. 实现效果与 ActionBar 一样，但是这是 toolbar</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-添加标题、子标题、右侧-menu-、左侧导航栏图标、logo"><span class="nav-number">2.2.0.4.</span> <span class="nav-text">4. 添加标题、子标题、右侧 menu 、左侧导航栏图标、logo</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-添加标题、子标题、、左侧导航栏图标、logo"><span class="nav-number">2.2.0.4.1.</span> <span class="nav-text">1. 添加标题、子标题、、左侧导航栏图标、logo</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-设置右侧-menu-菜单"><span class="nav-number">2.2.0.4.2.</span> <span class="nav-text">2. 设置右侧 menu 菜单</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、扩展"><span class="nav-number">2.3.</span> <span class="nav-text">三、扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-最后侧的按钮点击之后显示出来的-item-，将其放在-toolbar-下方"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">1. 最后侧的按钮点击之后显示出来的 item ，将其放在 toolbar 下方</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-标题居中样式："><span class="nav-number">2.3.0.2.</span> <span class="nav-text">2. 标题居中样式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-左侧显示-menu-菜单"><span class="nav-number">2.3.0.3.</span> <span class="nav-text">3. 左侧显示 menu 菜单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-Toolbar-之状态栏适配方案"><span class="nav-number">2.3.0.4.</span> <span class="nav-text">4. Toolbar 之状态栏适配方案</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-在使用的主题文件下添加如下代码：-要求-API-大于等于-19"><span class="nav-number">2.3.0.4.1.</span> <span class="nav-text">1. 在使用的主题文件下添加如下代码：(要求 API 大于等于 19)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-在-Toolbar-中添加这么一条属性"><span class="nav-number">2.3.0.4.2.</span> <span class="nav-text">2. 在 Toolbar 中添加这么一条属性</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  1991 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">珞神</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 访问人数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ADsuper"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("lqjNsN3f9ORzUzm8S6E0bUDa-gzGzoHsz", "ctllhdLexKqeXmRuxqhL9U85");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
