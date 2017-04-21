@@ -102,7 +102,7 @@
 <meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/11936790-file_1492677990729_721c.png">
 <meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/23274216-file_1492679249926_1201.jpg">
 <meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-20/11936790-file_1492677990729_721c.png">
-<meta property="og:updated_time" content="2017-04-20T09:25:57.122Z">
+<meta property="og:updated_time" content="2017-04-21T15:24:11.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 之 Toolbar 汇总">
 <meta name="twitter:description" content="前言本篇文章，尽可能地总结 Toolbar 的知识点和用法，肯定没有概括完，会不断地查漏补缺。">
@@ -542,7 +542,7 @@
 <p>或者在 activity 中添加如下代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//设置透明状态栏</div><div class="line">if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();</div><div class="line">localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
 <p>但是在代码里声明更有效！</p>
-<h6 id="2-在-Toolbar-中添加这么一条属性"><a href="#2-在-Toolbar-中添加这么一条属性" class="headerlink" title="2. 在 Toolbar 中添加这么一条属性"></a>2. 在 Toolbar 中添加这么一条属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//因为状态栏的高度是 25dp</div><div class="line">android:paddingTop=&quot;25dp&quot;</div></pre></td></tr></table></figure>
+<h6 id="2-在-Toolbar-中添加这么一条属性"><a href="#2-在-Toolbar-中添加这么一条属性" class="headerlink" title="2. 在 Toolbar 中添加这么一条属性"></a>2. 在 Toolbar 中添加这么一条属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//因为状态栏的高度是 25dp</div><div class="line">android:paddingTop=&quot;25dp&quot;</div><div class="line"></div><div class="line">// 但是在 Toolbar 配合 Drawerlayout 嵌套 NavigationView 使用的时候，会出现问题，改为   </div><div class="line"></div><div class="line">android:fitsSystemWindows=&quot;true&quot;</div></pre></td></tr></table></figure>
 <ul>
 <li><p>在 API 19 上显示为：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-20/23274216-file_1492679249926_1201.jpg" alt="image"></p>
 </li>
