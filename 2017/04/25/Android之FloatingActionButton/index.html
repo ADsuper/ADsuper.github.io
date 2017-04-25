@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Handler," />
+  <meta name="keywords" content="FloatingActionButton," />
 
 
 
@@ -87,16 +87,22 @@
 
 
 
-<meta name="description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
+<meta name="description" content="一、简介
+FloatingActionButton 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下，可以帮助我们轻松的实现悬浮按钮的效果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android中的消息机制--Handler">
-<meta property="og:url" content="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/index.html">
+<meta property="og:title" content="Android 之 FloatingActionButton">
+<meta property="og:url" content="http://yoursite.com/2017/04/25/Android之FloatingActionButton/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
-<meta property="og:updated_time" content="2017-04-19T03:25:54.429Z">
+<meta property="og:description" content="一、简介
+FloatingActionButton 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下，可以帮助我们轻松的实现悬浮按钮的效果。">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/34393411-file_1493091362518_ad56.png">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/48343383-file_1493092237161_cd13.jpg">
+<meta property="og:updated_time" content="2017-04-25T08:33:12.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android中的消息机制--Handler">
-<meta name="twitter:description" content="前言网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！">
+<meta name="twitter:title" content="Android 之 FloatingActionButton">
+<meta name="twitter:description" content="一、简介
+FloatingActionButton 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下，可以帮助我们轻松的实现悬浮按钮的效果。">
+<meta name="twitter:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/34393411-file_1493091362518_ad56.png">
 
 
 
@@ -124,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/25/Android之FloatingActionButton/"/>
 
 
 
 
 
-  <title> Android中的消息机制--Handler | 珞璃之神 </title>
+  <title> Android 之 FloatingActionButton | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +309,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/Android之FloatingActionButton/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -324,7 +330,7 @@
             
             
               
-                Android中的消息机制--Handler
+                Android 之 FloatingActionButton
               
             
           </h1>
@@ -339,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-24T14:34:43+08:00">
-                2017-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T16:31:07+08:00">
+                2017-04-25
               </time>
             
 
@@ -362,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Meterial-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Meterial Design</span>
                   </a>
                 </span>
 
@@ -380,8 +386,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/24/Android中的消息机制-Handler/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/24/Android中的消息机制-Handler/" itemprop="commentCount"></span>
+                <a href="/2017/04/25/Android之FloatingActionButton/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/25/Android之FloatingActionButton/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +395,7 @@
 
           
           
-             <span id="/2017/03/24/Android中的消息机制-Handler/" class="leancloud_visitors" data-flag-title="Android中的消息机制--Handler">
+             <span id="/2017/04/25/Android之FloatingActionButton/" class="leancloud_visitors" data-flag-title="Android 之 FloatingActionButton">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,45 +429,46 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>网上关于Handler机制运行原理的文章已经很多，但毕竟不是自己的，也不一定适合自己的阅读习惯！</strong></p>
-<hr>
+        <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><ul>
+<li>FloatingActionButton 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下，可以帮助我们轻松的实现悬浮按钮的效果。</li>
+</ul>
 <a id="more"></a>
-<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p> <strong>Android 的消息机制主要是指 Handler 的运行机制， Handler 的运行需要底层的 MessageQueue 和 Looper 支撑，这三者实际上是一个整体 ( 配套使用 ) ，只不过我们在开发过程中比较多的接触到 Handler 而已。</strong>  </p>
-<p> <strong>说到 Handler ，很多人都知道是为了更新 UI ，这不错，但这只是 Handler 的一个应用场景而已。</strong></p>
-<p><strong>Handler 出现的原因，我想是因为不能在主线程中做耗时操作，一旦耗时操作超过 5s 就会出现 ANR 异常，下面代码是 Handler 的最常用用法:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    private Handler myHandler = new Handler()&#123;</div><div class="line">        @Override</div><div class="line">        public void handleMessage(Message msg) &#123;</div><div class="line">            super.handleMessage(msg);</div><div class="line"></div><div class="line">            //主线程中处理发送过来的message</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        //子线程中发送Handler消息</div><div class="line">        new Thread()&#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                Message msg = new Message();</div><div class="line">                msg.what = 1;</div><div class="line">                myHandler.sendMessage(msg);</div><div class="line">            &#125;</div><div class="line">        &#125;.start();</div><div class="line">      </div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<p>线程中默认是没有 Looper的，如果想要使用 Handler 就必须为线程创建 Looper ，否则会报错，Looper 是运行在 Handler 所在的线程中的。</p>
-<p>主线程比较特殊，它在创建的时候就会初始化 Looper，会调用 Looper.prepaerMainLooper() 来创建主线程的 looper 以及 MessageQueue ，也就是说，在主线程中默认可以使用 Handler 。</p>
-<p><strong>大致的原理：</strong></p>
-<p>Handler 通过 send 或 post 的 一系列方法发送 message 到 MessageQueue 。</p>
-<p>MessageQueue 翻译过来叫做消息队列，内部存储 Handler 发送过来的一系列消息，仅仅能存储消息，数据存储结构为单链表。</p>
-<p>Looper 会以无限循环的方式从 MessageQueue 中查找是否有新消息，如果有就处理消息，否则就一直等待着。</p>
-<h3 id="二、详细分析"><a href="#二、详细分析" class="headerlink" title="二、详细分析"></a>二、详细分析</h3><p><strong>主要介绍下 ThreadLocal 、 Handler 、 MessageQueue 、Looper</strong></p>
-<h4 id="1-ThreadLocal"><a href="#1-ThreadLocal" class="headerlink" title="1. ThreadLocal"></a>1. ThreadLocal</h4><p>ThreadLocal 是一个线程内部的数据存储类，通过它可以在指定的线程中存储数据，数据存储以后，只能在指定线程中才可以获取到存储的数据。</p>
-<p>介绍 ThreadLocal 是因为不同线程的 Handler 获取对应 Looper 采用的就是这个原理。</p>
-<p><strong>举个例子：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    //ThreadLocal 对象，存储的是 boolean 值</div><div class="line">    private ThreadLocal&lt;Boolean&gt; mBooleanThreadLocal = new ThreadLocal&lt;&gt;();</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        mBooleanThreadLocal.set(true);</div><div class="line">        Log.i(&quot;Thread---Main:&quot;,mBooleanThreadLocal.get()+&quot;&quot;);</div><div class="line"></div><div class="line">        new Thread(&quot;Thread---1&quot;)&#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                mBooleanThreadLocal.set(false);</div><div class="line">                Log.i(&quot;Thread---1:&quot;,mBooleanThreadLocal.get()+&quot;&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;.start();</div><div class="line">        </div><div class="line">        new Thread(&quot;Thread---2&quot;)&#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line">                Log.i(&quot;Thread---2:&quot;,mBooleanThreadLocal.get()+&quot;&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;.start();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>代码中，在主线程中设置 mBooleanThreadLocal 为 true ，在 Thread—1 中设置 mBooleanThreadLocal 为 false ，在 Thread—2 中没有设置， mBooleanThreadLocal 通过 set() 和 get() 方法进行数据的设置和取出操作。 </p>
-<p>打印出来的结果为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">12945-12945/? I/Thread---Main:: true</div><div class="line">12945-12959/? I/Thread---1:: false</div><div class="line">12945-12960/? I/Thread---2:: null</div></pre></td></tr></table></figure>
-<p>从上边的日志可以看出，在不同线程中访问同一个 ThreadLocal 对象，<br>获得的值却是不一样的，原因就是：ThreadLocal 内部会从各自的线程中取出一个数组，<br>然后再从数组中根据当前 ThreadLocal 的索引去查找对应的 value 值，而不同线程中的数组是不同的，<br>所以取出的值也不一样。</p>
-<h4 id="2-MessageQueue"><a href="#2-MessageQueue" class="headerlink" title="2. MessageQueue"></a>2. MessageQueue</h4><p>翻译过来为消息队列，其主要包含两个操作：插入和读取，分别对应 MessageQueue 的两个方法 enqueueMessage() 和 next() ，另外，读取过的消息会删除掉！</p>
-<h4 id="3-Looper"><a href="#3-Looper" class="headerlink" title="3. Looper"></a>3. Looper</h4><p>Looper 会不停的从 MessageQueue 中查看是否有新消息，有就立刻处理，否则就一直阻塞，在 Looper 的构造方法中会创建一个 MessageQueue 对象，再次印证了那四个字—配套使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private Looper(boolean quitAllowed) &#123;</div><div class="line">       mQueue = new MessageQueue(quitAllowed);</div><div class="line">       mThread = Thread.currentThread();</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>除了主线程之外，在其他线程中如何创建 Looper 对象，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">new Thread(&quot;Thread---1&quot;)&#123;</div><div class="line">           @Override</div><div class="line">           public void run() &#123;</div><div class="line"></div><div class="line">               //创建 Looper 对象</div><div class="line">               Looper.prepare();</div><div class="line"></div><div class="line">               Message msg = new Message();</div><div class="line">               msg.what = 1;</div><div class="line">               myHandler.sendMessage(msg);</div><div class="line">               //开启消息循环</div><div class="line">               Looper.loop();</div><div class="line">           &#125;</div><div class="line">       &#125;.start();</div></pre></td></tr></table></figure>
-<p><strong>获取主线程 Looper</strong>， 通过方法：Looper.getMainLooper();</p>
-<p><strong>Looper 退出</strong>，有两个方法，Looper 的 quit() 和 quitSafely() ，其内部还是让 MessageQueue 的 next 方法返回 null ， next 方法返回 null 是唯一的退出方式 ，建议不需要的时候终止 Looper。</p>
-<p>quit() 是直接退出 Looper 。</p>
-<p>quitSafely() 是把已有的消息处理完之后才安全退出。</p>
-<h4 id="4-Handler"><a href="#4-Handler" class="headerlink" title="4. Handler"></a>4. Handler</h4><p><strong>handler 的工作主要是发送和接收消息的过程</strong></p>
-<p>发送消息是通过一系列的 send 和 post 方法来发送的，而 post 的一系列方法最终还是通过 send 实现的，发送一条消息的过程如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public final boolean sendMessage(Message msg)</div><div class="line">    &#123;</div><div class="line">        return sendMessageDelayed(msg, 0);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">public final boolean sendMessageDelayed(Message msg, long delayMillis)</div><div class="line">    &#123;</div><div class="line">        if (delayMillis &lt; 0) &#123;</div><div class="line">            delayMillis = 0;</div><div class="line">        &#125;</div><div class="line">        return sendMessageAtTime(msg, SystemClock.uptimeMillis() + delayMillis);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">public boolean sendMessageAtTime(Message msg, long uptimeMillis) &#123;</div><div class="line">        MessageQueue queue = mQueue;</div><div class="line">        if (queue == null) &#123;</div><div class="line">            RuntimeException e = new RuntimeException(</div><div class="line">                    this + &quot; sendMessageAtTime() called with no mQueue&quot;);</div><div class="line">            Log.w(&quot;Looper&quot;, e.getMessage(), e);</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">        return enqueueMessage(queue, msg, uptimeMillis);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) &#123;</div><div class="line">        msg.target = this;</div><div class="line">        if (mAsynchronous) &#123;</div><div class="line">            msg.setAsynchronous(true);</div><div class="line">        &#125;</div><div class="line">        return queue.enqueueMessage(msg, uptimeMillis);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><strong>从上边可以发现，Handler 发送消息，实际上只是在消息队列中插入了一条消息。</strong></p>
-<p>MessageQueue 的 next 方法会将这条消息返回给 Looper ，最终这条消息由 Looper 交给 Handler 的 dispatchMessage 方法处理，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void dispatchMessage(Message msg) &#123;</div><div class="line">    if (msg.callback != null) &#123;</div><div class="line">        handleCallback(msg);</div><div class="line">    &#125; else &#123;</div><div class="line">        if (mCallback != null) &#123;</div><div class="line">            if (mCallback.handleMessage(msg)) &#123;</div><div class="line">                return;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        handleMessage(msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后，调用 Handler 的 handlerMessage 方法来处理消息。</p>
+<ul>
+<li>我们看一下这个控件的继承关系，这家伙实际上是一个 ImageButton<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-25/34393411-file_1493091362518_ad56.png" alt="image"></li>
+</ul>
+<h4 id="二、简单使用"><a href="#二、简单使用" class="headerlink" title="二、简单使用"></a>二、简单使用</h4><h5 id="2-1-要先在-app-的-build-gradle-中添加依赖"><a href="#2-1-要先在-app-的-build-gradle-中添加依赖" class="headerlink" title="2.1 要先在 app 的 build.gradle 中添加依赖"></a>2.1 要先在 app 的 build.gradle 中添加依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//个人认为与 V7 包的版本一致最好</div><div class="line"> compile &apos;com.android.support:design:25.3.1&apos;</div></pre></td></tr></table></figure>
+<h5 id="2-2-xml-文件如下"><a href="#2-2-xml-文件如下" class="headerlink" title="2.2 xml 文件如下"></a>2.2 xml 文件如下</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    xmlns:fresco=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;FrameLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line"></div><div class="line">        &lt;android.support.v7.widget.Toolbar</div><div class="line">            android:id=&quot;@+id/toolbar&quot;</div><div class="line">            android:layout_width=&quot;match_parent&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:background=&quot;@color/colorPrimaryDark&quot;</div><div class="line">            android:fitsSystemWindows=&quot;true&quot;</div><div class="line">            android:minHeight=&quot;?attr/actionBarSize&quot;</div><div class="line">            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</div><div class="line">            app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;&gt;</div><div class="line"></div><div class="line">            &lt;!--自定义控件--&gt;</div><div class="line">            &lt;TextView</div><div class="line">                android:id=&quot;@+id/toolbar_title&quot;</div><div class="line">                android:layout_width=&quot;wrap_content&quot;</div><div class="line">                android:layout_height=&quot;wrap_content&quot;</div><div class="line">                android:layout_centerInParent=&quot;true&quot;</div><div class="line">                android:layout_gravity=&quot;center&quot;</div><div class="line">                android:gravity=&quot;center&quot;</div><div class="line">                android:text=&quot;FloatingActionButton&quot;</div><div class="line">                android:textSize=&quot;20dp&quot;</div><div class="line">                android:textStyle=&quot;bold&quot; /&gt;</div><div class="line"></div><div class="line">        &lt;/android.support.v7.widget.Toolbar&gt;</div><div class="line"></div><div class="line">        &lt;android.support.design.widget.FloatingActionButton</div><div class="line">            android:id=&quot;@+id/floating&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_gravity=&quot;bottom|end&quot;</div><div class="line">            android:layout_margin=&quot;16dp&quot;</div><div class="line">            android:src=&quot;@drawable/floating_icon&quot;</div><div class="line">            /&gt;</div><div class="line"></div><div class="line">    &lt;/FrameLayout&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>上边的代码中我们指定了 FloatingActionButton 的位置为： bottom|end ，边界为：16dp ，并且设置了要显示的图片</li>
+</ul>
+<h5 id="2-3-设置完-xml-文件之后直接运行，效果如下："><a href="#2-3-设置完-xml-文件之后直接运行，效果如下：" class="headerlink" title="2.3 设置完 xml 文件之后直接运行，效果如下："></a>2.3 设置完 xml 文件之后直接运行，效果如下：</h5><p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-25/48343383-file_1493092237161_cd13.jpg" alt="image"></p>
+<ul>
+<li>图片是自己找的，会发现默认的颜色就是粉色，即 styles.xml 中的颜色：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>大小我也没有设置，默认大小就是这么大。</li>
+</ul>
+<h5 id="2-4-FloatingActionButton-在-xml-中的其他常用属性"><a href="#2-4-FloatingActionButton-在-xml-中的其他常用属性" class="headerlink" title="2.4 FloatingActionButton 在 xml 中的其他常用属性"></a>2.4 FloatingActionButton 在 xml 中的其他常用属性</h5><ul>
+<li><p>修改背景色： app:backgroundTint=”@color/colorPrimaryDark”</p>
+</li>
+<li><p>修改按钮未按下时悬浮高度（阴影）：app:elevation=”10dp”，默认是6dp</p>
+</li>
+<li><p>设置按钮按下时的悬浮高度：app:pressedTranslationZ=”10dp” 默认是12dp</p>
+</li>
+<li><p>显示的图片：android:src=”@drawable/floating_icon”</p>
+</li>
+<li><p>修改显示大小：app:fabSize=”normal”  normal和auto显示一样，mini，显示小</p>
+</li>
+<li><p>设置钮点击之后显示的颜色： app:rippleColor=”@color/colorAccent”</p>
+</li>
+<li><p>设置按钮边框宽度，有种立体的效果：app:borderWidth=”5dp”</p>
+</li>
+</ul>
+<h5 id="2-5-FloatingActionButton-的隐藏与显示"><a href="#2-5-FloatingActionButton-的隐藏与显示" class="headerlink" title="2.5 FloatingActionButton 的隐藏与显示"></a>2.5 FloatingActionButton 的隐藏与显示</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//默认有动画效果</div><div class="line">floating.show(); 显示</div><div class="line">floating.hide(); 隐藏</div></pre></td></tr></table></figure>
+<h5 id="2-6-FloatingActionButton-的点击事件"><a href="#2-6-FloatingActionButton-的点击事件" class="headerlink" title="2.6 FloatingActionButton 的点击事件"></a>2.6 FloatingActionButton 的点击事件</h5><ul>
+<li>它的点击事件与 ImageView 设置点击事件的方式一样，这一点由继承关系可以看出</li>
+</ul>
 
       
     </div>
@@ -491,7 +498,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Handler/" rel="tag"># Handler</a>
+            <a href="/tags/FloatingActionButton/" rel="tag"># FloatingActionButton</a>
           
         </div>
       
@@ -504,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/23/android6-0运行时权限插件版/" rel="next" title="android6.0运行时权限插件版">
-                <i class="fa fa-chevron-left"></i> android6.0运行时权限插件版
+              <a href="/2017/04/24/Fragment与Activity通信/" rel="next" title="Fragment 与 Activity 通信">
+                <i class="fa fa-chevron-left"></i> Fragment 与 Activity 通信
               </a>
             
           </div>
@@ -514,8 +521,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/27/AndroidStudio中使用butterknife/" rel="prev" title="AndroidStudio中使用butterknife">
-                AndroidStudio中使用butterknife <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/25/Android之Snackbar/" rel="prev" title="Android 之 Snackbar">
+                Android 之 Snackbar <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,8 +572,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/24/Android中的消息机制-Handler/"
-           data-title="Android中的消息机制--Handler" data-url="http://yoursite.com/2017/03/24/Android中的消息机制-Handler/">
+      <div class="ds-thread" data-thread-key="2017/04/25/Android之FloatingActionButton/"
+           data-title="Android 之 FloatingActionButton" data-url="http://yoursite.com/2017/04/25/Android之FloatingActionButton/">
       </div>
     
   </div>
@@ -672,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">2.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、详细分析"><span class="nav-number">3.</span> <span class="nav-text">二、详细分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ThreadLocal"><span class="nav-number">3.1.</span> <span class="nav-text">1. ThreadLocal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-MessageQueue"><span class="nav-number">3.2.</span> <span class="nav-text">2. MessageQueue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Looper"><span class="nav-number">3.3.</span> <span class="nav-text">3. Looper</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Handler"><span class="nav-number">3.4.</span> <span class="nav-text">4. Handler</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、简介"><span class="nav-number">1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、简单使用"><span class="nav-number">2.</span> <span class="nav-text">二、简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-要先在-app-的-build-gradle-中添加依赖"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 要先在 app 的 build.gradle 中添加依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-xml-文件如下"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 xml 文件如下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-设置完-xml-文件之后直接运行，效果如下："><span class="nav-number">2.3.</span> <span class="nav-text">2.3 设置完 xml 文件之后直接运行，效果如下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-FloatingActionButton-在-xml-中的其他常用属性"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 FloatingActionButton 在 xml 中的其他常用属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-FloatingActionButton-的隐藏与显示"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 FloatingActionButton 的隐藏与显示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-6-FloatingActionButton-的点击事件"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 FloatingActionButton 的点击事件</span></a></li></ol></li></ol></div>
             
 
           </div>
