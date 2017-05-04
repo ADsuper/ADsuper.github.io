@@ -427,15 +427,12 @@
             <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><ul>
 <li>CardView 是卡片式布局的控件，继承自 FrameLayout ，不过提供了一些属性，如圆角、阴影效果等，使其具有立体感，有种卡片的感觉。</li>
 </ul>
-<!--more->
-
-
-#### 二、使用
-
-- 使用比较简单，可以当成 FrameLayout 使用，不过需要添加一些立体感的属性
-
-- 需要添加依赖：
-
+<h4 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h4><ul>
+<li><p>使用比较简单，可以当成 FrameLayout 使用，不过需要添加一些立体感的属性</p>
+</li>
+<li><p>需要添加依赖：</p>
+</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//版本与 V7 包一致</div><div class="line">compile &apos;com.android.support:cardview-v7:25.3.1&apos;</div></pre></td></tr></table></figure>
 <h5 id="2-1-在-xml-中简单使用如下所示："><a href="#2-1-在-xml-中简单使用如下所示：" class="headerlink" title="2.1 在 xml 中简单使用如下所示："></a>2.1 在 xml 中简单使用如下所示：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;android.support.v7.widget.CardView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    </div><div class="line">    app:cardBackgroundColor=&quot;@color/colorAccent&quot;</div><div class="line">    app:cardCornerRadius=&quot;5dp&quot;</div><div class="line">    app:cardElevation=&quot;10dp&quot;&gt;</div><div class="line"></div><div class="line">    &lt;RelativeLayout</div><div class="line"></div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">        &lt;ImageView</div><div class="line">            android:id=&quot;@+id/card_image&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_marginLeft=&quot;20dp&quot;</div><div class="line">            android:src=&quot;@mipmap/ic_launcher&quot; /&gt;</div><div class="line"></div><div class="line"></div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/card_text&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_centerInParent=&quot;true&quot;</div><div class="line">            android:layout_marginLeft=&quot;50dp&quot;</div><div class="line">            android:layout_toRightOf=&quot;@id/card_image&quot;</div><div class="line">            android:text=&quot;珞神&quot;</div><div class="line">            android:textColor=&quot;#fff&quot;</div><div class="line">            android:textSize=&quot;30dp&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;/RelativeLayout&gt;</div><div class="line"></div><div class="line">&lt;/android.support.v7.widget.CardView&gt;</div></pre></td></tr></table></figure>
 <ul>
@@ -493,7 +490,7 @@
 <ul>
 <li>不过在 5.0 以上显示效果正常，在 5.0 以下显示为 灰色阴影加深或其他的效果。</li>
 </ul>
--->
+
           
         
       
