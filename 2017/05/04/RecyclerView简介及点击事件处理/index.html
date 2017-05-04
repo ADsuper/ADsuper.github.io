@@ -1,0 +1,1114 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="RecyclerView," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、简介：
+RecyclerView 是 Android5.0 之后新出的控件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RecyclerView 简介及点击事件处理">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/RecyclerView简介及点击事件处理/index.html">
+<meta property="og:site_name" content="珞璃之神">
+<meta property="og:description" content="一、简介：
+RecyclerView 是 Android5.0 之后新出的控件。">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-27/63750776-file_1493290471668_d2f9.jpg">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-27/58586950-file_1493290568942_5153.jpg">
+<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-27/67432054-file_1493290705234_16c33.jpg">
+<meta property="og:updated_time" content="2017-05-04T01:55:10.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RecyclerView 简介及点击事件处理">
+<meta name="twitter:description" content="一、简介：
+RecyclerView 是 Android5.0 之后新出的控件。">
+<meta name="twitter:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-27/63750776-file_1493290471668_d2f9.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/RecyclerView简介及点击事件处理/"/>
+
+
+
+
+
+  <title> RecyclerView 简介及点击事件处理 | 珞璃之神 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38e24263d6aea09127573aefd6aa53d0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">珞璃之神</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/RecyclerView简介及点击事件处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="珞神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="珞璃之神">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RecyclerView 简介及点击事件处理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T09:53:48+08:00">
+                2017-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Meterial-Design/" itemprop="url" rel="index">
+                    <span itemprop="name">Meterial Design</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/04/RecyclerView简介及点击事件处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/04/RecyclerView简介及点击事件处理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/04/RecyclerView简介及点击事件处理/" class="leancloud_visitors" data-flag-title="RecyclerView 简介及点击事件处理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一、简介："><a href="#一、简介：" class="headerlink" title="一、简介："></a>一、简介：</h4><ul>
+<li>RecyclerView 是 Android5.0 之后新出的控件。</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>RecyclerView 是 ListView 的增强版，不仅能实现 ListView 的效果，还优化了 ListView 的很多不足之处。</p>
+</li>
+<li><p>想对于 ListView 来说，官方更推荐使用 RecyclerView</p>
+</li>
+</ul>
+<h4 id="二、使用-RecyclerView"><a href="#二、使用-RecyclerView" class="headerlink" title="二、使用 RecyclerView"></a>二、使用 RecyclerView</h4><ul>
+<li>演示思路：布局 RecyclerView ，CardView 充当其 Item ！</li>
+</ul>
+<h5 id="2-1-app-的-build-gradle-中添加依赖"><a href="#2-1-app-的-build-gradle-中添加依赖" class="headerlink" title="2.1 app 的 build.gradle 中添加依赖"></a>2.1 app 的 build.gradle 中添加依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// cardview 是因为这个 Demo 也要用到 cardview</div><div class="line">compile &apos;com.android.support:cardview-v7:25.3.1&apos;</div><div class="line">compile &apos;com.android.support:recyclerview-v7:25.3.1&apos;</div></pre></td></tr></table></figure>
+<h5 id="2-2-主页面布局文件"><a href="#2-2-主页面布局文件" class="headerlink" title="2.2 主页面布局文件"></a>2.2 主页面布局文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    xmlns:fresco=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line"></div><div class="line">    &lt;!--标题栏--&gt;</div><div class="line">    &lt;android.support.v7.widget.Toolbar</div><div class="line">        android:id=&quot;@+id/toolbar&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:background=&quot;@color/colorPrimaryDark&quot;</div><div class="line">        android:fitsSystemWindows=&quot;true&quot;</div><div class="line">        android:minHeight=&quot;?attr/actionBarSize&quot;</div><div class="line">        android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;</div><div class="line">        app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;&gt;</div><div class="line"></div><div class="line">        &lt;!--自定义控件--&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/toolbar_title&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_centerInParent=&quot;true&quot;</div><div class="line">            android:layout_gravity=&quot;center&quot;</div><div class="line">            android:gravity=&quot;center&quot;</div><div class="line">            android:text=&quot;FloatingActionButton&quot;</div><div class="line">            android:textSize=&quot;20dp&quot;</div><div class="line">            android:textStyle=&quot;bold&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;/android.support.v7.widget.Toolbar&gt;</div><div class="line">    &lt;!--RecyclerView--&gt;</div><div class="line">    &lt;android.support.v7.widget.RecyclerView</div><div class="line">        android:layout_below=&quot;@id/toolbar&quot;</div><div class="line">        android:id=&quot;@+id/recycler_view&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;match_parent&quot;&gt;&lt;/android.support.v7.widget.RecyclerView&gt;</div><div class="line">    &lt;!--FloatingActionButton--&gt;</div><div class="line">    &lt;android.support.design.widget.CoordinatorLayout</div><div class="line">        android:layout_alignBottom=&quot;@id/recycler_view&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line"></div><div class="line">        &lt;android.support.design.widget.FloatingActionButton</div><div class="line">            android:id=&quot;@+id/floating&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_gravity=&quot;bottom|end&quot;</div><div class="line">            android:layout_margin=&quot;16dp&quot;</div><div class="line">            android:src=&quot;@drawable/floating_icon&quot;</div><div class="line">            app:fabSize=&quot;normal&quot;</div><div class="line">            app:pressedTranslationZ=&quot;10dp&quot;</div><div class="line">            app:rippleColor=&quot;@color/colorAccent&quot;</div><div class="line"></div><div class="line">            /&gt;</div><div class="line"></div><div class="line">    &lt;/android.support.design.widget.CoordinatorLayout&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure>
+<h5 id="2-3-Actiity-和-Adapter-的代码"><a href="#2-3-Actiity-和-Adapter-的代码" class="headerlink" title="2.3 Actiity 和 Adapter 的代码"></a>2.3 Actiity 和 Adapter 的代码</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class MyRecyclerViewActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    @BindView(R.id.floating)</div><div class="line">    FloatingActionButton floating;</div><div class="line">    @BindView(R.id.toolbar_title)</div><div class="line">    TextView toolbarTitle;</div><div class="line">    @BindView(R.id.toolbar)</div><div class="line">    Toolbar toolbar;</div><div class="line">    @BindView(R.id.recycler_view)</div><div class="line">    RecyclerView recyclerView;</div><div class="line">    private Snackbar snackbar;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_recycleview);</div><div class="line">        ButterKnife.bind(this);</div><div class="line"></div><div class="line">        //设置透明状态栏</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();</div><div class="line">            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);</div><div class="line">        &#125;</div><div class="line">        toolbar.setTitle(&quot;&quot;);</div><div class="line">        setSupportActionBar(toolbar);</div><div class="line">        toolbar.setNavigationIcon(R.drawable.setting);</div><div class="line"></div><div class="line">        initRecyclerViewData();</div><div class="line">        initRcyclerView();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private void initRcyclerView() &#123;</div><div class="line"></div><div class="line">        LinearLayoutManager manager = new LinearLayoutManager(this);</div><div class="line">//        GridLayoutManager manager = new GridLayoutManager(getApplicationContext(),2);</div><div class="line">//        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, OrientationHelper.HORIZONTAL);</div><div class="line">        recyclerView.setLayoutManager(manager);</div><div class="line">        myRecyclerAdapter = new MyRecyclerAdapter();</div><div class="line">        recyclerView.setAdapter(myRecyclerAdapter);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private List&lt;String&gt; listData;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 初始化 RecyclerView 的数据</div><div class="line">     */</div><div class="line">    private void initRecyclerViewData() &#123;</div><div class="line">        listData = new ArrayList&lt;&gt;();</div><div class="line">        int m = 0;</div><div class="line">        for (int i = 0; i &lt; 20; i++) &#123;</div><div class="line">            listData.add(&quot;珞璃之神&quot; + m);</div><div class="line">            m++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private MyRecyclerAdapter myRecyclerAdapter;</div><div class="line"></div><div class="line">    public class MyRecyclerAdapter extends RecyclerView.Adapter&lt;MyRecyclerAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_view, parent, false);</div><div class="line">//            View view = View.inflate(getApplicationContext(), R.layout.activity_card_view, parent);</div><div class="line">            ViewHolder viewHolder = new ViewHolder(view);</div><div class="line"></div><div class="line">            return viewHolder;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line">            holder.cardText.setText(listData.get(position));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        @Override</div><div class="line">        public int getItemCount() &#123;</div><div class="line">            return listData.size();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        public class ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line"></div><div class="line">            @BindView(R.id.card_text)</div><div class="line">            TextView cardText;</div><div class="line">            @BindView(R.id.card_image)</div><div class="line">            ImageView cardImage;</div><div class="line"></div><div class="line">            public ViewHolder(View itemView) &#123;</div><div class="line">                super(itemView);</div><div class="line">                ButterKnife.bind(this, itemView);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong> RecyclerView 的三种 manager ，分别为 线性、宫格、瀑布流样式。</p>
+<h5 id="2-4-RecyclerView-的-item-的样式为："><a href="#2-4-RecyclerView-的-item-的样式为：" class="headerlink" title="2.4 RecyclerView 的 item 的样式为："></a>2.4 RecyclerView 的 item 的样式为：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;android.support.v7.widget.CardView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line"></div><div class="line">    android:layout_marginBottom=&quot;@dimen/cardview_margin&quot;</div><div class="line">    android:layout_marginTop=&quot;@dimen/cardview_margin&quot;</div><div class="line">    android:layout_marginLeft=&quot;@dimen/cardview_margin_left_right&quot;</div><div class="line">    android:layout_marginRight=&quot;@dimen/cardview_margin_left_right&quot;</div><div class="line">    app:cardCornerRadius=&quot;5dp&quot;</div><div class="line"></div><div class="line">    android:foreground=&quot;?android:attr/selectableItemBackground&quot;</div><div class="line"></div><div class="line">    app:cardElevation=&quot;10dp&quot;&gt;</div><div class="line"></div><div class="line">    &lt;LinearLayout</div><div class="line">        android:orientation=&quot;vertical&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">        &lt;ImageView</div><div class="line">            android:layout_weight=&quot;5&quot;</div><div class="line">            android:id=&quot;@+id/card_image&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;0dp&quot;</div><div class="line">            android:scaleType=&quot;centerCrop&quot;</div><div class="line">            android:src=&quot;@drawable/cardview_icon&quot; /&gt;</div><div class="line"></div><div class="line"></div><div class="line">        &lt;TextView</div><div class="line">            android:layout_weight=&quot;1&quot;</div><div class="line">            android:id=&quot;@+id/card_text&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;0dp&quot;</div><div class="line">            android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">            android:layout_gravity=&quot;center_horizontal&quot;</div><div class="line">            android:layout_below=&quot;@id/card_image&quot;</div><div class="line">            android:text=&quot;珞神&quot;</div><div class="line">            android:textColor=&quot;#ba2f2f&quot;</div><div class="line">            android:textSize=&quot;30dp&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">&lt;/android.support.v7.widget.CardView&gt;</div></pre></td></tr></table></figure>
+<h5 id="2-5-运行结果如下："><a href="#2-5-运行结果如下：" class="headerlink" title="2.5 运行结果如下："></a>2.5 运行结果如下：</h5><ul>
+<li>LinearLayoutManager manager = new LinearLayoutManager(this); 结果：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-27/63750776-file_1493290471668_d2f9.jpg" alt="image"></li>
+<li>GridLayoutManager manager = new GridLayoutManager(getApplicationContext(),2);结果如下：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-27/58586950-file_1493290568942_5153.jpg" alt="image"></li>
+<li>StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, OrientationHelper.HORIZONTAL);结果如下：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-27/67432054-file_1493290705234_16c33.jpg" alt="image"></li>
+</ul>
+<h4 id="三、RecyclerView-添加条目点击事件"><a href="#三、RecyclerView-添加条目点击事件" class="headerlink" title="三、RecyclerView 添加条目点击事件"></a>三、RecyclerView 添加条目点击事件</h4><h5 id="3-1-RecyclerView-并没有对外暴露的具体的单击或长按监听事件，需要我们自己来处理单击或长按事件，如下所示："><a href="#3-1-RecyclerView-并没有对外暴露的具体的单击或长按监听事件，需要我们自己来处理单击或长按事件，如下所示：" class="headerlink" title="3.1 RecyclerView 并没有对外暴露的具体的单击或长按监听事件，需要我们自己来处理单击或长按事件，如下所示："></a>3.1 RecyclerView 并没有对外暴露的具体的单击或长按监听事件，需要我们自己来处理单击或长按事件，如下所示：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener()&#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onTouchEvent(RecyclerView rv, MotionEvent e) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>这种需要自己增加单击或长按事件的逻辑，然后利用接口回调出去。</p>
+</li>
+<li><p>Android 给我们提供了一个手势监测帮助类 GestureDetector ，我们可以借助这个类来处理不同的手势，我们重新建个类实现 RecyclerView.OnItemTouchListener 接口。代码如下：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> * 自定义手势监听</div><div class="line"> */</div><div class="line">public class RecyclerViewClickListener implements RecyclerView.OnItemTouchListener &#123;</div><div class="line"></div><div class="line">    // GestureDetectorCompat 是为了版本兼容</div><div class="line">    private GestureDetectorCompat mGestureDetector;</div><div class="line">    private OnItem2ClickListener mListener;</div><div class="line"></div><div class="line">    //自定义内部监听</div><div class="line">    public interface OnItem2ClickListener &#123;</div><div class="line">        //单击</div><div class="line">        void onItemClick(View view, int position);</div><div class="line"></div><div class="line">        //长按</div><div class="line">        void onItemLongClick(View view, int position);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public RecyclerViewClickListener(Context context, final RecyclerView mRecyclerView,</div><div class="line"></div><div class="line">                                     OnItem2ClickListener listener) &#123;</div><div class="line">        this.mListener = listener;</div><div class="line">        // SimpleOnGestureListener 是为了选择重写需要的方法</div><div class="line">        mGestureDetector = new GestureDetectorCompat(context, new GestureDetector.SimpleOnGestureListener() &#123;</div><div class="line">            //单击事件</div><div class="line">            @Override</div><div class="line">            public boolean onSingleTapUp(MotionEvent e) &#123;</div><div class="line">            Log.i(&quot;mGestureDetector&quot;,&quot;onSingleTapUp&quot;);</div><div class="line">                View childViewUnder = mRecyclerView.findChildViewUnder(e.getX(), e.getY());</div><div class="line">                if (childViewUnder != null &amp;&amp; mListener != null) &#123;</div><div class="line">                    mListener.onItemClick(childViewUnder, mRecyclerView.getChildLayoutPosition(childViewUnder));</div><div class="line">                    return true;</div><div class="line">                &#125;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            //长按事件</div><div class="line">            @Override</div><div class="line">            public void onLongPress(MotionEvent e) &#123;</div><div class="line">                Log.i(&quot;mGestureDetector&quot;,&quot;onLongPress&quot;);</div><div class="line">                View childView = mRecyclerView.findChildViewUnder(e.getX(),e.getY());</div><div class="line">                if(childView != null &amp;&amp; mListener != null)&#123;</div><div class="line">                    mListener.onItemLongClick(childView,mRecyclerView.getChildLayoutPosition(childView));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) &#123;</div><div class="line">        //是否拦截事件交给 mGestureDetector 处理</div><div class="line">        if(mGestureDetector.onTouchEvent(e))&#123;</div><div class="line">            return true;</div><div class="line">        &#125;else</div><div class="line">            return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onTouchEvent(RecyclerView rv, MotionEvent e) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>代码中只实现了，单击和长按事件的回调，更多的事件操作方法可以参考 GestureDetector 类。</li>
+</ul>
+<h5 id="3-2-另一种方式是在-Adapter-的-onBindViewHolder-方法中，利用-View-本身的监听事件，来设置回调监听，代码如下："><a href="#3-2-另一种方式是在-Adapter-的-onBindViewHolder-方法中，利用-View-本身的监听事件，来设置回调监听，代码如下：" class="headerlink" title="3.2 另一种方式是在 Adapter 的 onBindViewHolder 方法中，利用 View 本身的监听事件，来设置回调监听，代码如下："></a>3.2 另一种方式是在 Adapter 的 onBindViewHolder 方法中，利用 View 本身的监听事件，来设置回调监听，代码如下：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class MyRecyclerAdapter extends RecyclerView.Adapter&lt;MyRecyclerAdapter.ViewHolder&gt; &#123;</div><div class="line"></div><div class="line">    private List&lt;String&gt; listData;</div><div class="line"></div><div class="line">    public MyRecyclerAdapter(List&lt;String&gt; listData)&#123;</div><div class="line">        this.listData = listData;</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line"></div><div class="line">        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_card_view, parent, false);</div><div class="line">//            View view = View.inflate(getApplicationContext(), R.layout.activity_card_view, parent);</div><div class="line">        ViewHolder viewHolder = new ViewHolder(view);</div><div class="line"></div><div class="line">        return viewHolder;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 在 onBindViewHolder 中，设置单击和长按的监听回调</div><div class="line">     * @param holder</div><div class="line">     * @param position</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void onBindViewHolder(final ViewHolder holder, final int position) &#123;</div><div class="line">        holder.cardText.setText(listData.get(position));</div><div class="line">        //单击</div><div class="line">        holder.itemView.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                //触发自定义监听的单击事件</div><div class="line">                onItemClickListener.onItemClick(holder.itemView,position);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        //长按</div><div class="line">        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public boolean onLongClick(View v) &#123;</div><div class="line">                //触发自定义监听的长按事件</div><div class="line">                onItemClickListener.onItemLongClick(holder.itemView,position);</div><div class="line"></div><div class="line">                return  true;//表示此事件已经消费，不会触发单击事件</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getItemCount() &#123;</div><div class="line">        return listData.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public class ViewHolder extends RecyclerView.ViewHolder &#123;</div><div class="line"></div><div class="line">        @BindView(R.id.card_text)</div><div class="line">        TextView cardText;</div><div class="line">        @BindView(R.id.card_image)</div><div class="line">        ImageView cardImage;</div><div class="line"></div><div class="line">        public ViewHolder(View itemView) &#123;</div><div class="line">            super(itemView);</div><div class="line">            ButterKnife.bind(this, itemView);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public void setOnItemClickListener(MyRecyclerAdapter.OnItemClickListener onItemClickListener)&#123;</div><div class="line">        this.onItemClickListener = onItemClickListener;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private OnItemClickListener onItemClickListener;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 自定义监听回调，RecyclerView 的 单击和长按事件</div><div class="line">     */</div><div class="line">    public interface OnItemClickListener &#123;</div><div class="line">        void onItemClick(View view, int position);</div><div class="line">        void onItemLongClick(View view, int position);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="3-3-两种添加点击事件比较"><a href="#3-3-两种添加点击事件比较" class="headerlink" title="3.3 两种添加点击事件比较"></a>3.3 两种添加点击事件比较</h5><ul>
+<li><p>第一种方式更加灵活，解耦性更高，第二种因为设置在 Adapter 内，只能用作特定的 RecyclerView</p>
+</li>
+<li><p>第二种相对第一种来说，更加简便，实现起来也方便，也比较好理解。</p>
+</li>
+<li><p>第一种还能用于更加复杂的手势监听，我们可以利用 GestureDetector 类来实现更加复杂的事件监听回调，而第二种监听的事件比较有限。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RecyclerView/" rel="tag"># RecyclerView</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/04/CardView简介/" rel="next" title="CardView 简介">
+                <i class="fa fa-chevron-left"></i> CardView 简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/04/RecyclerView简介及点击事件处理/"
+           data-title="RecyclerView 简介及点击事件处理" data-url="http://yoursite.com/2017/05/04/RecyclerView简介及点击事件处理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/me1.png"
+               alt="珞神" />
+          <p class="site-author-name" itemprop="name">珞神</p>
+           
+              <p class="site-description motion-element" itemprop="description">记录自己メ帮助别人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、简介："><span class="nav-number">1.</span> <span class="nav-text">一、简介：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、使用-RecyclerView"><span class="nav-number">2.</span> <span class="nav-text">二、使用 RecyclerView</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-app-的-build-gradle-中添加依赖"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 app 的 build.gradle 中添加依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-主页面布局文件"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 主页面布局文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Actiity-和-Adapter-的代码"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Actiity 和 Adapter 的代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-RecyclerView-的-item-的样式为："><span class="nav-number">2.4.</span> <span class="nav-text">2.4 RecyclerView 的 item 的样式为：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-5-运行结果如下："><span class="nav-number">2.5.</span> <span class="nav-text">2.5 运行结果如下：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、RecyclerView-添加条目点击事件"><span class="nav-number">3.</span> <span class="nav-text">三、RecyclerView 添加条目点击事件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-RecyclerView-并没有对外暴露的具体的单击或长按监听事件，需要我们自己来处理单击或长按事件，如下所示："><span class="nav-number">3.1.</span> <span class="nav-text">3.1 RecyclerView 并没有对外暴露的具体的单击或长按监听事件，需要我们自己来处理单击或长按事件，如下所示：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-另一种方式是在-Adapter-的-onBindViewHolder-方法中，利用-View-本身的监听事件，来设置回调监听，代码如下："><span class="nav-number">3.2.</span> <span class="nav-text">3.2 另一种方式是在 Adapter 的 onBindViewHolder 方法中，利用 View 本身的监听事件，来设置回调监听，代码如下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-两种添加点击事件比较"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 两种添加点击事件比较</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  1991 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">珞神</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 访问人数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ADsuper"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("lqjNsN3f9ORzUzm8S6E0bUDa-gzGzoHsz", "ctllhdLexKqeXmRuxqhL9U85");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
