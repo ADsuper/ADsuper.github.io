@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="变换," />
+  <meta name="keywords" content="Retrofit + RxJava," />
 
 
 
@@ -88,32 +88,21 @@
 
 
 <meta name="description" content="前言
-本篇文章是根据 给 Android 开发者的 RxJava 详解 做的笔记
-
-本篇文章主要介绍的是 RxJava 变换 map 和 flatMap 的使用，以及 throttleFirst
-
-附上本人之前的一篇链接：RxJava 基础概念">
+Android 发展到今天各方面的框架已经非常成熟了，Github 上的一些大神把他们封装好的各种框架开源出来，方便了我们后来人，使我们简简单单的几行代码就能完成复杂的逻辑，
+本文主要介绍的是网络请求框架中的 Retrofit ！Github 地址为：https://github.com/square/retrofit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RxJava 之变换（二）">
-<meta property="og:url" content="http://yoursite.com/2017/05/13/RxJava之变换（二）/index.html">
+<meta property="og:title" content="Retrofit + RxJava 的简单使用（2）">
+<meta property="og:url" content="http://yoursite.com/2017/05/14/Retrofit-RxJava的简单使用/index.html">
 <meta property="og:site_name" content="珞璃之神">
 <meta property="og:description" content="前言
-本篇文章是根据 给 Android 开发者的 RxJava 详解 做的笔记
-
-本篇文章主要介绍的是 RxJava 变换 map 和 flatMap 的使用，以及 throttleFirst
-
-附上本人之前的一篇链接：RxJava 基础概念">
-<meta property="og:image" content="http://i2.muimg.com/588926/cef2f871ee4e4a97.png">
-<meta property="og:updated_time" content="2017-05-13T08:11:43.236Z">
+Android 发展到今天各方面的框架已经非常成熟了，Github 上的一些大神把他们封装好的各种框架开源出来，方便了我们后来人，使我们简简单单的几行代码就能完成复杂的逻辑，
+本文主要介绍的是网络请求框架中的 Retrofit ！Github 地址为：https://github.com/square/retrofit">
+<meta property="og:updated_time" content="2017-05-13T16:24:00.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RxJava 之变换（二）">
+<meta name="twitter:title" content="Retrofit + RxJava 的简单使用（2）">
 <meta name="twitter:description" content="前言
-本篇文章是根据 给 Android 开发者的 RxJava 详解 做的笔记
-
-本篇文章主要介绍的是 RxJava 变换 map 和 flatMap 的使用，以及 throttleFirst
-
-附上本人之前的一篇链接：RxJava 基础概念">
-<meta name="twitter:image" content="http://i2.muimg.com/588926/cef2f871ee4e4a97.png">
+Android 发展到今天各方面的框架已经非常成熟了，Github 上的一些大神把他们封装好的各种框架开源出来，方便了我们后来人，使我们简简单单的几行代码就能完成复杂的逻辑，
+本文主要介绍的是网络请求框架中的 Retrofit ！Github 地址为：https://github.com/square/retrofit">
 
 
 
@@ -141,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/13/RxJava之变换（二）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/14/Retrofit-RxJava的简单使用/"/>
 
 
 
 
 
-  <title> RxJava 之变换（二） | 珞璃之神 </title>
+  <title> Retrofit + RxJava 的简单使用（2） | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -320,7 +309,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/13/RxJava之变换（二）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/14/Retrofit-RxJava的简单使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -341,7 +330,7 @@
             
             
               
-                RxJava 之变换（二）
+                Retrofit + RxJava 的简单使用（2）
               
             
           </h1>
@@ -356,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-13T16:10:18+08:00">
-                2017-05-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-14T00:19:52+08:00">
+                2017-05-14
               </time>
             
 
@@ -379,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/RxJava/" itemprop="url" rel="index">
-                    <span itemprop="name">RxJava</span>
+                  <a href="/categories/Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Network</span>
                   </a>
                 </span>
 
@@ -397,8 +386,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/13/RxJava之变换（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/13/RxJava之变换（二）/" itemprop="commentCount"></span>
+                <a href="/2017/05/14/Retrofit-RxJava的简单使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/14/Retrofit-RxJava的简单使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -406,7 +395,7 @@
 
           
           
-             <span id="/2017/05/13/RxJava之变换（二）/" class="leancloud_visitors" data-flag-title="RxJava 之变换（二）">
+             <span id="/2017/05/14/Retrofit-RxJava的简单使用/" class="leancloud_visitors" data-flag-title="Retrofit + RxJava 的简单使用（2）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -441,66 +430,48 @@
 
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li><p>本篇文章是根据 <a href="http://gank.io/post/560e15be2dca930e00da1083#toc_1" target="_blank" rel="external">给 Android 开发者的 RxJava 详解</a> 做的笔记</p>
-</li>
-<li><p>本篇文章主要介绍的是 RxJava 变换 map 和 flatMap 的使用，以及 throttleFirst</p>
-</li>
-<li><p>附上本人之前的一篇链接：<a href="https://adsuper.github.io/2017/05/12/Android%E4%B9%8BRxJava%E4%BB%8B%E7%BB%8D%E4%B8%80/" target="_blank" rel="external">RxJava 基础概念</a></p>
-</li>
+<li>Android 发展到今天各方面的框架已经非常成熟了，Github 上的一些大神把他们封装好的各种框架开源出来，方便了我们后来人，使我们简简单单的几行代码就能完成复杂的逻辑，</li>
+<li>本文主要介绍的是网络请求框架中的 Retrofit ！<br>Github 地址为：<a href="https://github.com/square/retrofit" target="_blank" rel="external">https://github.com/square/retrofit</a></li>
 </ul>
 <a id="more"></a>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、变换"><a href="#一、变换" class="headerlink" title="一、变换"></a>一、变换</h4><p><strong>RxJava 提供了对事件序列进行变换的支持，这是它的核心功能之一，也是大多数人说『RxJava 真是太好用了』的最大原因。所谓变换，就是将事件序列中的对象或整个序列进行加工处理，转换成不同的事件或事件序列。</strong></p>
-<h5 id="1-1-先介绍下-FunX-系列的方法，因为要用到"><a href="#1-1-先介绍下-FunX-系列的方法，因为要用到" class="headerlink" title="1.1 先介绍下 FunX 系列的方法，因为要用到"></a>1.1 先介绍下 FunX 系列的方法，因为要用到</h5><ul>
-<li>它和 ActionX 非常相似，也是 RxJava 的一个接口，用于包装含有一个参数的方法。另外，和 ActionX 一样， FuncX 也有多个，用于不同参数个数的方法。FuncX 和 ActionX 的区别在 FuncX 包装的是有返回值的方法。</li>
-</ul>
-<p><img src="http://i2.muimg.com/588926/cef2f871ee4e4a97.png" alt="image"></p>
-<ul>
-<li>Fun1 接口如下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Represents a function with one argument.</div><div class="line"> * @param &lt;T&gt; the first argument type</div><div class="line"> * @param &lt;R&gt; the result type</div><div class="line"> */</div><div class="line">public interface Func1&lt;T, R&gt; extends Function &#123;</div><div class="line">    R call(T t);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="1-2-变换之-map-，看例子"><a href="#1-2-变换之-map-，看例子" class="headerlink" title="1.2 变换之 map() ，看例子"></a>1.2 变换之 map() ，看例子</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Student student1 = new Student(&quot;张三&quot;,20);</div><div class="line">Student student2 = new Student(&quot;李四&quot;,30);</div><div class="line">Student student3 = new Student(&quot;王五&quot;,40);</div><div class="line">//// 输入类型 Student</div><div class="line">Observable.just(student1,student2,student3)</div><div class="line">        .map(new Func1&lt;Student, String&gt;() &#123;</div><div class="line">               @Override</div><div class="line">                public String call(Student student) &#123;// 参数类型 Student</div><div class="line"></div><div class="line">                    String name = student.getName();</div><div class="line">                    return name;//返回类型 String</div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">            .subscribe(new Action1&lt;String&gt;() &#123;//参数类型 String</div><div class="line">                @Override</div><div class="line">                public void call(String s) &#123;</div><div class="line">                    Log.i(&quot;map&quot;,s);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div></pre></td></tr></table></figure>
-<p>student 类如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class Student &#123;</div><div class="line"></div><div class="line">    private String name;</div><div class="line">    private int age;</div><div class="line"></div><div class="line">    public Student(String name, int age) &#123;</div><div class="line">        this.name = name;</div><div class="line">        this.age = age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getAge() &#123;</div><div class="line">        return age;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以看到 Observable 中原来的参数是 Student 对象，而最后我们需要的是String类型的 name，这里使用了 map 来实现这一转换的过程。</p>
-<h5 id="1-3-变换之-flatMap"><a href="#1-3-变换之-flatMap" class="headerlink" title="1.3 变换之 flatMap()"></a>1.3 变换之 flatMap()</h5><ul>
-<li>我把 Student 类加个属性—课程的集合</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Student &#123;</div><div class="line"></div><div class="line">    private String name;</div><div class="line">    private int age;</div><div class="line">    //课程</div><div class="line">    private ArrayList&lt;Couser&gt; courseList;</div><div class="line">    </div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>课程类如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class Couser &#123;</div><div class="line"></div><div class="line">    private String couserName;</div><div class="line">    private int couserId;</div><div class="line">    </div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>需求：打印出每个学生所需要修的所有课程的名称跟上一个 map 的例子的区别在于— 每个学生只有一个名字，但却有多个课程。</p>
+<h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><ul>
+<li><p>目前 Android 中比较流行的网络请求框架大致有三种：volly 、okhttp 、Retrofit ！</p>
 </li>
-<li><p>当然也能使用 map 来实现 ，将课程集合看成一个类型就行了，就像学生名字的 String 类型一样，然后遍历打印课程名称，如下：</p>
+<li><p>关于这几种网络请求框架的对比，请看 <a href="http://stormzhang.com/opensource/2016/08/05/android-open-source-project-recommend2/" target="_blank" rel="external">帅比张</a></p>
+</li>
+<li><p>为什么选择 Retrofit 呢，性能好，也是目前比较流行的一个框架，并且配合 Rxjava 使网络请求变得更加简单，对 Rxjava 不了解的可以看看这篇文章：<br><a href="http://gank.io/post/560e15be2dca930e00da1083#toc_1" target="_blank" rel="external">http://gank.io/post/560e15be2dca930e00da1083#toc_1</a></p>
+</li>
+<li><p>Retrofit 的门槛有点高，如果只是简单的使用还好，但是要想完全弄透彻，必须要花时间，下功夫去学！</p>
+</li>
+<li><p>使用 Retrofit 的前提是服务器端代码遵循 REST 规范  </p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">        ArrayList&lt;Couser&gt; list = new ArrayList&lt;&gt;();</div><div class="line">        list.add(new Couser(&quot;语文&quot;,1));</div><div class="line">        list.add(new Couser(&quot;数学&quot;,2));</div><div class="line">        list.add(new Couser(&quot;英语&quot;,3));</div><div class="line">        Student student1 = new Student(&quot;张三&quot;,20,list);</div><div class="line">ArrayList&lt;Couser&gt; list1 = new ArrayList&lt;&gt;();</div><div class="line">        list1.add(new Couser(&quot;政治&quot;,4));</div><div class="line">        list1.add(new Couser(&quot;历史&quot;,5));</div><div class="line">        list1.add(new Couser(&quot;地理&quot;,6));</div><div class="line">        Student student2 = new Student(&quot;张三&quot;,20,list1);</div><div class="line">        </div><div class="line">        </div><div class="line"> Observable.just(student1,student2)</div><div class="line">                .map(new Func1&lt;Student, ArrayList&lt;Couser&gt;&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public ArrayList&lt;Couser&gt; call(Student student) &#123;</div><div class="line">                        return student.getCourseList();</div><div class="line">                    &#125;</div><div class="line">                &#125;)</div><div class="line">                .subscribe(new Action1&lt;ArrayList&lt;Couser&gt;&gt;() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void call(ArrayList&lt;Couser&gt; cousers) &#123;</div><div class="line">                        for (Couser couser : cousers) &#123;</div><div class="line">                            Log.i(&quot;map&quot;,couser.getCouserName());</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;);</div></pre></td></tr></table></figure>
-<p>注意此处观察者 Action1 的参数类型为 ArrayList<couser> cousers 。</couser></p>
-<ul>
-<li>使用 flatMap() 来实现如下：</li>
+<h4 id="二、使用"><a href="#二、使用" class="headerlink" title="二、使用"></a>二、使用</h4><h5 id="2-1-首先是添加依赖"><a href="#2-1-首先是添加依赖" class="headerlink" title="2.1 首先是添加依赖"></a>2.1 首先是添加依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.squareup.retrofit2:retrofit:2.2.0&apos;</div><div class="line">//Retrofit在默认情况下只能将Http的响应体反序列化到OkHttp的ResponseBody中，</div><div class="line">//加入Converter可以将返回的数据直接格式化成你需要的样子，而我们最常用的就是</div><div class="line">//Gson ， 返回的结果直接转化为对象</div><div class="line">compile &apos;com.squareup.retrofit2:converter-gson:2.2.0&apos;</div><div class="line">compile &apos;com.google.code.gson:gson:2.8.0&apos;</div></pre></td></tr></table></figure>
+<h5 id="2-2-在使用之前，还需要定义一个接口，作为网络请求的格式，如下所示"><a href="#2-2-在使用之前，还需要定义一个接口，作为网络请求的格式，如下所示" class="headerlink" title="2.2 在使用之前，还需要定义一个接口，作为网络请求的格式，如下所示"></a>2.2 在使用之前，还需要定义一个接口，作为网络请求的格式，如下所示</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public interface RetrofitText &#123;</div><div class="line"></div><div class="line">    @GET(&quot;&quot;)</div><div class="line">    Call&lt;RetrofitTextBean&gt; getRequest2(@Url String url ,</div><div class="line">                                       @Query(&quot;market_id&quot;) int markret_id ,</div><div class="line">                                       @Query(&quot;floor_start&quot;) int floor_start ,</div><div class="line">                                       @Query(&quot;floor_end&quot;) int floor_end );</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外，还需要准备一个与 json 字符串对应的 javaBean ，这样返回的结果直接是 javaBean 对象。</p>
+<h5 id="2-3-开始使用"><a href="#2-3-开始使用" class="headerlink" title="2.3 开始使用"></a>2.3 开始使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">//1.创建 Retrofit 实例，并完成相关配置</div><div class="line">       Retrofit retrofit = new Retrofit.Builder()</div><div class="line">       //baseUrl 与 接口中的 url 连接组成完整的 Url</div><div class="line">               .baseUrl(baseUr)</div><div class="line">               //表示调用 Gson 库来解析返回值</div><div class="line">               .addConverterFactory(GsonConverterFactory.create())</div><div class="line">               .build();</div><div class="line">       //2.创建接口对象，即 RetrofitText 接口的对象</div><div class="line">       RetrofitText retrofitText = retrofit.create(RetrofitText.class);</div><div class="line"></div><div class="line">       //3.获取请求服务方法</div><div class="line"></div><div class="line">       Call&lt;RetrofitTextBean&gt; call = retrofitText.getRequest2(relativeUrl, 1, 5, -3);</div><div class="line"></div><div class="line">       //4.开始异步请求</div><div class="line">       call.enqueue(new Callback&lt;RetrofitTextBean&gt;() &#123;</div><div class="line">           @Override</div><div class="line">           public void onResponse(Call&lt;RetrofitTextBean&gt; call, Response&lt;RetrofitTextBean&gt; response) &#123;</div><div class="line">               //请求成功</div><div class="line">               String s = response.body().toString();</div><div class="line">               String message = response.message();</div><div class="line">               Log.i(&quot;retrofit&quot;, s);</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           @Override</div><div class="line">           public void onFailure(Call&lt;RetrofitTextBean&gt; call, Throwable t) &#123;</div><div class="line">               //请求失败</div><div class="line">               Log.i(&quot;retrofit&quot;, &quot;请求失败&quot;);</div><div class="line">           &#125;</div><div class="line">       &#125;);</div></pre></td></tr></table></figure>
+<h5 id="2-4-以上请求，只是一个简单的-Get-请求，网上的资料很多，我这里附上几篇链接"><a href="#2-4-以上请求，只是一个简单的-Get-请求，网上的资料很多，我这里附上几篇链接" class="headerlink" title="2.4 以上请求，只是一个简单的 Get 请求，网上的资料很多，我这里附上几篇链接"></a>2.4 以上请求，只是一个简单的 Get 请求，网上的资料很多，我这里附上几篇链接</h5><ul>
+<li><a href="https://www.zybuluo.com/xujun94/note/479910" target="_blank" rel="external">get 、 post 请求和提交 json 数据</a></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Observable.just(student1,student2)</div><div class="line">        .flatMap(new Func1&lt;Student, Observable&lt;Couser&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Observable&lt;Couser&gt; call(Student student) &#123;</div><div class="line"></div><div class="line">                return Observable.from(student.getCourseList());</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">        .subscribe(new Action1&lt;Couser&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void call(Couser couser) &#123;</div><div class="line">                Log.i(&quot;map&quot;,couser.getCouserName());</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
-<p>从上面的代码可以看出， flatMap() 和 map() 有一个相同点：它也是把传入的参数转化之后返回另一个对象。但需要注意，和 map() 不同的是， flatMap() 中返回的是个 Observable 对象</p>
-<p><strong>flatMap() 的原理</strong>：</p>
+<h4 id="三、Retrofit-配合-Rxjava-使用"><a href="#三、Retrofit-配合-Rxjava-使用" class="headerlink" title="三、Retrofit 配合 Rxjava 使用"></a>三、Retrofit 配合 Rxjava 使用</h4><p><strong>附上几篇讲的不错的链接：</strong></p>
 <ul>
-<li>第一步，使用传入的事件对象创建一个 Observable 对象；</li>
-<li>第二步， 并不发送这个 Observable, 而是将它激活，于是它开始发送事件；</li>
-<li>第三步， 每一个创建出来的 Observable 发送的事件，都被汇入同一个 Observable ，而这个 Observable 负责将这些事件统一交给 Subscriber 的回调方法。</li>
-<li>这三个步骤，把事件拆成了两级，通过一组新创建的 Observable 将初始的对象『铺平』之后通过统一路径分发了下去。而这个『铺平』就是 flatMap() 所谓的 flat。</li>
-</ul>
-<p><strong>flatMap() 的优点</strong>：    </p>
-<p>由于可以在嵌套的 Observable 中添加异步代码， flatMap() 也常用于嵌套的异步操作，例如嵌套的网络请求。这样可以把嵌套的请求写在一条链中，从而保持程序逻辑的清晰。也就是说在  return Observable.from(student.getCourseList()); 中做进一步的网络请求封装。</p>
-<h5 id="1-4-变换还有其他的方式，比如-lift-和-compose-，自行研究。。。"><a href="#1-4-变换还有其他的方式，比如-lift-和-compose-，自行研究。。。" class="headerlink" title="1.4 变换还有其他的方式，比如 lift 和 compose ，自行研究。。。"></a>1.4 变换还有其他的方式，比如 lift 和 compose ，自行研究。。。</h5><h4 id="二、防抖动效果-throttleFirst"><a href="#二、防抖动效果-throttleFirst" class="headerlink" title="二、防抖动效果 throttleFirst()"></a>二、防抖动效果 throttleFirst()</h4><ul>
-<li><p>作用：在每次事件触发后的一定时间间隔内丢弃新的事件。常用作去抖动过滤</p>
+<li><p><a href="http://gank.io/post/560e15be2dca930e00da1083#toc_1" target="_blank" rel="external">关于 Rxjava 的介绍</a></p>
 </li>
-<li><p>比如在 onNext() 方法中有打开一个新页面的逻辑，添加这个方法之后，就不用担心因为手抖打开两个重复的界面，或者重复的操作</p>
+<li><p><a href="https://gank.io/post/56e80c2c677659311bed9841" target="_blank" rel="external">Rxjava + Retrofit 介绍</a> </p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/bd758f51742e" target="_blank" rel="external">封装</a> </p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//设置防抖间隔为 500ms</div><div class="line">throttleFirst(500, TimeUnit.MILLISECONDS)</div></pre></td></tr></table></figure>
+<h5 id="3-1-需要在之前依赖的基础上再添加依赖"><a href="#3-1-需要在之前依赖的基础上再添加依赖" class="headerlink" title="3.1 需要在之前依赖的基础上再添加依赖"></a>3.1 需要在之前依赖的基础上再添加依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//RxJava</div><div class="line">compile &apos;io.reactivex:rxjava:1.3.0&apos;</div><div class="line">compile &apos;io.reactivex:rxandroid:1.2.1&apos;</div><div class="line">compile &apos;com.squareup.retrofit2:adapter-rxjava:2.2.0&apos;</div></pre></td></tr></table></figure>
+<h5 id="3-2-修改接口如下"><a href="#3-2-修改接口如下" class="headerlink" title="3.2 修改接口如下"></a>3.2 修改接口如下</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//将 call 换成 Observable 被观察者</div><div class="line">@GET(&quot;sapientialMall/getLadderInfo.action&quot;)</div><div class="line">    Observable&lt;RetrofitTextBean&gt; getRequest3(@Query(&quot;market_id&quot;) int markret_id ,</div><div class="line">                                             @Query(&quot;floor_start&quot;) int floor_start ,</div><div class="line">                                             @Query(&quot;floor_end&quot;) int floor_end );</div></pre></td></tr></table></figure>
+<h5 id="3-3-代码中使用"><a href="#3-3-代码中使用" class="headerlink" title="3.3 代码中使用"></a>3.3 代码中使用</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//1.创建 Retrofit 实例，并完成相关配置</div><div class="line">Retrofit retrofit = new Retrofit.Builder()</div><div class="line">        .baseUrl(baseUr)</div><div class="line">        //表示调用 Gson 库来解析返回值</div><div class="line">        .addConverterFactory(GsonConverterFactory.create())</div><div class="line">        //配合 rxjava 需要添加这行代码</div><div class="line">        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</div><div class="line">        .build();</div><div class="line">//2.创建接口对象，即 RetrofitText 接口的对象</div><div class="line">RetrofitText retrofitText = retrofit.create(RetrofitText.class);</div><div class="line"></div><div class="line">Observable&lt;RetrofitTextBean&gt; observable = retrofitText.getRequest3(1, 5, -3);</div><div class="line">            //指定网络请求在 io 线程</div><div class="line">observable.subscribeOn(Schedulers.io())</div><div class="line">            //指定数据处理在主线程</div><div class="line">        .observeOn(AndroidSchedulers.mainThread())</div><div class="line">            //被观察者与观察者建立联系</div><div class="line">        .subscribe(new Observer&lt;RetrofitTextBean&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public void onCompleted() &#123;</div><div class="line"></div><div class="line">                Toast.makeText(getApplicationContext(),&quot;请求完成&quot;,Toast.LENGTH_SHORT).show();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onError(Throwable e) &#123;</div><div class="line"></div><div class="line">                textview.setText(e.getMessage());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            @Override</div><div class="line">            public void onNext(RetrofitTextBean retrofitTextBean) &#123;</div><div class="line"></div><div class="line">                int code = retrofitTextBean.getCode();</div><div class="line">                String msg = retrofitTextBean.getMsg();</div><div class="line">                textview.setText(&quot;code:&quot;+code+&quot;---msg:&quot;+msg);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
+<h5 id="3-4-以上都是些基础应用，要想完全使用，还必须了解-RxJava-，下方的链接中有详解！"><a href="#3-4-以上都是些基础应用，要想完全使用，还必须了解-RxJava-，下方的链接中有详解！" class="headerlink" title="3.4 以上都是些基础应用，要想完全使用，还必须了解 RxJava ，下方的链接中有详解！"></a>3.4 以上都是些基础应用，要想完全使用，还必须了解 RxJava ，下方的链接中有详解！</h5><p><strong>附上几篇 Rxjava 的链接，算是自己总结的笔记吧：</strong></p>
 <ul>
-<li>用法如下：</li>
+<li><p><a href="https://adsuper.github.io/2017/05/12/Android%E4%B9%8BRxJava%E4%BB%8B%E7%BB%8D%E4%B8%80/" target="_blank" rel="external">https://adsuper.github.io/2017/05/12/Android%E4%B9%8BRxJava%E4%BB%8B%E7%BB%8D%E4%B8%80/</a></p>
+</li>
+<li><p><a href="https://adsuper.github.io/2017/05/13/RxJava%E4%B9%8B%E5%8F%98%E6%8D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="external">https://adsuper.github.io/2017/05/13/RxJava%E4%B9%8B%E5%8F%98%E6%8D%A2%EF%BC%88%E4%BA%8C%EF%BC%89/</a></p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Observable.just(student1,student2)</div><div class="line">              .flatMap(new Func1&lt;Student, Observable&lt;Couser&gt;&gt;() &#123;</div><div class="line">                  @Override</div><div class="line">                  public Observable&lt;Couser&gt; call(Student student) &#123;</div><div class="line"></div><div class="line">                      return Observable.from(student.getCourseList());</div><div class="line">                  &#125;</div><div class="line">              &#125;)</div><div class="line">              //防抖动</div><div class="line">              .throttleFirst(500, TimeUnit.MILLISECONDS)</div><div class="line">              </div><div class="line">              .subscribe(new Action1&lt;Couser&gt;() &#123;</div><div class="line">                  @Override</div><div class="line">                  public void call(Couser couser) &#123;</div><div class="line">                      Log.i(&quot;map&quot;,couser.getCouserName());</div><div class="line">                  &#125;</div><div class="line">              &#125;);</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -530,7 +501,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/变换/" rel="tag"># 变换</a>
+            <a href="/tags/Retrofit-RxJava/" rel="tag"># Retrofit + RxJava</a>
           
         </div>
       
@@ -543,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/12/Android之RxJava介绍一/" rel="next" title="Android 之 RxJava介绍（一）">
-                <i class="fa fa-chevron-left"></i> Android 之 RxJava介绍（一）
+              <a href="/2017/05/13/RxJava之变换（二）/" rel="next" title="RxJava 之变换（二）">
+                <i class="fa fa-chevron-left"></i> RxJava 之变换（二）
               </a>
             
           </div>
@@ -552,10 +523,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/14/Retrofit-RxJava的简单使用/" rel="prev" title="Retrofit + RxJava 的简单使用（2）">
-                Retrofit + RxJava 的简单使用（2） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -714,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、变换"><span class="nav-number">2.1.</span> <span class="nav-text">一、变换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-先介绍下-FunX-系列的方法，因为要用到"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 先介绍下 FunX 系列的方法，因为要用到</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-变换之-map-，看例子"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 变换之 map() ，看例子</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-变换之-flatMap"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 变换之 flatMap()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-变换还有其他的方式，比如-lift-和-compose-，自行研究。。。"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 变换还有其他的方式，比如 lift 和 compose ，自行研究。。。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、防抖动效果-throttleFirst"><span class="nav-number">2.2.</span> <span class="nav-text">二、防抖动效果 throttleFirst()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、简介"><span class="nav-number">1.1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、使用"><span class="nav-number">1.2.</span> <span class="nav-text">二、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-首先是添加依赖"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 首先是添加依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-在使用之前，还需要定义一个接口，作为网络请求的格式，如下所示"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 在使用之前，还需要定义一个接口，作为网络请求的格式，如下所示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-开始使用"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 开始使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-以上请求，只是一个简单的-Get-请求，网上的资料很多，我这里附上几篇链接"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 以上请求，只是一个简单的 Get 请求，网上的资料很多，我这里附上几篇链接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、Retrofit-配合-Rxjava-使用"><span class="nav-number">1.3.</span> <span class="nav-text">三、Retrofit 配合 Rxjava 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-需要在之前依赖的基础上再添加依赖"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 需要在之前依赖的基础上再添加依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-修改接口如下"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 修改接口如下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-代码中使用"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 代码中使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-以上都是些基础应用，要想完全使用，还必须了解-RxJava-，下方的链接中有详解！"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 以上都是些基础应用，要想完全使用，还必须了解 RxJava ，下方的链接中有详解！</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -868,9 +835,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'adsuper';
-      var disqus_identifier = '2017/05/13/RxJava之变换（二）/';
+      var disqus_identifier = '2017/05/14/Retrofit-RxJava的简单使用/';
 
-      var disqus_title = "RxJava 之变换（二）";
+      var disqus_title = "Retrofit + RxJava 的简单使用（2）";
 
 
       function run_disqus_script(disqus_script) {
