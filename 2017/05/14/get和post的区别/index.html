@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="定时任务," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,31 +87,16 @@
 
 
 
-<meta name="description" content="前言
-项目中有用到定时任务，就捎带着总结一下
-
-本篇文章，一部分来自于 《第一行代码第2版》
-
-本文着重说明下 Android 中的 Alarm 机制">
+<meta name="description" content="前言参考博客：HTTP POST GET 本质区别详解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 中的定时任务">
-<meta property="og:url" content="http://yoursite.com/2017/04/17/Android中的定时任务/index.html">
+<meta property="og:title" content="get 和 post 的区别">
+<meta property="og:url" content="http://yoursite.com/2017/05/14/get和post的区别/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言
-项目中有用到定时任务，就捎带着总结一下
-
-本篇文章，一部分来自于 《第一行代码第2版》
-
-本文着重说明下 Android 中的 Alarm 机制">
-<meta property="og:updated_time" content="2017-04-17T08:23:09.102Z">
+<meta property="og:description" content="前言参考博客：HTTP POST GET 本质区别详解">
+<meta property="og:updated_time" content="2017-05-14T05:02:23.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 中的定时任务">
-<meta name="twitter:description" content="前言
-项目中有用到定时任务，就捎带着总结一下
-
-本篇文章，一部分来自于 《第一行代码第2版》
-
-本文着重说明下 Android 中的 Alarm 机制">
+<meta name="twitter:title" content="get 和 post 的区别">
+<meta name="twitter:description" content="前言参考博客：HTTP POST GET 本质区别详解">
 
 
 
@@ -139,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/17/Android中的定时任务/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/14/get和post的区别/"/>
 
 
 
 
 
-  <title> Android 中的定时任务 | 珞璃之神 </title>
+  <title> get 和 post 的区别 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -318,7 +303,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/Android中的定时任务/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/14/get和post的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -339,7 +324,7 @@
             
             
               
-                Android 中的定时任务
+                get 和 post 的区别
               
             
           </h1>
@@ -354,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T14:21:24+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-14T13:00:19+08:00">
+                2017-05-14
               </time>
             
 
@@ -377,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Network</span>
                   </a>
                 </span>
 
@@ -395,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/17/Android中的定时任务/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/17/Android中的定时任务/" itemprop="commentCount"></span>
+                <a href="/2017/05/14/get和post的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/14/get和post的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +389,7 @@
 
           
           
-             <span id="/2017/04/17/Android中的定时任务/" class="leancloud_visitors" data-flag-title="Android 中的定时任务">
+             <span id="/2017/05/14/get和post的区别/" class="leancloud_visitors" data-flag-title="get 和 post 的区别">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -438,78 +423,31 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li><p>项目中有用到定时任务，就捎带着总结一下</p>
-</li>
-<li><p>本篇文章，一部分来自于 《第一行代码第2版》</p>
-</li>
-<li><p>本文着重说明下 Android 中的 Alarm 机制 </p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>参考博客：<a href="http://blog.csdn.net/gideal_wang/article/details/4316691" target="_blank" rel="external">HTTP POST GET 本质区别详解</a></p>
 <a id="more"></a>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、原理区别"><a href="#一、原理区别" class="headerlink" title="一、原理区别"></a>一、原理区别</h4><ul>
+<li><p>Http 定义了与服务器交互的不同方法，最基本的方法有4种，分别是 GET，POST，PUT，DELETE</p>
+</li>
+<li><p>URL 全称是资源描述符，我们可以这样认 为：一个 URL 地址，它用于描述一个网络上的资源，而 HTTP 中的 GET，POST，PUT，DELETE 就对应着对这个资源的查 ，改 ，增 ，删 4 个操作。到这里，大家应该有个大概的了解了，GET 一般用于获取/查询 资源信息，而 POST 一般用于更新 资源信息，从服务器的角度来说，GET 比 POST 更安全，因为 GET 不会修改服务器的数据！</p>
+</li>
+<li><p>个人认为这是GET和POST的本质区别，也是协议设计者的本意，其它区别都是具体表现形式的差异</p>
 </li>
 </ul>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、Android-中实现定时任务的几种方式"><a href="#一、Android-中实现定时任务的几种方式" class="headerlink" title="一、Android 中实现定时任务的几种方式"></a>一、Android 中实现定时任务的几种方式</h4><h5 id="1-java-中的-Timer-类"><a href="#1-java-中的-Timer-类" class="headerlink" title="1. java 中的 Timer 类"></a>1. java 中的 Timer 类</h5><p><strong>分享一个 Timer 详解链接：</strong> <a href="http://blog.csdn.net/zuolongsnail/article/details/8168689" target="_blank" rel="external">http://blog.csdn.net/zuolongsnail/article/details/8168689</a></p>
+<h4 id="二、形式上的区别"><a href="#二、形式上的区别" class="headerlink" title="二、形式上的区别"></a>二、形式上的区别</h4><h5 id="其一：url-不同"><a href="#其一：url-不同" class="headerlink" title="其一：url 不同"></a>其一：url 不同</h5><ul>
+<li><p>GET 提交，请求的数据会附在 URL 之后（就是把数据放置在请求行（request line）中），以 ? 分割 URL 和传输数据，多个参数用 &amp; 连接，Url 的编码格式采用的是 ASCII 码，而不是 Unicode ，这也就是说你不能在 Url 中包含任何非 ASCII 字符，所有非 ASCII 字符均需要编码再传输</p>
+</li>
+<li><p>POST提交：把提交的数据放置在是HTTP包的包体中</p>
+</li>
+</ul>
+<h5 id="其二：传输数据大小不同"><a href="#其二：传输数据大小不同" class="headerlink" title="其二：传输数据大小不同"></a>其二：传输数据大小不同</h5><p><strong>首先声明</strong>：HTTP 协议没有对传输的数据大小进行限制，HTTP 协议规范也没有对 URL 长度进行限制。</p>
 <ul>
-<li>Timer 类适合短期在后台运行的定时任务，而不适合长期的，因为现在的手机都有自己的休眠策略，Android 手机会在长时间不操作的情况下会自动让 CPU 进入到休眠状态，这就有可能导致 Timer 中的定时任务无法正常运行。</li>
-</ul>
-<h5 id="2-Handler"><a href="#2-Handler" class="headerlink" title="2. Handler"></a>2. Handler</h5><p><strong>分享一个链接：</strong> <a href="http://blog.csdn.net/dxpqxb/article/details/8659292" target="_blank" rel="external">http://blog.csdn.net/dxpqxb/article/details/8659292</a></p>
-<ul>
-<li>Handler post系列方法中有定时发送消息的操作，如：handler.postDelayed();</li>
-</ul>
-<h5 id="3-Android-中的-Alarm-机制"><a href="#3-Android-中的-Alarm-机制" class="headerlink" title="3. Android 中的 Alarm 机制"></a>3. Android 中的 Alarm 机制</h5><ul>
-<li><p>Alarm 机制具有唤醒 CPU 的功能，它能保证在多数情况下需要执行定时任务的时候 CPU 都能正常工作，下面会详细介绍</p>
+<li><p>GET:特定浏览器和服务器对 URL 长度有限制，例如 IE 对 URL 长度的限制是 2083 字节(2K+35)。对于其他浏览器，如 Netscape、FireFox 等，理论上没有长度限制，其限制取决于操作系统的支持。因此对于 GET 提交时，传输数据就会受到 URL 长度的限制</p>
 </li>
-<li><p>Alarm 需要在 API 19 及其以上才能使用。</p>
-</li>
-<li><p>经测试，Alarm 有毫秒级别的误差</p>
+<li><p>POST:由于不是通过 URL 传值，理论上数据不受限。但实际各个 WEB 服务器会规定对 post 提交数据大小进行限制，Apache、IIS6 都有各自的配置。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">04-17 15:12:41.208 5615-5632/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:12:51.218 5615-5677/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:01.223 5615-5757/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:11.228 5615-5926/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:21.233 5615-6098/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:31.238 5615-6266/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:41.243 5615-6436/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:13:51.248 5615-6610/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:01.258 5615-6780/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:11.258 5615-6951/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:21.263 5615-7122/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:31.268 5615-7291/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div><div class="line">04-17 15:14:41.273 5615-7466/io.github.adsuper.timed_task I/Alarm: -+------------定时任务--------------</div></pre></td></tr></table></figure>
-<h4 id="二、-Alarm-机制"><a href="#二、-Alarm-机制" class="headerlink" title="二、 Alarm 机制"></a>二、 Alarm 机制</h4><h5 id="1-核心类：-AlarmManager"><a href="#1-核心类：-AlarmManager" class="headerlink" title="1. 核心类： AlarmManager"></a>1. 核心类： AlarmManager</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</div></pre></td></tr></table></figure>
-<h5 id="2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务"><a href="#2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务" class="headerlink" title="2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务"></a>2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">long time = SystemClock.elapsedRealtime() + 10 * 1000;</div><div class="line"></div><div class="line">Intent intent1 = new Intent(this , LongRunningService.class);</div><div class="line">PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent1, 0);</div><div class="line"></div><div class="line">alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP , time , pendingIntent);</div></pre></td></tr></table></figure>
-<h6 id="set-系列方法三个参数详解"><a href="#set-系列方法三个参数详解" class="headerlink" title="set 系列方法三个参数详解"></a>set 系列方法三个参数详解</h6><ol>
-<li>第一个参数有四个选项分别为：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//        AlarmManager.ELAPSED_REALTIME ,表示让定时任务的触发事件从系统开机开始算起，但是不会唤醒 CPU</div><div class="line">//        AlarmManager.ELAPSED_REALTIME_WAKEUP ,表示让定时任务的触发事件从系统开机开始算起，但是会唤醒 CPU</div><div class="line">//        AlarmManager.RTC ,表示让定时任务的触发事件从 1970 年 1 月 1 日 0 点开始算起，但不会唤醒 CPU</div><div class="line">//        AlarmManager.RTC_WAKEUP ,表示让定时任务的触发事件从 1970 年 1 月 1 日 0 点开始算起，但会唤醒 CPU</div></pre></td></tr></table></figure>
-<ol>
-<li>第二个参数表示定时任务的触发时间：</li>
-</ol>
-<ul>
-<li><p>如果第一个参数使用的是 ELAPSED_REALTIME 或者 ELAPSED_REALTIME_WAKEUP ，则这里就传入开机时间加上延迟执行的时间。</p>
-</li>
-<li><p>获取开机至今所经历的时间的毫秒数方法为：SystemClock.elapsedRealtime()；</p>
-</li>
-<li><p>如果第一个参数使用的是 RTC 或者 RTC_WAKEUP，则这里就传入从 1970 年 1 月 1 日 0 点至今所经历时间的毫秒数加上延迟执行的时间。</p>
-</li>
-<li><p>获取从 1970 年 1 月 1 日 0 点至今所经历的时间的毫秒数的方法为：System.currentTimeMillis(); </p>
-</li>
-</ul>
-<ol>
-<li>第三个参数是一个 PendingIntent ，表示一个后台可以长时间运行的服务</li>
-</ol>
-<h6 id="set-和-setExact-的区别"><a href="#set-和-setExact-的区别" class="headerlink" title="set() 和 setExact() 的区别"></a>set() 和 setExact() 的区别</h6><ul>
-<li><p>从 Android 4.4 系统开始，Alarm 任务的触发事件将会变得不准确，有可能会延迟一段时间后任务才能执行，但这并不是 bug，而是系统在耗电方面进行的优化。系统会自动监测目前有多少个 Alarm 任务存在，然后触发时间相近的几个任务会放在一起执行，这就可以大幅度减少 CPU 被唤醒的次数，从而有效延长电池的使用时间。</p>
-</li>
-<li><p>如果要求 Alarm 任务的执行时间必须准确无误，Android 仍然提供了解决方案，使用 setExact() 方法来代替 set() 方法。</p>
-</li>
-</ul>
-<h5 id="3-完整的代码"><a href="#3-完整的代码" class="headerlink" title="3. 完整的代码"></a>3. 完整的代码</h5><ul>
-<li>Activity 中</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.timed_task;</div><div class="line"></div><div class="line">import android.app.AlarmManager;</div><div class="line">import android.app.PendingIntent;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line">import android.os.SystemClock;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.os.Bundle;</div><div class="line"></div><div class="line">import java.util.Timer;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        //开启一个服务</div><div class="line">        Intent intent = new Intent(this,LongRunningService.class);</div><div class="line">        startService(intent);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>Service 中的代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">package io.github.adsuper.timed_task;</div><div class="line"></div><div class="line">import android.app.AlarmManager;</div><div class="line">import android.app.PendingIntent;</div><div class="line">import android.app.Service;</div><div class="line">import android.content.Context;</div><div class="line">import android.content.Intent;</div><div class="line">import android.os.IBinder;</div><div class="line">import android.os.SystemClock;</div><div class="line">import android.support.annotation.IntDef;</div><div class="line">import android.support.annotation.Nullable;</div><div class="line">import android.util.Log;</div><div class="line"></div><div class="line">public class LongRunningService extends Service &#123;</div><div class="line"></div><div class="line">    private AlarmManager alarmManager;</div><div class="line"></div><div class="line">    @Nullable</div><div class="line">    @Override</div><div class="line">    public IBinder onBind(Intent intent) &#123;</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int onStartCommand(Intent intent, int flags, int startId) &#123;</div><div class="line"></div><div class="line"></div><div class="line">        new Thread(new Runnable() &#123;</div><div class="line">            @Override</div><div class="line">            public void run() &#123;</div><div class="line"></div><div class="line">                //执行具体的定时逻辑操作</div><div class="line">                //逻辑操作也是需要耗时的，如果放在主线程中，可能会对定时任务的准确性造成轻微的影响</div><div class="line">                Log.i(&quot;Alarm&quot;,&quot;-+------------定时任务--------------&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line">        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);</div><div class="line">        long time = SystemClock.elapsedRealtime() + 10 * 1000;</div><div class="line"></div><div class="line">        Intent intent1 = new Intent(this , LongRunningService.class);</div><div class="line">        PendingIntent pendingIntent = PendingIntent.getService(this, 1, intent1, 0);</div><div class="line"></div><div class="line">        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP , time , pendingIntent);</div><div class="line"></div><div class="line">        return super.onStartCommand(intent, flags, startId);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="4-另外需要注意的事项"><a href="#4-另外需要注意的事项" class="headerlink" title="4. 另外需要注意的事项"></a>4. 另外需要注意的事项</h5><ul>
-<li>取消定时任务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//pendingIntent 要跟设置的时候一致才能取消</div><div class="line">alarmManager.cancel(pendingIntent);</div></pre></td></tr></table></figure>
-<ul>
-<li>Alarm 也能定时发送广播</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 参数与 set() 类似</div><div class="line">alarmManager.setRepeating();</div></pre></td></tr></table></figure>
-<ul>
-<li>还有一系列其他的操作，有待发掘</li>
+<h5 id="其三，安全性"><a href="#其三，安全性" class="headerlink" title="其三，安全性"></a>其三，安全性</h5><ul>
+<li>POST 的安全性要比 GET 的安全性高。比如：通过 GET 提交数据，用户名和密码将明文出现在 URL 上，因为登录页面有可能被浏览器缓存， 其他人查看浏览器的历史纪录，那么别人就可以拿到你的账号和密码了</li>
 </ul>
 
       
@@ -538,12 +476,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/定时任务/" rel="tag"># 定时任务</a>
-          
-        </div>
-      
 
       
         
@@ -553,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/14/AndroidStudio项目混淆、打包、签名、发布一条龙/" rel="next" title="AndroidStudio 项目混淆、打包、签名、发布一条龙">
-                <i class="fa fa-chevron-left"></i> AndroidStudio 项目混淆、打包、签名、发布一条龙
+              <a href="/2017/05/14/Retrofit-RxJava的简单使用/" rel="next" title="Retrofit + RxJava 的简单使用（2）">
+                <i class="fa fa-chevron-left"></i> Retrofit + RxJava 的简单使用（2）
               </a>
             
           </div>
@@ -562,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/18/自定义View实现原理/" rel="prev" title="Android 自定义 View 实现原理">
-                Android 自定义 View 实现原理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -724,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Android-中实现定时任务的几种方式"><span class="nav-number">2.1.</span> <span class="nav-text">一、Android 中实现定时任务的几种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-java-中的-Timer-类"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. java 中的 Timer 类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Handler"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Handler</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Android-中的-Alarm-机制"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Android 中的 Alarm 机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、-Alarm-机制"><span class="nav-number">2.2.</span> <span class="nav-text">二、 Alarm 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-核心类：-AlarmManager"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 核心类： AlarmManager</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-调用-AlarmManager-的-set-系列方法就可以设置一个定时任务"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 调用 AlarmManager 的 set() 系列方法就可以设置一个定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#set-系列方法三个参数详解"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">set 系列方法三个参数详解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#set-和-setExact-的区别"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">set() 和 setExact() 的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-完整的代码"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 完整的代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-另外需要注意的事项"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 另外需要注意的事项</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、原理区别"><span class="nav-number">2.1.</span> <span class="nav-text">一、原理区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、形式上的区别"><span class="nav-number">2.2.</span> <span class="nav-text">二、形式上的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#其一：url-不同"><span class="nav-number">2.2.1.</span> <span class="nav-text">其一：url 不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其二：传输数据大小不同"><span class="nav-number">2.2.2.</span> <span class="nav-text">其二：传输数据大小不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其三，安全性"><span class="nav-number">2.2.3.</span> <span class="nav-text">其三，安全性</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -878,9 +806,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'adsuper';
-      var disqus_identifier = '2017/04/17/Android中的定时任务/';
+      var disqus_identifier = '2017/05/14/get和post的区别/';
 
-      var disqus_title = "Android 中的定时任务";
+      var disqus_title = "get 和 post 的区别";
 
 
       function run_disqus_script(disqus_script) {
