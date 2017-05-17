@@ -1,0 +1,1222 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Activity," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言
+参考书：Android 开发艺术探索
+
+本篇主要介绍 Activity 的生命周期、启动模式和 Intentfliter 的匹配规则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Activity">
+<meta property="og:url" content="http://yoursite.com/2017/05/17/Activity/index.html">
+<meta property="og:site_name" content="珞璃之神">
+<meta property="og:description" content="前言
+参考书：Android 开发艺术探索
+
+本篇主要介绍 Activity 的生命周期、启动模式和 Intentfliter 的匹配规则">
+<meta property="og:updated_time" content="2017-05-17T13:43:19.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Activity">
+<meta name="twitter:description" content="前言
+参考书：Android 开发艺术探索
+
+本篇主要介绍 Activity 的生命周期、启动模式和 Intentfliter 的匹配规则">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/17/Activity/"/>
+
+
+
+
+
+  <title> Activity | 珞璃之神 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?38e24263d6aea09127573aefd6aa53d0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">珞璃之神</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/17/Activity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="珞神">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="珞璃之神">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Activity
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T21:40:02+08:00">
+                2017-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/四大组件/" itemprop="url" rel="index">
+                    <span itemprop="name">四大组件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/17/Activity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/17/Activity/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/05/17/Activity/" class="leancloud_visitors" data-flag-title="Activity">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
+<li><p>参考书：Android 开发艺术探索</p>
+</li>
+<li><p>本篇主要介绍 Activity 的生命周期、启动模式和 Intentfliter 的匹配规则</p>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、Activity-的生命周期"><a href="#一、Activity-的生命周期" class="headerlink" title="一、Activity 的生命周期"></a>一、Activity 的生命周期</h4><p><strong>分两种：</strong> 正常情况下和异常情况下的生命周期</p>
+<h5 id="1-1-正常情况下的生命周期，从上到下"><a href="#1-1-正常情况下的生命周期，从上到下" class="headerlink" title="1.1 正常情况下的生命周期，从上到下"></a>1.1 正常情况下的生命周期，从上到下</h5><ul>
+<li><p>onCreate()： 表示 Activity 正在创建，可以做一些初始化工作。</p>
+</li>
+<li><p>onStart()： 表示 Activity 正在启动，这时 Acticity 已经创建出来了，只是没有出现在前台，用户看不到</p>
+</li>
+<li><p>onResume()： 表示 Activity 已经可见，可以与用户进行交互</p>
+</li>
+<li><p>onPause()： 表示 Acticity 正在停止，此时可以做一些停止动画、存储数据等操作，但是注意不能耗时，因为只有这个方法执行完毕，新的 Activity 的 onResume 才会执行</p>
+</li>
+<li><p>onStop()： 表示 Activity 即将停止，可以做一些重量级的回收工作，但是不能耗时</p>
+</li>
+<li><p>onDestroy()： 表示 Activity 即将被销毁，可以做一些回收工作和资源释放</p>
+</li>
+</ul>
+<p>还有一个 onRestart() 方法，此方法表示 Activity 正在重新启动，一般情况下在 Activity 从不可见到可见状态的时候，会调用此方法，比如说 A 跳转到 B 然后再返回 A</p>
+<h5 id="1-2-异常情况下的生命周期"><a href="#1-2-异常情况下的生命周期" class="headerlink" title="1.2 异常情况下的生命周期"></a>1.2 异常情况下的生命周期</h5><h6 id="1-2-1-资源相关的系统配置发生改变导致-Activity-被杀死并重新创建"><a href="#1-2-1-资源相关的系统配置发生改变导致-Activity-被杀死并重新创建" class="headerlink" title="1.2.1 资源相关的系统配置发生改变导致 Activity 被杀死并重新创建"></a>1.2.1 资源相关的系统配置发生改变导致 Activity 被杀死并重新创建</h6><p>比如说，横竖屏切换的时候，显示的图片资源及布局文件等系统配置发生改变，默认情况下，Activity 会被销毁并重新创建，其生命周期方法如下：</p>
+<ul>
+<li><p>首先会调用 onSaveInstanceState() 方法，做数据保存工作，系统默认为我们保存当前 Activity 的视图结构，并在 Activity 重启后，为我们恢复这些数据，比如 文本框中用户输入的数据，ListView 滚动的位置等，但是如果针对于某个 View 来说，能恢复什么数据，可以看 View 的源码来分析，因为 View 和 Activity 一样，都有 onSaveInstanceState() 方法来保存数据，保存的数据在其参数 Bundle 中</p>
+</li>
+<li><p>其次，调用 onPause() 、onStop()、onDestory() 方法，注意 onSaveInstanceState() 方法可能在 onPause() 之前调用，也可能在其之后调用。</p>
+</li>
+<li><p>然后，调用 onCreat() 方法，然后继续调用 onRestoreInstanceState() 方法来为其恢复状态和数据，我们可以根据这两个方法中的参数 Bundle 来判断此 Activity 是否被重建</p>
+</li>
+</ul>
+<h6 id="1-2-2-资源内存不足，导致低优先级的-Activity-被杀死"><a href="#1-2-2-资源内存不足，导致低优先级的-Activity-被杀死" class="headerlink" title="1.2.2 资源内存不足，导致低优先级的 Activity 被杀死"></a>1.2.2 资源内存不足，导致低优先级的 Activity 被杀死</h6><p>这种方式与上边的第一种情况保存和恢复数据的方法一致，这里说下 Activity 的优先级，从高到低，如下所示：</p>
+<ul>
+<li><p>前台 Activity ，正在与用户交互，优先级最高</p>
+</li>
+<li><p>可见，但并非前台 Activity ，比如 Activity 中弹出一个对话框，导致 Activity 可见，但是无法与用户交互</p>
+</li>
+<li><p>后台 Activity ，已经被暂停的 Activity ，比如执行了 onStop() 方法，优先级最低 </p>
+</li>
+</ul>
+<p>另外注意，如果一个进程中没有四大组件运行，那么这个进程将会很快被杀死！</p>
+<h6 id="1-2-3-阻止-Activity-重新创建"><a href="#1-2-3-阻止-Activity-重新创建" class="headerlink" title="1.2.3 阻止 Activity 重新创建"></a>1.2.3 阻止 Activity 重新创建</h6><p>在 AndroidMenifest.xml 中为 Activity 添加一条 configChanges 属性 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:configChanges=&quot;orientation&quot;</div></pre></td></tr></table></figure>
+<p>常用属性值的含义：</p>
+<ul>
+<li><p>locale ：设备的本地位置发生了改变，一般指切换了系统语言</p>
+</li>
+<li><p>orientation ：设备屏幕发生改变，比如旋转屏幕</p>
+</li>
+<li><p>keyboardHidden ：键盘的可访问性发生了改变，比如用户调出了键盘</p>
+</li>
+<li><p>screenSize ：屏幕尺寸信息发生改变，常用于旋转屏幕导致的 尺寸信息改变，一般和 orientation 配合使用</p>
+</li>
+<li><p>smallestScreenSize ：表示设备的物理屏幕尺寸发生改变，注意指的是物理设备，跟旋转屏幕没关系，比如用户切换到了外部的显示设备，这个不常用。</p>
+</li>
+</ul>
+<h4 id="二、Activity-的启动模式"><a href="#二、Activity-的启动模式" class="headerlink" title="二、Activity 的启动模式"></a>二、Activity 的启动模式</h4><h5 id="2-1-四种启动模式"><a href="#2-1-四种启动模式" class="headerlink" title="2.1 四种启动模式"></a>2.1 四种启动模式</h5><ul>
+<li><p>standard ：标准模式，也是系统的默认模式，每次启动一个 Activity 都会创建一个新实例，不管这个实例是否存在，会一一放入任务栈中，然后按回退键的时候，会按照先进后出的原则，一一退栈！</p>
+</li>
+<li><p>singleTop ：栈顶复用模式，如果新创建的 Activity 已经位于任务栈的栈顶了，那么此 Activity 不会被重建，注意这个 Activity 的 onCreat()、onstart() 方法不会被调用，因为它并没有发生改变，但是会回调 onNewIntent(Intent intent) 方法，从而获取 intent 信息。</p>
+</li>
+<li><p>singleTask ：栈内复用模式，这是一种单实例模式，只要 Activity 在一个栈中存在，那么多次启动 Activity 都不会重新创建实例，和 singleTop 一样，也会回调其 onNewIntent(Intent intent) 方法，但是需要注意一点，如果栈中有的话，该模式，会把所需要的 Activity 之上的所有 Activity 弹出栈，将需要的这个 Activity 放于栈顶！</p>
+</li>
+<li><p>singleInstance ： 它是一种加强版的 singleTask ，它除了具有 singleTask 的所有特性之外，还加强了一点，就是只能单独的位于一个栈中！一个栈只能有一个 Activity</p>
+</li>
+</ul>
+<h5 id="2-2-为-Activity-指定启动模式"><a href="#2-2-为-Activity-指定启动模式" class="headerlink" title="2.2 为 Activity 指定启动模式"></a>2.2 为 Activity 指定启动模式</h5><ul>
+<li>第一种，通过 AndroidMenifest.xml 文件中，为其添加属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:launchMode=&quot;singleTop&quot;</div></pre></td></tr></table></figure>
+<ul>
+<li>第二种，通过在 Intent 中设置标志位 Flags 来为 Activity 指定模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent(this,TextActivity.class);</div><div class="line">intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>两种方式的区别：</li>
+</ul>
+<ol>
+<li>优先级，第二种要高于第一种，两种都存在的话，以第二种为准；</li>
+<li>限定范围不同，第一种无法为 Activity 指定 FLAG_ACTIVITY_CLEAR_TOP 标识，第二种无法为 Activity 指定 singleInstance 模式！</li>
+</ol>
+<h5 id="2-3-Activity-的-Flags"><a href="#2-3-Activity-的-Flags" class="headerlink" title="2.3 Activity 的 Flags"></a>2.3 Activity 的 Flags</h5><p>Activity 的 Flags 有很多，作用也很多，有些可以设定 Activity 的启动模式，有些可以影响 Acticity 的运行状态，这里记录些比较常用的 Flags</p>
+<ul>
+<li><p>FLAG_ACTIVITY_NEW_TASK ，指定 Activity 的启动模式为 singleTask</p>
+</li>
+<li><p>FLAG_ACTIVITY_SINGLE_TOP ，指定 Activity 的启动模式为 singleTop</p>
+</li>
+<li><p>FLAG_ACTIVITY_CLEAR_TOP ，当 Activity 启动时，与其在同一个任务栈并在其上边的所有 Activity 全部出栈，一般和 singleTask 启动模式一块出现</p>
+</li>
+<li><p>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS ，在某些情况下，我们不希望用户通过历史列表回到我们的 Activity 的时候，使用这个标记，等同于 xml 文件中的属性： android:excludeFromRecents=”true”</p>
+</li>
+</ul>
+<h4 id="三、Activity-中-IntentFilter-匹配规则"><a href="#三、Activity-中-IntentFilter-匹配规则" class="headerlink" title="三、Activity 中 IntentFilter 匹配规则"></a>三、Activity 中 IntentFilter 匹配规则</h4><ul>
+<li><p>Activity 的启动方式有两种，显式启动和隐式启动，如果两者都存在那么以显示为主，显式启动很简单，主要记录下隐式启动</p>
+</li>
+<li><p>隐式启动需要 Intent 能够匹配目标组件的 IntentFilter 中的过滤信息，过滤信息有三个，分别是 action 、 category 、 data，下边针对这三个过滤信息做介绍</p>
+</li>
+</ul>
+<h5 id="3-1-action-的匹配规则"><a href="#3-1-action-的匹配规则" class="headerlink" title="3.1 action 的匹配规则"></a>3.1 action 的匹配规则</h5><ul>
+<li>action 只是一个字符串，区分大小写，系统中有预定义的一些 action 我们也可以自定义自己所需要的 action， action 可以有多个，但是我们只要匹配成功一个即可匹配成功，需要注意的是，只要是隐式启动，那么 Intent 中必须要有 action </li>
+</ul>
+<h5 id="3-2-category-的匹配规则"><a href="#3-2-category-的匹配规则" class="headerlink" title="3.2 category 的匹配规则"></a>3.2 category 的匹配规则</h5><ul>
+<li>category 也是一个字符串，category 也可以有多个，但是必须要每个都匹配成功才行，另外，如果需要隐式启动，那么必须添加 android.intent.category.DEFAULT 这个 category ，因为我们调用 startActivity 方法的时候，系统会默认为我们添加这个一个 category ，所以必须要添加</li>
+</ul>
+<h5 id="3-3-data-的匹配规则"><a href="#3-3-data-的匹配规则" class="headerlink" title="3.3 data 的匹配规则"></a>3.3 data 的匹配规则</h5><ul>
+<li>data 相对复杂一点，结构如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;data android:scheme=&quot;aaa&quot;</div><div class="line"> android:host=&quot;aaa&quot;</div><div class="line"> android:port=&quot;aaa&quot;</div><div class="line"> android:path=&quot;aaa&quot;</div><div class="line"> android:pathPattern=&quot;aaa&quot;</div><div class="line"> android:pathPrefix=&quot;aaa&quot;</div><div class="line"> android:mimeType=&quot;aaa&quot;/&gt;</div></pre></td></tr></table></figure>
+<p>主要是有两部分组成  mimeType 和 Uri </p>
+<ol>
+<li>mimeType 指媒体类型 例如: image/jpeg vided/* …</li>
+<li>Uri 的结构如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;/[&lt;path&gt;|&lt;pathPrefix&gt;|&lt;pathPattern&gt;]</div></pre></td></tr></table></figure>
+<p>Uri 的属性介绍如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scheme：整个URI的模式，如常见的http，file等，注意如果URI中没有指定的scheme，那么整个uri无效</div><div class="line">host：URI的域名，比如我们常见的www.mi.com,www.baidu.com，与scheme一样，一旦没有host那么整个URI也毫无意义；</div><div class="line">port：端口号，比如80，很容易理解，只有在URI中指定了scheme和host之后端口号才是有意义的；</div><div class="line">path，pathPattern，pathPrefix包含路径信息，path表示完整的路径，pathPattern在此基础上可以包含通配符，pathPrefix表示路径的前缀信息；</div></pre></td></tr></table></figure>
+<ul>
+<li>只匹配 scheme 的例子如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=&quot;.TextActivity&quot;&gt;</div><div class="line"></div><div class="line">    &lt;intent-filter&gt;</div><div class="line">        &lt;action android:name=&quot;111&quot;&gt;&lt;/action&gt;</div><div class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</div><div class="line">        &lt;data android:scheme=&quot;222&quot;&gt;&lt;/data&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line"></div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">intent.setAction(&quot;111&quot;);</div><div class="line">// scheme：// 固定写法，后边的 111 是自己随便写的</div><div class="line">intent.setData(Uri.parse(&quot;222://111&quot;));</div><div class="line"></div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>只匹配 mimeType 的例子如下 </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=&quot;.TextActivity&quot;&gt;</div><div class="line"></div><div class="line">    &lt;intent-filter&gt;</div><div class="line">        &lt;action android:name=&quot;111&quot;&gt;&lt;/action&gt;</div><div class="line">        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;&gt;&lt;/category&gt;</div><div class="line">        &lt;data android:mimeType=&quot;image/*&quot;&gt;&lt;/data&gt;</div><div class="line">    &lt;/intent-filter&gt;</div><div class="line"></div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Intent intent = new Intent();</div><div class="line">intent.setAction(&quot;111&quot;);</div><div class="line">// 这种情况，scheme 默认为 content ，亲测 file 会报错</div><div class="line">//注意此处是 setDataAndType </div><div class="line">intent.setDataAndType(Uri.parse(&quot;content://111&quot;),&quot;image/png&quot;);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure>
+<ul>
+<li>注意，data，不是必须要添加的，也就是说如果只有 action 和 category 也能匹配成功</li>
+</ul>
+<ul>
+<li><p>还有一点，如果我们要启动系统的页面，如打电话页面，需要找到其匹配规则，进行匹配，然后启动</p>
+</li>
+<li><p>另外，IntentFilter 可以有多对，只要匹配其中一对即可成功。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Activity/" rel="tag"># Activity</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/16/android自定义view和自定义属性/" rel="next" title="android 自定义 view 和自定义属性">
+                <i class="fa fa-chevron-left"></i> android 自定义 view 和自定义属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/17/Service/" rel="prev" title="Service">
+                Service <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/me1.png"
+               alt="珞神" />
+          <p class="site-author-name" itemprop="name">珞神</p>
+           
+              <p class="site-description motion-element" itemprop="description">记录自己メ帮助别人</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Activity-的生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">一、Activity 的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-正常情况下的生命周期，从上到下"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 正常情况下的生命周期，从上到下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-异常情况下的生命周期"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 异常情况下的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-2-1-资源相关的系统配置发生改变导致-Activity-被杀死并重新创建"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">1.2.1 资源相关的系统配置发生改变导致 Activity 被杀死并重新创建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-2-2-资源内存不足，导致低优先级的-Activity-被杀死"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">1.2.2 资源内存不足，导致低优先级的 Activity 被杀死</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-2-3-阻止-Activity-重新创建"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">1.2.3 阻止 Activity 重新创建</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、Activity-的启动模式"><span class="nav-number">2.2.</span> <span class="nav-text">二、Activity 的启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-四种启动模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 四种启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-为-Activity-指定启动模式"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 为 Activity 指定启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Activity-的-Flags"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 Activity 的 Flags</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、Activity-中-IntentFilter-匹配规则"><span class="nav-number">2.3.</span> <span class="nav-text">三、Activity 中 IntentFilter 匹配规则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-action-的匹配规则"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 action 的匹配规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-category-的匹配规则"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 category 的匹配规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-data-的匹配规则"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 data 的匹配规则</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  1991 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">珞神</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i> 访问人数<span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i> 总访问量<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'adsuper';
+      var disqus_identifier = '2017/05/17/Activity/';
+
+      var disqus_title = "Activity";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("lqjNsN3f9ORzUzm8S6E0bUDa-gzGzoHsz", "ctllhdLexKqeXmRuxqhL9U85");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
