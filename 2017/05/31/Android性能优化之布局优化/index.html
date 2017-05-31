@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="自定义 View," />
+  <meta name="keywords" content="布局," />
 
 
 
@@ -87,16 +87,19 @@
 
 
 
-<meta name="description" content="前言本篇主要记录的是自定义 View 和自定义属性的流程">
+<meta name="description" content="一、思路
+布局优化的思路简单来说就是尽量减少布局文件的层级，层级减少了也就意味着 Android 绘制时的工作量少了，那么程序的性能自然也就提高了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android 自定义 view 和自定义属性">
-<meta property="og:url" content="http://yoursite.com/2017/05/16/android自定义view和自定义属性/index.html">
+<meta property="og:title" content="Android性能优化之布局优化">
+<meta property="og:url" content="http://yoursite.com/2017/05/31/Android性能优化之布局优化/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="前言本篇主要记录的是自定义 View 和自定义属性的流程">
-<meta property="og:updated_time" content="2017-05-16T11:43:35.917Z">
+<meta property="og:description" content="一、思路
+布局优化的思路简单来说就是尽量减少布局文件的层级，层级减少了也就意味着 Android 绘制时的工作量少了，那么程序的性能自然也就提高了。">
+<meta property="og:updated_time" content="2017-05-31T09:49:54.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android 自定义 view 和自定义属性">
-<meta name="twitter:description" content="前言本篇主要记录的是自定义 View 和自定义属性的流程">
+<meta name="twitter:title" content="Android性能优化之布局优化">
+<meta name="twitter:description" content="一、思路
+布局优化的思路简单来说就是尽量减少布局文件的层级，层级减少了也就意味着 Android 绘制时的工作量少了，那么程序的性能自然也就提高了。">
 
 
 
@@ -124,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/16/android自定义view和自定义属性/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/31/Android性能优化之布局优化/"/>
 
 
 
 
 
-  <title> android 自定义 view 和自定义属性 | 珞璃之神 </title>
+  <title> Android性能优化之布局优化 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +306,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/16/android自定义view和自定义属性/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/31/Android性能优化之布局优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -324,7 +327,7 @@
             
             
               
-                android 自定义 view 和自定义属性
+                Android性能优化之布局优化
               
             
           </h1>
@@ -339,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-16T19:37:03+08:00">
-                2017-05-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T17:49:15+08:00">
+                2017-05-31
               </time>
             
 
@@ -362,8 +365,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/View/" itemprop="url" rel="index">
-                    <span itemprop="name">View</span>
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
                   </a>
                 </span>
 
@@ -380,8 +383,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/16/android自定义view和自定义属性/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/16/android自定义view和自定义属性/" itemprop="commentCount"></span>
+                <a href="/2017/05/31/Android性能优化之布局优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/31/Android性能优化之布局优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -389,7 +392,7 @@
 
           
           
-             <span id="/2017/05/16/android自定义view和自定义属性/" class="leancloud_visitors" data-flag-title="android 自定义 view 和自定义属性">
+             <span id="/2017/05/31/Android性能优化之布局优化/" class="leancloud_visitors" data-flag-title="Android性能优化之布局优化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,65 +426,53 @@
       
 
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本篇主要记录的是自定义 View 和自定义属性的流程</p>
+        <h4 id="一、思路"><a href="#一、思路" class="headerlink" title="一、思路"></a>一、思路</h4><ul>
+<li>布局优化的思路简单来说就是尽量减少布局文件的层级，层级减少了也就意味着 Android 绘制时的工作量少了，那么程序的性能自然也就提高了。</li>
+</ul>
 <a id="more"></a>
-<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><h4 id="一、自定义-View-的步骤"><a href="#一、自定义-View-的步骤" class="headerlink" title="一、自定义 View 的步骤"></a>一、自定义 View 的步骤</h4><ul>
-<li><p>第一步，创建一个类继承自需要的 View 或 ViewGroup，重写构造方法</p>
+<h4 id="二、优化策略"><a href="#二、优化策略" class="headerlink" title="二、优化策略"></a>二、优化策略</h4><h5 id="2-1-选择性能较高的-ViewGroup"><a href="#2-1-选择性能较高的-ViewGroup" class="headerlink" title="2.1 选择性能较高的 ViewGroup"></a>2.1 选择性能较高的 ViewGroup</h5><ul>
+<li>RelativeLayout 和 LinearLayout 同时存在的话，优先选择 LinearLayout ，因为 RelativeLayout 的功能比较复杂，布局过程中需要耗费更过的 CPU 的时间，当然，还得需要根据产品需求来决定，如果需要嵌套好几个 LinearLayout 来实现效果的话，那还是用 RelativeLayout 来实现，尽量减少层级关系</li>
+</ul>
+<h5 id="2-2-标签"><a href="#2-2-标签" class="headerlink" title="2.2  标签"></a>2.2 <include> 标签</include></h5><ul>
+<li><p>此标签主要适用于布局重用，提高效率，并且使代码看起来更整洁</p>
 </li>
-<li><p>第二步，重写 onMeasure() 方法，测量控件的大小，并指定大小，指定大小的方法为：</p>
+<li><p>此标签只支持 android:layout_ 开头的属性</p>
+</li>
+<li><p>如果此标签指定了 android:layout_* 属性，那么必须要有 android:layout_width 和 android:layout<em>height 属性，否则其他的 android:layout</em> 属性不生效。</p>
+</li>
+<li><p>还有个 id 属性比较特殊，如果此标签使用了 id 属性，那么被包含的布局文件的根布局以此 id 属性为准</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setMeasuredDimension(200,100);</div></pre></td></tr></table></figure>
+<h5 id="2-3-标签"><a href="#2-3-标签" class="headerlink" title="2.3  标签"></a>2.3 <merge> 标签</merge></h5><ul>
+<li>此标签主要是和 include 标签配合使用的，主要是为了删减多余的层级，例如你的主布局文件是垂直布局，引入了一个垂直布局的 include ，这是如果 include 布局使用的 LinearLayout 就没意义了，使用的话反而减慢你的 UI 表现。这时可以使用 <merge> 来代替 include 布局中的 LinearLayout </merge></li>
+</ul>
+<h5 id="2-4-ViewStub"><a href="#2-4-ViewStub" class="headerlink" title="2.4 ViewStub"></a>2.4 ViewStub</h5><ul>
+<li><p>ViewStub 继承自 View ，是一个非常轻量级的控件，宽高都为 0，并且不参与任何布局和绘制过程，往往用于实现View的延迟加载，避免资源的浪费，减少渲染时间。</p>
+</li>
+<li><p>ViewStub 的意义在于按需加载的布局文件，但是使用场景有限，在选择显示的时候只能控制一次，而无法做多次的显示或隐藏操作。因为 ViewStub 只能 Inflate 一次，之后会被置空，所以无法指望后面接着使用 ViewStub 来控制布局。</p>
+</li>
+<li><p>ViewStub 只能通过 findViewById 找到一次，找到之后就会被填充的布局所替代</p>
+</li>
+<li><p>示例：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;ViewStub</div><div class="line">    android:id=&quot;@+id/stub_import&quot;</div><div class="line">    android:inflatedId=&quot;@+id/panel_import&quot;</div><div class="line">    android:layout=&quot;@layout/progress_overlay&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:layout_gravity=&quot;bottom&quot; /&gt;</div></pre></td></tr></table></figure>
 <ul>
-<li><p>第三步，重写 onLayout() 方法，指定该控件在父控件中的位置，但是此方法是系统调用的，告诉我们我们的控件在父控件什么位置，一般在自定义 ViewGroup 中用的比较多。</p>
+<li><p>android:inflatedId=”@+id/panel_import”    表示重写包含的 layout 布局文件的根容器 id</p>
 </li>
-<li><p>第四步，重写 onDraw() 方法，绘制自己需要的图案，但是大部分的自定义控件都是绘制图片</p>
-</li>
-<li><p>第五步，重写 onTouchEvent() 方法，处理触摸事件，在这一步容易出现点击事件和滑动事件的冲突，原因是因为，系统默认只要发生了 up 事件，就会执行点击事件的逻辑。处理完事件之后，一般需要重新绘制 View，方法如下</p>
+<li><p>android:layout=”@layout/progress_overlay” 表示引入的布局</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">invalidate() //刷新 View ，会重新调用 onDraw() 方法，在主线程中调用</div><div class="line"></div><div class="line">postInvalidate() //与上边方法的区别在于，在子线程中调用</div></pre></td></tr></table></figure>
 <ul>
-<li>onSizeChanged() 方法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 在view第一次被指定了大小值、或者view的大小发生改变时会被调用。</div><div class="line"> * 所以一般用来计算一些位置和与view的size有关的值。</div><div class="line"> *</div><div class="line"> * @param w    最终的宽度</div><div class="line"> * @param h    最终的高度</div><div class="line"> * @param oldw 上次的宽度</div><div class="line"> * @param oldh 上次的高度</div><div class="line"> */</div><div class="line">@Override</div><div class="line">protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</div><div class="line">    super.onSizeChanged(w, h, oldw, oldh);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="二、自定义属性"><a href="#二、自定义属性" class="headerlink" title="二、自定义属性"></a>二、自定义属性</h4><p><strong>作用：</strong> 为自定义控件添加属性，增强其复用性，比如说，我写一个自定义控件的背景是固定死的，想要换颜色的话就通过自定义属性来设置。</p>
-<p><strong>步骤：</strong></p>
-<ul>
-<li><p>首先先思考下，系统中的控件的属性是怎么生效的， 我们仿照系统的方式来来设置即可，而系统控件的属性在<br>E:\androidStudioSDK\platforms\android-14\data\res\values 目录下的 attrs.xml 文件中</p>
+<li><p>注意，ViewStub 控制的是一个布局，而不是某个控件，关于布局的一些属性，尽量写在 ViewStub 标签下，否则可能会不生效</p>
 </li>
-<li><p>比如说，我们现在的需求是，给一个自定义的按钮设置一个背景属性，使其能够随便切换背景</p>
+<li><p>想要该布局显示的方式有两种：</p>
 </li>
 </ul>
-<h5 id="2-1-第一步，声明属性，即：在-values-文件夹下创建一个-attrs-xml-文件，名称可以随意，不一定非得是-attrs-，然后编辑该文件"><a href="#2-1-第一步，声明属性，即：在-values-文件夹下创建一个-attrs-xml-文件，名称可以随意，不一定非得是-attrs-，然后编辑该文件" class="headerlink" title="2.1 第一步，声明属性，即：在 values 文件夹下创建一个 attrs.xml 文件，名称可以随意，不一定非得是 attrs ，然后编辑该文件"></a>2.1 第一步，声明属性，即：在 values 文件夹下创建一个 attrs.xml 文件，名称可以随意，不一定非得是 attrs ，然后编辑该文件</h5><ul>
-<li>声明一个属性集合，名字一般跟自定义控件的名字一致</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">    &lt;!--声明一个属性集合，名字一般跟自定义控件的名字一致，这个名字在后边会用到--&gt;</div><div class="line">    &lt;declare-styleable name=&quot;Mybtn&quot;&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;/declare-styleable&gt;</div><div class="line"></div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">viewStub.setVisible(View.visible)</div><div class="line">或者</div><div class="line">viewStub.inflate()</div></pre></td></tr></table></figure>
 <ul>
-<li>声明背景属性</li>
+<li>另外，ViewStub 不支持 <merge> 标签</merge></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;resources&gt;</div><div class="line">    &lt;!--声明一个属性集合，名字一般跟自定义控件的名字一致--&gt;</div><div class="line">    &lt;declare-styleable name=&quot;MyView&quot;&gt;</div><div class="line">        &lt;!--声明背景属性，format 表示类型为引用图片类型--&gt;</div><div class="line">        &lt;attr name=&quot;btnBg&quot; format=&quot;reference|color&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;/declare-styleable&gt;</div><div class="line"></div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
-<h5 id="2-2-第二步，在布局文件中使用属性"><a href="#2-2-第二步，在布局文件中使用属性" class="headerlink" title="2.2 第二步，在布局文件中使用属性"></a>2.2 第二步，在布局文件中使用属性</h5><ul>
-<li>声明一个命名空间，类似于系统中的控件，如：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div></pre></td></tr></table></figure>
-<p>其中 xmlns 表示命名空间的意思，android 只是一个名字，只不过这个名字被系统定义好了    </p>
-<p><strong>而我们声明的时候，也类似于这种格式：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlns:zhangsan=&quot;http://schemas.android.com/apk/res-auto&quot;</div></pre></td></tr></table></figure>
-<p>其中，zhangsan 是我们随意命名的，eclipse 中是把最后的 android 换成包名，而 AndroidStudio 中是换成 res-auto </p>
-<ul>
-<li>在自定义控件中使用自定义属性</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zhangsan:btnBg=&quot;@mipmap/ic_launcher&quot;</div></pre></td></tr></table></figure>
-<p>其中，zahngsan 是我们命名空间的名字，btnBg 是我们声明的属性，跟系统的 android：XXX 是一样的</p>
-<h5 id="2-3-在自定义控件中获得布局文件中声明的属性，使其生效！"><a href="#2-3-在自定义控件中获得布局文件中声明的属性，使其生效！" class="headerlink" title="2.3 在自定义控件中获得布局文件中声明的属性，使其生效！"></a>2.3 在自定义控件中获得布局文件中声明的属性，使其生效！</h5><ul>
-<li>主要操作的是自定义控件中两个属性的构造方法：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *</div><div class="line"> * @param context</div><div class="line"> * @param attrs 在布局中声明的所有属性</div><div class="line"> */</div><div class="line">public MyView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">    super(context, attrs);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>具体操作如下：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *</div><div class="line"> * @param context</div><div class="line"> * @param attrs 在布局中声明的所有属性</div><div class="line"> */</div><div class="line">public MyView(Context context, @Nullable AttributeSet attrs) &#123;</div><div class="line">    super(context, attrs);</div><div class="line">    // R.styleable.MyView 就是我们在 attrs.xml 文件中声明的属性集合</div><div class="line">    //根据基本的属性集合，获得一个各个类型的数组</div><div class="line">    TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.MyView);</div><div class="line">    // R.styleable.MyView_btnBg 是由系统生成的 属性集合_属性名称</div><div class="line">    //获取到的就是我们设置的图片资源</div><div class="line">    BitmapDrawable bitmapDrawable = (BitmapDrawable) typedArray.getDrawable(R.styleable.MyView_btnBg);</div><div class="line">    //将之前的图片替换成设置的即可，在 onDraw 方法中通过 drawXXX 方法绘画出来</div><div class="line">    Bitmap bitmap = bitmapDrawable.getBitmap();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -511,7 +502,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/自定义-View/" rel="tag"># 自定义 View</a>
+            <a href="/tags/布局/" rel="tag"># 布局</a>
           
         </div>
       
@@ -524,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/14/get和post的区别/" rel="next" title="get 和 post 的区别">
-                <i class="fa fa-chevron-left"></i> get 和 post 的区别
+              <a href="/2017/05/31/Android性能优化之内存/" rel="next" title="Android性能优化之内存">
+                <i class="fa fa-chevron-left"></i> Android性能优化之内存
               </a>
             
           </div>
@@ -533,10 +524,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/17/Activity/" rel="prev" title="Activity">
-                Activity <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -695,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、自定义-View-的步骤"><span class="nav-number">2.1.</span> <span class="nav-text">一、自定义 View 的步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、自定义属性"><span class="nav-number">2.2.</span> <span class="nav-text">二、自定义属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-第一步，声明属性，即：在-values-文件夹下创建一个-attrs-xml-文件，名称可以随意，不一定非得是-attrs-，然后编辑该文件"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 第一步，声明属性，即：在 values 文件夹下创建一个 attrs.xml 文件，名称可以随意，不一定非得是 attrs ，然后编辑该文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-第二步，在布局文件中使用属性"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 第二步，在布局文件中使用属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-在自定义控件中获得布局文件中声明的属性，使其生效！"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 在自定义控件中获得布局文件中声明的属性，使其生效！</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、思路"><span class="nav-number">1.</span> <span class="nav-text">一、思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、优化策略"><span class="nav-number">2.</span> <span class="nav-text">二、优化策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-选择性能较高的-ViewGroup"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 选择性能较高的 ViewGroup</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-标签"><span class="nav-number">2.2.</span> <span class="nav-text">2.2  标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-标签"><span class="nav-number">2.3.</span> <span class="nav-text">2.3  标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-ViewStub"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 ViewStub</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -849,9 +836,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'adsuper';
-      var disqus_identifier = '2017/05/16/android自定义view和自定义属性/';
+      var disqus_identifier = '2017/05/31/Android性能优化之布局优化/';
 
-      var disqus_title = "android 自定义 view 和自定义属性";
+      var disqus_title = "Android性能优化之布局优化";
 
 
       function run_disqus_script(disqus_script) {
