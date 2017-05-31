@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="珞璃之神">
 <meta property="og:description" content="一、思路
 布局优化的思路简单来说就是尽量减少布局文件的层级，层级减少了也就意味着 Android 绘制时的工作量少了，那么程序的性能自然也就提高了。">
-<meta property="og:updated_time" content="2017-05-31T09:59:06.491Z">
+<meta property="og:updated_time" content="2017-05-31T10:01:19.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android性能优化之布局优化">
 <meta name="twitter:description" content="一、思路
@@ -433,7 +433,7 @@
 <h4 id="二、优化策略"><a href="#二、优化策略" class="headerlink" title="二、优化策略"></a>二、优化策略</h4><h5 id="2-1-选择性能较高的-ViewGroup"><a href="#2-1-选择性能较高的-ViewGroup" class="headerlink" title="2.1 选择性能较高的 ViewGroup"></a>2.1 选择性能较高的 ViewGroup</h5><ul>
 <li>RelativeLayout 和 LinearLayout 同时存在的话，优先选择 LinearLayout ，因为 RelativeLayout 的功能比较复杂，布局过程中需要耗费更过的 CPU 的时间，当然，还得需要根据产品需求来决定，如果需要嵌套好几个 LinearLayout 来实现效果的话，那还是用 RelativeLayout 来实现，尽量减少层级关系</li>
 </ul>
-<h5 id="2-2-标签"><a href="#2-2-标签" class="headerlink" title="2.2  标签"></a>2.2 <include> 标签</include></h5><ul>
+<h5 id="2-2-include-标签"><a href="#2-2-include-标签" class="headerlink" title="2.2 include 标签"></a>2.2 include 标签</h5><ul>
 <li><p>此标签主要适用于布局重用，提高效率，并且使代码看起来更整洁</p>
 </li>
 <li><p>此标签只支持 android:layout_ 开头的属性</p>
@@ -443,7 +443,7 @@
 <li><p>还有个 id 属性比较特殊，如果此标签使用了 id 属性，那么被包含的布局文件的根布局以此 id 属性为准</p>
 </li>
 </ul>
-<h5 id="2-3-标签"><a href="#2-3-标签" class="headerlink" title="2.3  标签"></a>2.3 <merge> 标签</merge></h5><ul>
+<h5 id="2-3-merge-标签"><a href="#2-3-merge-标签" class="headerlink" title="2.3 merge 标签"></a>2.3 merge 标签</h5><ul>
 <li>此标签主要是和 include 标签配合使用的，主要是为了删减多余的层级，例如你的主布局文件是垂直布局，引入了一个垂直布局的 include ，这是如果 include 布局使用的 LinearLayout 就没意义了，使用的话反而减慢你的 UI 表现。这时可以使用 <merge> 来代替 include 布局中的 LinearLayout </merge></li>
 </ul>
 <h5 id="2-4-ViewStub"><a href="#2-4-ViewStub" class="headerlink" title="2.4 ViewStub"></a>2.4 ViewStub</h5><ul>
@@ -682,7 +682,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、思路"><span class="nav-number">1.</span> <span class="nav-text">一、思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、优化策略"><span class="nav-number">2.</span> <span class="nav-text">二、优化策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-选择性能较高的-ViewGroup"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 选择性能较高的 ViewGroup</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-标签"><span class="nav-number">2.2.</span> <span class="nav-text">2.2  标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-标签"><span class="nav-number">2.3.</span> <span class="nav-text">2.3  标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-ViewStub"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 ViewStub</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、思路"><span class="nav-number">1.</span> <span class="nav-text">一、思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、优化策略"><span class="nav-number">2.</span> <span class="nav-text">二、优化策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-选择性能较高的-ViewGroup"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 选择性能较高的 ViewGroup</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-include-标签"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 include 标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-merge-标签"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 merge 标签</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-ViewStub"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 ViewStub</span></a></li></ol></li></ol></div>
             
 
           </div>
