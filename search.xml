@@ -3,13 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[张三]]></title>
-      <url>%2F2017%2F07%2F18%2F%E5%BC%A0%E4%B8%89%2F</url>
-      <content type="text"></content>
-    </entry>
-
-    
-    <entry>
       <title><![CDATA[Android性能优化之布局优化]]></title>
       <url>%2F2017%2F05%2F31%2FAndroid%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%2F</url>
       <content type="text"><![CDATA[一、思路 布局优化的思路简单来说就是尽量减少布局文件的层级，层级减少了也就意味着 Android 绘制时的工作量少了，那么程序的性能自然也就提高了。 二、优化策略2.1 选择性能较高的 ViewGroup RelativeLayout 和 LinearLayout 同时存在的话，优先选择 LinearLayout ，因为 RelativeLayout 的功能比较复杂，布局过程中需要耗费更过的 CPU 的时间，当然，还得需要根据产品需求来决定，如果需要嵌套好几个 LinearLayout 来实现效果的话，那还是用 RelativeLayout 来实现，尽量减少层级关系 2.2 include 标签 此标签主要适用于布局重用，提高效率，并且使代码看起来更整洁 此标签只支持 android:layout_ 开头的属性 如果此标签指定了 android:layout_* 属性，那么必须要有 android:layout_width 和 android:layoutheight 属性，否则其他的 android:layout 属性不生效。 还有个 id 属性比较特殊，如果此标签使用了 id 属性，那么被包含的布局文件的根布局以此 id 属性为准 2.3 merge 标签 此标签主要是和 include 标签配合使用的，主要是为了删减多余的层级，例如你的主布局文件是垂直布局，引入了一个垂直布局的 include ，这是如果 include 布局使用的 LinearLayout 就没意义了，使用的话反而减慢你的 UI 表现。这时可以使用 来代替 include 布局中的 LinearLayout 2.4 ViewStub ViewStub 继承自 View ，是一个非常轻量级的控件，宽高都为 0，并且不参与任何布局和绘制过程，往往用于实现View的延迟加载，避免资源的浪费，减少渲染时间。 ViewStub 的意义在于按需加载的布局文件，但是使用场景有限，在选择显示的时候只能控制一次，而无法做多次的显示或隐藏操作。因为 ViewStub 只能 Inflate 一次，之后会被置空，所以无法指望后面接着使用 ViewStub 来控制布局。 ViewStub 只能通过 findViewById 找到一次，找到之后就会被填充的布局所替代 示例： 1234567&lt;ViewStub android:id=&quot;@+id/stub_import&quot; android:inflatedId=&quot;@+id/panel_import&quot; android:layout=&quot;@layout/progress_overlay&quot; android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;wrap_content&quot; android:layout_gravity=&quot;bottom&quot; /&gt; android:inflatedId=”@+id/panel_import” 表示重写包含的 layout 布局文件的根容器 id android:layout=”@layout/progress_overlay” 表示引入的布局 注意，ViewStub 控制的是一个布局，而不是某个控件，关于布局的一些属性，尽量写在 ViewStub 标签下，否则可能会不生效 想要该布局显示的方式有两种： 123viewStub.setVisible(View.visible)或者viewStub.inflate() 另外，ViewStub 不支持 merge 标签]]></content>
