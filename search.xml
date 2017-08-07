@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Android 倒计时之 CountDownTimer]]></title>
+      <url>%2F2017%2F08%2F07%2FAndroid%E5%80%92%E8%AE%A1%E6%97%B6%E4%B9%8BCountDownTimer%2F</url>
+      <content type="text"><![CDATA[一、用法 12345678910111213141516171819202122232425262728293031/** * 设置倒计时 * @param millisInFuture 倒计时总时间，单位 ms * @param countDownInterval 倒计时间隔时间， 单位 ms */ mCountDownTimer = new CountDownTimer(millisInFuture,countDownInterval) &#123; //回调方法中可以直接更新UI /** * 每完成一次倒计时间隔时间时回调 * @param millisUntilFinished 剩余总时间 */ @Override public void onTick(long millisUntilFinished) &#123; tvTime.setText(millisUntilFinished / countDownInterval +&quot; s&quot;); &#125; /** * 当前任务完成的时候回调 */ @Override public void onFinish() &#123; setupWindowAnimations(); startActivity(new Intent(GuideActivity.this, MainActivity.class)); finish(); &#125; &#125;.start(); 二、方法介绍12345678//取消当前任务public final void cancel ()//当前任务完成的时候回调public abstract void onFinish ()//当前任务每完成一次倒计时间隔时间时回调public abstract void onTick (long millisUntilFinished)//开始当前任务public final CountDownTimer start ()]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[布局填充方式的区别]]></title>
       <url>%2F2017%2F08%2F07%2F%E5%B8%83%E5%B1%80%E5%A1%AB%E5%85%85%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
       <content type="text"><![CDATA[LayoutInflater 的 inflate 方法和 View 的 inflate 方法 View 的 inflate 方法有时候，会出现宽高属性不起作用的情况。而 LayoutInflater 类的 inflate 方法，不会出现这种情况 LayoutInflater 的 inflate 方法适用于所有需要进行布局填充的场景，是Android中专门进行布局填充的方法 View 的 inflate 方法内部包裹了 LayoutInflater 类的 inflate 方法 LayoutInflater 的 inflate 三个参数的方法 详解链接：http://blog.csdn.net/u012702547/article/details/52628453 1234567891011121314public View inflate(@LayoutRes int resource, @Nullable ViewGroup root, boolean attachToRoot) &#123; final Resources res = getContext().getResources(); if (DEBUG) &#123; Log.d(TAG, &quot;INFLATING from resource: \&quot;&quot; + res.getResourceName(resource) + &quot;\&quot; (&quot; + Integer.toHexString(resource) + &quot;)&quot;); &#125; final XmlResourceParser parser = res.getLayout(resource); try &#123; return inflate(parser, root, attachToRoot); &#125; finally &#123; parser.close(); &#125; &#125; LayoutInflater 的 inflate 两个个参数的方法 123public View inflate(XmlPullParser parser, @Nullable ViewGroup root) &#123; return inflate(parser, root, root != null); &#125; View 的 inflate 方法 1234public static View inflate(Context context, @LayoutRes int resource, ViewGroup root) &#123; LayoutInflater factory = LayoutInflater.from(context); return factory.inflate(resource, root);&#125;]]></content>
