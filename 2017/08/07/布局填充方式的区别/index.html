@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Snackbar," />
+  <meta name="keywords" content="布局填充方式的区别," />
 
 
 
@@ -87,24 +87,22 @@
 
 
 
-<meta name="description" content="一、简介
-Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下">
+<meta name="description" content="LayoutInflater 的 inflate 方法和 View 的 inflate 方法
+
+View 的 inflate 方法有时候，会出现宽高属性不起作用的情况。而 LayoutInflater 类的 inflate 方法，不会出现这种情况">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 之 Snackbar">
-<meta property="og:url" content="http://yoursite.com/2017/04/25/Android之Snackbar/index.html">
+<meta property="og:title" content="布局填充方式的区别">
+<meta property="og:url" content="http://yoursite.com/2017/08/07/布局填充方式的区别/index.html">
 <meta property="og:site_name" content="珞璃之神">
-<meta property="og:description" content="一、简介
-Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下">
-<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/91663300-file_1493101041787_5fda.jpg">
-<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/11846411-file_1493101340576_55e3.jpg">
-<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/51351490-file_1493104181439_34d4.jpg">
-<meta property="og:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/81881302-file_1493104892015_6937.jpg">
-<meta property="og:updated_time" content="2017-05-05T09:10:24.280Z">
+<meta property="og:description" content="LayoutInflater 的 inflate 方法和 View 的 inflate 方法
+
+View 的 inflate 方法有时候，会出现宽高属性不起作用的情况。而 LayoutInflater 类的 inflate 方法，不会出现这种情况">
+<meta property="og:updated_time" content="2017-08-07T08:57:51.215Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 之 Snackbar">
-<meta name="twitter:description" content="一、简介
-Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下">
-<meta name="twitter:image" content="http://ongi3pl2t.bkt.clouddn.com/17-4-25/91663300-file_1493101041787_5fda.jpg">
+<meta name="twitter:title" content="布局填充方式的区别">
+<meta name="twitter:description" content="LayoutInflater 的 inflate 方法和 View 的 inflate 方法
+
+View 的 inflate 方法有时候，会出现宽高属性不起作用的情况。而 LayoutInflater 类的 inflate 方法，不会出现这种情况">
 
 
 
@@ -132,13 +130,13 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/25/Android之Snackbar/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/07/布局填充方式的区别/"/>
 
 
 
 
 
-  <title> Android 之 Snackbar | 珞璃之神 </title>
+  <title> 布局填充方式的区别 | 珞璃之神 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -311,7 +309,7 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/25/Android之Snackbar/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/07/布局填充方式的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="珞神">
@@ -332,7 +330,7 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
             
             
               
-                Android 之 Snackbar
+                布局填充方式的区别
               
             
           </h1>
@@ -347,8 +345,8 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T16:31:25+08:00">
-                2017-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T16:56:31+08:00">
+                2017-08-07
               </time>
             
 
@@ -370,8 +368,8 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Material-Design/" itemprop="url" rel="index">
-                    <span itemprop="name">Material Design</span>
+                  <a href="/categories/小知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">小知识点</span>
                   </a>
                 </span>
 
@@ -388,8 +386,8 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/25/Android之Snackbar/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/25/Android之Snackbar/" itemprop="commentCount"></span>
+                <a href="/2017/08/07/布局填充方式的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/08/07/布局填充方式的区别/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,7 +395,7 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
 
           
           
-             <span id="/2017/04/25/Android之Snackbar/" class="leancloud_visitors" data-flag-title="Android 之 Snackbar">
+             <span id="/2017/08/07/布局填充方式的区别/" class="leancloud_visitors" data-flag-title="布局填充方式的区别">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,67 +429,32 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
       
 
       
-        <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><ul>
-<li>Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.support:design 包下</li>
+        <ul>
+<li><p><strong>LayoutInflater 的 inflate 方法和 View 的 inflate 方法</strong></p>
+</li>
+<li><p><strong>View 的 inflate 方法有时候，会出现宽高属性不起作用的情况。而 LayoutInflater 类的 inflate 方法，不会出现这种情况</strong></p>
+</li>
 </ul>
 <a id="more"></a>
 <ul>
-<li>Snackbar 并不是 Toast 的替代品，两者各有不同的应用场景，只不过是 Snackbar 对 Toast 进行了扩展，允许在提示当中加入一个可交互按钮</li>
+<li><p>LayoutInflater 的 inflate 方法适用于所有需要进行布局填充的场景，是Android中专门进行布局填充的方法</p>
+</li>
+<li><p>View 的 inflate 方法内部包裹了 LayoutInflater 类的 inflate 方法</p>
+</li>
+<li><p>LayoutInflater 的 inflate 三个参数的方法</p>
+</li>
+<li><p>详解链接：<a href="http://blog.csdn.net/u012702547/article/details/52628453" target="_blank" rel="external">http://blog.csdn.net/u012702547/article/details/52628453</a></p>
+</li>
 </ul>
-<h4 id="二、简单使用"><a href="#二、简单使用" class="headerlink" title="二、简单使用"></a>二、简单使用</h4><h5 id="2-1-要先在-app-的-build-gradle-中添加依赖"><a href="#2-1-要先在-app-的-build-gradle-中添加依赖" class="headerlink" title="2.1 要先在 app 的 build.gradle 中添加依赖"></a>2.1 要先在 app 的 build.gradle 中添加依赖</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//个人认为与 V7 包的版本一致最好</div><div class="line"> compile &apos;com.android.support:design:25.3.1&apos;</div></pre></td></tr></table></figure>
-<h5 id="2-2-简单操作如下"><a href="#2-2-简单操作如下" class="headerlink" title="2.2 简单操作如下"></a>2.2 简单操作如下</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Snackbar.make(view,&quot;我是Snackbar&quot;,Snackbar.LENGTH_LONG).show();</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public View inflate(@LayoutRes int resource, @Nullable ViewGroup root, boolean attachToRoot) &#123;</div><div class="line">       final Resources res = getContext().getResources();</div><div class="line">       if (DEBUG) &#123;</div><div class="line">           Log.d(TAG, &quot;INFLATING from resource: \&quot;&quot; + res.getResourceName(resource) + &quot;\&quot; (&quot;</div><div class="line">                   + Integer.toHexString(resource) + &quot;)&quot;);</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       final XmlResourceParser parser = res.getLayout(resource);</div><div class="line">       try &#123;</div><div class="line">           return inflate(parser, root, attachToRoot);</div><div class="line">       &#125; finally &#123;</div><div class="line">           parser.close();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
 <ul>
-<li><p>第一个参数是 view ，只要传入当前界面布局的任意一个 view 都可以，它会根据这个 view 来查找最外层的布局，用于确定 Snackbar 的位置，但是如果在找的过程中，找到 CoordinatorLayout ，那就会认为 CoordinatorLayout 为最外层布局</p>
-</li>
-<li><p>第二个参数是 String ，即：提示的信息</p>
-</li>
-<li><p>第三个参数是 显示多长时间的意思，有三个可选参数</p>
-</li>
+<li>LayoutInflater 的 inflate 两个个参数的方法</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Snackbar.LENGTH_SHORT //事件短，大概 1.8 秒左右</div><div class="line">Snackbar.LENGTH_LONG // 时间长，大概 3 秒左右</div><div class="line">Snackbar.LENGTH_INDEFINITE // 永久显示，需手动取消</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public View inflate(XmlPullParser parser, @Nullable ViewGroup root) &#123;</div><div class="line">      return inflate(parser, root, root != null);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>显示效果如下：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-25/91663300-file_1493101041787_5fda.jpg" alt="image"><br><strong>注意：</strong>我这里的最外层布局为 LinearLayout ，如果换成 CoordinatorLayout 就不会覆盖掉了</li>
+<li>View 的 inflate 方法</li>
 </ul>
-<h5 id="2-3-添加可交互按钮"><a href="#2-3-添加可交互按钮" class="headerlink" title="2.3 添加可交互按钮"></a>2.3 添加可交互按钮</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Snackbar.make(view,&quot;我是Snackbar&quot;,Snackbar.LENGTH_LONG)</div><div class="line">        .setAction(&quot;按钮&quot;, new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">&#125;).show();</div></pre></td></tr></table></figure>
-<ul>
-<li><p>通过 setAction 添加按钮，默认只要点击 Snackbar 就消失</p>
-</li>
-<li><p>第一个参数：按钮显示的文字</p>
-</li>
-<li><p>第二个参数：点击监听</p>
-</li>
-<li><p>显示效果如下：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-25/11846411-file_1493101340576_55e3.jpg" alt="image"></p>
-</li>
-</ul>
-<h4 id="三、主要注意的几点："><a href="#三、主要注意的几点：" class="headerlink" title="三、主要注意的几点："></a>三、主要注意的几点：</h4><ul>
-<li><p>只有最外层的布局为 CoordinatorLayout ，Snackbar 才不会覆盖掉 FloatingActionButton 。</p>
-</li>
-<li><p>只有 Snackbar 配合 CoordinatorLayout 使用，才会有侧滑删除的动画效果，否则是没有的。</p>
-</li>
-<li><p>Google 设计规范要求1，Snackbar 只以纯文本的形式来显示</p>
-</li>
-<li><p>Google 设计规范要求2，同一个屏幕中最多只能同时出现一个 Snackbar。</p>
-</li>
-</ul>
-<h4 id="四、玩转-Snackbar"><a href="#四、玩转-Snackbar" class="headerlink" title="四、玩转 Snackbar"></a>四、玩转 Snackbar</h4><h5 id="4-1-修改-Snackbar-右侧可点击按钮的颜色"><a href="#4-1-修改-Snackbar-右侧可点击按钮的颜色" class="headerlink" title="4.1 修改 Snackbar 右侧可点击按钮的颜色"></a>4.1 修改 Snackbar 右侧可点击按钮的颜色</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">snackbar = Snackbar.make(view,&quot;我是Snackbar&quot;,Snackbar.LENGTH_LONG)</div><div class="line">        .setAction(&quot;按钮&quot;, new View.OnClickListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onClick(View v) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">snackbar.show();</div><div class="line">// 修改 Snackbar 右侧可点击按钮的颜色</div><div class="line">snackbar.setActionTextColor(Color.WHITE);</div></pre></td></tr></table></figure>
-<ul>
-<li>运行效果如下</li>
-</ul>
-<p><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-25/51351490-file_1493104181439_34d4.jpg" alt="image"></p>
-<h5 id="4-2-修改背景色-和-Snackbar-左侧文字显示颜色"><a href="#4-2-修改背景色-和-Snackbar-左侧文字显示颜色" class="headerlink" title="4.2 修改背景色 和 Snackbar 左侧文字显示颜色"></a>4.2 修改背景色 和 Snackbar 左侧文字显示颜色</h5><ul>
-<li>Snackbar 源码中的布局文件为：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;merge xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</div><div class="line">&lt;TextView</div><div class="line">        android:id=&quot;@+id/snackbar_text&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:layout_weight=&quot;1&quot;</div><div class="line">        android:paddingTop=&quot;14dp&quot;</div><div class="line">        android:paddingBottom=&quot;14dp&quot;</div><div class="line">        android:paddingLeft=&quot;12dp&quot;</div><div class="line">        android:paddingRight=&quot;12dp&quot;</div><div class="line">        android:textAppearance=&quot;@style/TextAppearance.Design.Snackbar.Message&quot;</div><div class="line">        android:maxLines=&quot;2&quot;</div><div class="line">        android:layout_gravity=&quot;center_vertical|left|start&quot;</div><div class="line">        android:ellipsize=&quot;end&quot;</div><div class="line">        android:textAlignment=&quot;viewStart&quot;/&gt;</div><div class="line"></div><div class="line">&lt;Button</div><div class="line">        android:id=&quot;@+id/snackbar_action&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:layout_marginLeft=&quot;0dp&quot;</div><div class="line">        android:layout_marginStart=&quot;0dp&quot;</div><div class="line">        android:layout_gravity=&quot;center_vertical|right|end&quot;</div><div class="line">        android:paddingTop=&quot;14dp&quot;</div><div class="line">        android:paddingBottom=&quot;14dp&quot;</div><div class="line">        android:paddingLeft=&quot;12dp&quot;</div><div class="line">        android:paddingRight=&quot;12dp&quot;</div><div class="line">        android:visibility=&quot;gone&quot;</div><div class="line">        android:textColor=&quot;?attr/colorAccent&quot;</div><div class="line">        style=&quot;?attr/borderlessButtonStyle&quot;/&gt;</div><div class="line">&lt;/merge&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>snackbar_text 是 Snackbar 左侧显示文字的 id ，找到这个 id 并设置颜色就 OK 了，如下所示</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">snackbar = Snackbar.make(view,&quot;我是Snackbar&quot;,Snackbar.LENGTH_INDEFINITE)</div><div class="line">        .setAction(&quot;按钮&quot;, new View.OnClickListener() &#123;</div><div class="line">    @Override</div><div class="line">    public void onClick(View v) &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">snackbar.show();</div><div class="line">snackbar.setActionTextColor(Color.WHITE);</div><div class="line">setSnackbarColor();</div><div class="line">//通过 getView() 方法获取 Snackbar 的父布局</div><div class="line">View view = snackbar.getView();</div><div class="line">if (view != null) &#123;</div><div class="line">    //设置背景色</div><div class="line">    view.setBackgroundColor(getResources().getColor(R.color.colorAccent));</div><div class="line">    //获取 Snackbar 左侧提示信息的控件，修改字体颜色</div><div class="line">    ((TextView) view.findViewById(R.id.snackbar_text)).setTextColor(Color.WHITE);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>显示效果如下：<br><img src="http://ongi3pl2t.bkt.clouddn.com/17-4-25/81881302-file_1493104892015_6937.jpg" alt="image"></li>
-</ul>
-<h5 id="4-3-在-Snackbar-中添加图标"><a href="#4-3-在-Snackbar-中添加图标" class="headerlink" title="4.3 在 Snackbar 中添加图标"></a>4.3 在 Snackbar 中添加图标</h5><ul>
-<li>实际上，添加图标，并不符合 Google 的设计规范和初衷，不建议添加图片这里只附上一篇添加图片的链接：<a href="http://www.jianshu.com/p/cd1e80e64311" target="_blank" rel="external">http://www.jianshu.com/p/cd1e80e64311</a></li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static View inflate(Context context, @LayoutRes int resource, ViewGroup root) &#123;</div><div class="line">    LayoutInflater factory = LayoutInflater.from(context);</div><div class="line">    return factory.inflate(resource, root);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -521,7 +484,7 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
       
         <div class="post-tags">
           
-            <a href="/tags/Snackbar/" rel="tag"># Snackbar</a>
+            <a href="/tags/布局填充方式的区别/" rel="tag"># 布局填充方式的区别</a>
           
         </div>
       
@@ -534,8 +497,8 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/25/Android之FloatingActionButton/" rel="next" title="Android 之 FloatingActionButton">
-                <i class="fa fa-chevron-left"></i> Android 之 FloatingActionButton
+              <a href="/2017/08/07/可折叠式标题栏-CollapsingToolbarLayout的属性/" rel="next" title="可折叠式标题栏----CollapsingToolbarLayout的属性">
+                <i class="fa fa-chevron-left"></i> 可折叠式标题栏----CollapsingToolbarLayout的属性
               </a>
             
           </div>
@@ -543,10 +506,6 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/26/Fragment的startActivityForResult/" rel="prev" title="Fragment 的 startActivityForResult()">
-                Fragment 的 startActivityForResult() <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -623,17 +582,8 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/me1.png"
@@ -695,22 +645,6 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、简介"><span class="nav-number">1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、简单使用"><span class="nav-number">2.</span> <span class="nav-text">二、简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-要先在-app-的-build-gradle-中添加依赖"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 要先在 app 的 build.gradle 中添加依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-简单操作如下"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 简单操作如下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-添加可交互按钮"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 添加可交互按钮</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、主要注意的几点："><span class="nav-number">3.</span> <span class="nav-text">三、主要注意的几点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、玩转-Snackbar"><span class="nav-number">4.</span> <span class="nav-text">四、玩转 Snackbar</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-修改-Snackbar-右侧可点击按钮的颜色"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 修改 Snackbar 右侧可点击按钮的颜色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-修改背景色-和-Snackbar-左侧文字显示颜色"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 修改背景色 和 Snackbar 左侧文字显示颜色</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-在-Snackbar-中添加图标"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 在 Snackbar 中添加图标</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -859,9 +793,9 @@ Snackbar 是 Android 5.0 之后新出的一个控件，属于 com.android.suppor
 
     <script type="text/javascript">
       var disqus_shortname = 'adsuper';
-      var disqus_identifier = '2017/04/25/Android之Snackbar/';
+      var disqus_identifier = '2017/08/07/布局填充方式的区别/';
 
-      var disqus_title = "Android 之 Snackbar";
+      var disqus_title = "布局填充方式的区别";
 
 
       function run_disqus_script(disqus_script) {
