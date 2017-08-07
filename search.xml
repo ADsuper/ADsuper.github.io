@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Toolbar设置左侧返回按钮]]></title>
+      <url>%2F2017%2F08%2F07%2FToolbar%E8%AE%BE%E7%BD%AE%E5%B7%A6%E4%BE%A7%E8%BF%94%E5%9B%9E%E6%8C%89%E9%92%AE%2F</url>
+      <content type="text"><![CDATA[两种方式： 第一种：自定义返回按钮的样式和颜色 在布局文件中添加属性设置 1app:navigationIcon=&quot;@mipmap/title_bar_back&quot; 或者使用代码设置： 1mToolbar.setNavigationIcon(); 第二种：设置使用系统自带的返回按钮样式12getSupportActionBar().setDisplayHomeAsUpEnabled(true);//左侧添加一个默认的返回图标getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用 添加之后，如果发现图标的颜色是 黑色 ，则需要在 style.xml 中添加如下属性： 12&lt;!-- 溢出菜单图标颜色，可以自己设置成任意的颜色--&gt;&lt;item name=&quot;colorControlNormal&quot;&gt;@android:color/white&lt;/item&gt;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[查看 sdk 安装目录和 keystore 的 md5 SHA1 等信息]]></title>
       <url>%2F2017%2F08%2F07%2F%E6%9F%A5%E7%9C%8Bsdk%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95%E5%92%8Ckeystore%E7%9A%84md5%E5%92%8CSHA1%E7%AD%89%E4%BF%A1%E6%81%AF%2F</url>
       <content type="text"><![CDATA[1. 查看 jdk 安装目录打开命令行 输入 java -verbose ，最后两行显示的就是 安装路径 2. 查看 keystore 的 md5 SHA1 等相关信息在 jdk bin 目录打开命令行，输入命令：keytool -list -v -keystore D:\Android\keystore\xxx.keystore D:\Android\keystore\xxx.keystore 为 keystore 的文件路径，然后输入 keystore 密码]]></content>
